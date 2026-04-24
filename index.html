@@ -184,6 +184,14 @@
   /* Separator */
   .sep { height: 1px; background: var(--border); margin: 16px 0; }
 
+  /* SEC FILINGS */
+  .sec-item { border-bottom: 1px solid rgba(48,54,61,0.5); padding: 8px 0; }
+  .sec-item:last-child { border-bottom: none; }
+  .sec-header { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+  .sec-date { font-size: 10px; color: var(--text-muted); }
+  .sec-link { font-size: 10px; color: var(--accent2); text-decoration: none; margin-left: auto; white-space: nowrap; }
+  .sec-link:hover { text-decoration: underline; }
+
   /* oem colors */
   .c-polaris { background: #1e3a8a; color: #93c5fd; }
   .c-canam { background: #7f1d1d; color: #fca5a5; }
@@ -721,6 +729,18 @@
       <!-- REFRESH:NEWS:END -->
     </div><!-- end news-feed -->
 
+    <div class="sep"></div>
+
+    <!-- SEC FILINGS -->
+    <div class="section-header">
+      <div class="section-title">SEC Filings — Recent</div>
+      <div class="section-action" style="font-size:10px;font-style:italic;cursor:default;">Live from EDGAR · Public filings only</div>
+    </div>
+
+    <!-- REFRESH:SEC_FILINGS:START -->
+    <div style="color:var(--text-muted);font-size:12px;padding:16px;text-align:center;border:1px dashed var(--border);border-radius:var(--radius);">SEC filings load on next refresh run.</div>
+    <!-- REFRESH:SEC_FILINGS:END -->
+
   </div><!-- end main -->
 
   <!-- RIGHT PANEL -->
@@ -780,6 +800,18 @@
       <!-- REFRESH:STOCKS:END -->
       </tbody>
     </table>
+
+    <div class="sep"></div>
+
+    <!-- NEWS VOLUME CHART -->
+    <div class="section-header">
+      <div class="section-title">News Volume by OEM — Trailing 7 Days</div>
+    </div>
+    <div style="font-size:10px;color:var(--text-muted);font-style:italic;margin-bottom:10px;">Article mentions across tracked RSS sources</div>
+
+    <!-- REFRESH:NEWS_VOLUME:START -->
+    <div style="color:var(--text-muted);font-size:12px;padding:12px;text-align:center;">Chart populates after first refresh run.</div>
+    <!-- REFRESH:NEWS_VOLUME:END -->
 
     <div class="sep"></div>
 
