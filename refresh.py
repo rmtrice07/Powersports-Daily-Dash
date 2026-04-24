@@ -37,13 +37,13 @@ MA_DATA   = ROOT / "ma_data.json"
 # (yfinance_symbol, display_symbol, name, exchange, hex_color, css_tag_class)
 
 TICKERS = [
-    ("PII",     "PII",    "Polaris",      "NYSE", "#93c5fd", "tag-polaris"),
-    ("DOOO.TO", "DOOO",   "BRP/Can-Am",   "TSX",  "#fca5a5", "tag-canam"),
-    ("DE",      "DE",     "John Deere",   "NYSE", "#86efac", "tag-deere"),
-    ("HMC",     "HMC",    "Honda",        "NYSE", "#fca5a5", "tag-honda"),
-    ("7272.T",  "7272.T", "Yamaha Motor", "TYO",  "#93c5fd", "tag-yamaha"),
-    ("6326.T",  "6326.T", "Kubota",       "TYO",  "#fca5a5", "tag-kubota"),
-    ("7012.T",  "7012.T", "Kawasaki HI",  "TYO",  "#86efac", "tag-kawasaki"),
+    ("PII",     "PII",    "Polaris",      "NYSE", "#93c5fd", "tag-polaris",  "polaris"),
+    ("DOOO.TO", "DOOO",   "BRP/Can-Am",   "TSX",  "#fca5a5", "tag-canam",    "canam"),
+    ("DE",      "DE",     "John Deere",   "NYSE", "#86efac", "tag-deere",    "deere"),
+    ("HMC",     "HMC",    "Honda",        "NYSE", "#fca5a5", "tag-honda",    "honda"),
+    ("7272.T",  "7272.T", "Yamaha Motor", "TYO",  "#93c5fd", "tag-yamaha",   "yamaha"),
+    ("6326.T",  "6326.T", "Kubota",       "TYO",  "#fca5a5", "tag-kubota",   "kubota"),
+    ("7012.T",  "7012.T", "Kawasaki HI",  "TYO",  "#86efac", "tag-kawasaki", "kawasaki"),
 ]
 
 # ── RSS Feeds ─────────────────────────────────────────────────────────────────
@@ -80,14 +80,14 @@ GNEWS_QUERIES = [
 # ── Classification Maps ───────────────────────────────────────────────────────
 
 OEM_KEYWORDS = {
-    "polaris":  ["polaris", "rzr", "ranger", "general", "xpedition"],
-    "canam":    ["can-am", "canam", "maverick", "defender", "commander", "brp"],
-    "kawasaki": ["kawasaki", "teryx", "mule", "ridge"],
-    "yamaha":   ["yamaha", "rmax", "wolverine", "viking", "yxz"],
+    "polaris":  ["polaris", "rzr", "polaris ranger", "polaris general", "xpedition"],
+    "canam":    ["can-am", "canam", "brp", "maverick r", "maverick x3", "can-am defender", "brp defender", "can-am commander"],
+    "kawasaki": ["kawasaki", "teryx", "kawasaki mule", "kawasaki ridge"],
+    "yamaha":   ["yamaha", "rmax", "yamaha wolverine", "yamaha viking", "yxz"],
     "cfmoto":   ["cfmoto", "cf moto", "zforce", "uforce"],
     "speedutv": ["speed utv", "el jefe"],
-    "deere":    ["john deere", "gator"],
-    "kubota":   ["kubota", "rtv"],
+    "deere":    ["john deere", "deere gator", "gator utv"],
+    "kubota":   ["kubota", "kubota rtv"],
     "massimo":  ["massimo"],
     "honda":    ["honda pioneer", "honda talon"],
 }
@@ -198,7 +198,7 @@ def fetch_stocks():
     if not HAS_YF:
         return []
     rows = []
-    for sym, disp, name, exch, color, tag_cls in TICKERS:
+    for sym, disp, name, exch, color, tag_cls, oem_key in TICKERS:
         try:
             fi    = yf.Ticker(sym).fast_info
             price = fi.last_price
@@ -208,15 +208,17 @@ def fetch_stocks():
             change = price - prev
             pct    = (change / prev) * 100
             rows.append({
-                "sym":   disp,
-                "name":  name,
-                "price": fmt_price(sym, price),
-                "chg":   fmt_price(sym, abs(change)),
-                "pct":   abs(pct),
-                "range": f"{fmt_price(sym, fi.year_low)}–{fmt_price(sym, fi.year_high)}",
-                "color": color,
-                "dir":   "up" if change >= 0 else "down",
-                "arrow": "▲" if change >= 0 else "▼",
+                "sym":     disp,
+                "name":    name,
+                "exch":    exch,
+                "oem_key": oem_key,
+                "price":   fmt_price(sym, price),
+                "chg":     fmt_price(sym, abs(change)),
+                "pct":     abs(pct),
+                "range":   f"{fmt_price(sym, fi.year_low)}–{fmt_price(sym, fi.year_high)}",
+                "color":   color,
+                "dir":     "up" if change >= 0 else "down",
+                "arrow":   "▲" if change >= 0 else "▼",
             })
             time.sleep(0.4)
         except Exception as e:
@@ -289,6 +291,20 @@ def fetch_gnews(max_per=5):
     return articles
 
 # ── HTML Builders ─────────────────────────────────────────────────────────────
+
+def build_sidebar_tickers(stocks):
+    if not stocks:
+        return "<script>const SIDEBAR_PRICES = {};</script>"
+    entries = []
+    for s in stocks:
+        entries.append(
+            f'  "{s["oem_key"]}": {{'
+            f'"exch":"{s["exch"]}", "sym":"{s["sym"]}", "price":"{s["price"]}", '
+            f'"arrow":"{s["arrow"]}", "pct":"{s["pct"]:.1f}", "dir":"{s["dir"]}"'
+            f'}}'
+        )
+    inner = ",\n".join(entries)
+    return f"<script>\nconst SIDEBAR_PRICES = {{\n{inner}\n}};\n</script>"
 
 def build_stock_rows(stocks):
     if not stocks:
@@ -435,10 +451,11 @@ def main():
     print(f"\n[4/4] Building dashboard ({total} total articles)...")
     template = DASHBOARD.read_text(encoding="utf-8")
     out = template
-    out = inject(out, "TIMESTAMP", build_timestamp())
-    out = inject(out, "STOCKS",    build_stock_rows(stocks))
-    out = inject(out, "NEWS",      build_news_cards(direct + gnews))
-    out = inject(out, "MA_DEALS",  build_ma_section())
+    out = inject(out, "TIMESTAMP",       build_timestamp())
+    out = inject(out, "STOCKS",          build_stock_rows(stocks))
+    out = inject(out, "SIDEBAR_TICKERS", build_sidebar_tickers(stocks))
+    out = inject(out, "NEWS",            build_news_cards(direct + gnews))
+    out = inject(out, "MA_DEALS",        build_ma_section())
     DASHBOARD.write_text(out, encoding="utf-8")
 
     print(f"      Written → {DASHBOARD.name}")
