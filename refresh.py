@@ -331,6 +331,12 @@ def fetch_gnews(max_per=5):
                 seen.add(key)
                 summary = e.get("summary") or e.get("description", "")
                 body    = f"{title} {summary}"
+                # Drop articles from OEM-specific queries that don't actually
+                # mention any of that OEM's keywords — catches Google's imprecise
+                # boolean matching which returns off-topic results.
+                if oem_key != "market" and OEM_KEYWORDS.get(oem_key):
+                    if not any(kw in body.lower() for kw in OEM_KEYWORDS[oem_key]):
+                        continue
                 articles.append({
                     "title":   title,
                     "snippet": truncate(summary),
