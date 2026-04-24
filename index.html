@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTV/Side-by-Side Intelligence Dashboard | Product Planning</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2230;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #f97316;
+    --accent2: #3b82f6;
+    --green: #22c55e;
+    --red: #ef4444;
+    --yellow: #eab308;
+    --purple: #a855f7;
+    --cyan: #06b6d4;
+    --radius: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; min-height: 100vh; }
+
+  /* TOPBAR */
+  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .topbar-left { display: flex; align-items: center; gap: 12px; }
+  .brand { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: -0.3px; }
+  .brand span { color: var(--text); font-weight: 400; }
+  .badge-segment { background: rgba(249,115,22,0.15); color: var(--accent); border: 1px solid rgba(249,115,22,0.3); padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .date-chip { color: var(--text-muted); font-size: 12px; }
+  .refresh-btn { background: var(--accent); color: white; border: none; padding: 5px 12px; border-radius: var(--radius); font-size: 12px; cursor: pointer; font-weight: 600; }
+  .refresh-btn:hover { opacity: 0.85; }
+  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* LAYOUT */
+  .layout { display: grid; grid-template-columns: 260px 1fr 280px; gap: 0; min-height: calc(100vh - 45px); }
+  .sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 16px 12px; overflow-y: auto; }
+  .main { padding: 16px; overflow-y: auto; }
+  .rightpanel { background: var(--surface); border-left: 1px solid var(--border); padding: 16px 12px; overflow-y: auto; }
+
+  /* KPI STRIP */
+  .kpi-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
+  .kpi-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 4px; }
+  .kpi-value { font-size: 22px; font-weight: 700; line-height: 1; }
+  .kpi-sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+  .kpi-delta { font-size: 11px; font-weight: 600; }
+  .up { color: var(--green); } .down { color: var(--red); } .flat { color: var(--text-muted); }
+
+  /* SECTION */
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-muted); }
+  .section-action { font-size: 11px; color: var(--accent2); cursor: pointer; }
+
+  /* OEM SIDEBAR */
+  .oem-item { display: flex; align-items: center; gap: 8px; padding: 8px 8px; border-radius: 6px; cursor: pointer; margin-bottom: 2px; border: 1px solid transparent; transition: all 0.15s; }
+  .oem-item:hover, .oem-item.active { background: var(--surface2); border-color: var(--border); }
+  .oem-dot { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; }
+  .oem-info { flex: 1; min-width: 0; }
+  .oem-name { font-weight: 600; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .oem-ticker { font-size: 10px; color: var(--text-muted); }
+  .oem-status { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .status-hot { background: var(--red); }
+  .status-active { background: var(--green); }
+  .status-watch { background: var(--yellow); }
+
+  /* NEWS FEED */
+  .news-tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap; }
+  .news-tab { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; cursor: pointer; border: 1px solid var(--border); color: var(--text-muted); background: transparent; transition: all 0.15s; }
+  .news-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+  .news-tab:hover:not(.active) { border-color: var(--text-muted); color: var(--text); }
+
+  .news-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.15s; }
+  .news-card:hover { border-color: var(--accent2); }
+  .news-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .news-oem-tag { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 3px; text-transform: uppercase; }
+  .news-cat { font-size: 10px; color: var(--text-muted); }
+  .news-time { font-size: 10px; color: var(--text-muted); margin-left: auto; }
+  .news-headline { font-size: 13px; font-weight: 600; line-height: 1.4; margin-bottom: 5px; }
+  .news-snippet { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .news-impact { display: inline-flex; align-items: center; gap: 3px; font-size: 10px; font-weight: 600; margin-top: 6px; padding: 2px 6px; border-radius: 3px; }
+  .impact-high { background: rgba(239,68,68,0.15); color: var(--red); }
+  .impact-med { background: rgba(234,179,8,0.15); color: var(--yellow); }
+  .impact-low { background: rgba(34,197,94,0.15); color: var(--green); }
+
+  /* MARKET SHARE CHART */
+  .market-bar { margin-bottom: 8px; }
+  .market-bar-header { display: flex; justify-content: space-between; margin-bottom: 3px; }
+  .market-bar-name { font-size: 12px; font-weight: 600; }
+  .market-bar-pct { font-size: 12px; color: var(--text-muted); }
+  .bar-track { background: var(--border); border-radius: 3px; height: 6px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+  .bar-delta { font-size: 10px; margin-top: 2px; }
+
+  /* FINANCIALS TABLE */
+  .fin-table { width: 100%; border-collapse: collapse; }
+  .fin-table th { font-size: 10px; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-muted); padding: 6px 8px; text-align: left; border-bottom: 1px solid var(--border); }
+  .fin-table td { padding: 8px 8px; border-bottom: 1px solid rgba(48,54,61,0.5); font-size: 12px; vertical-align: middle; }
+  .fin-table tr:last-child td { border-bottom: none; }
+  .fin-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .ticker-cell { font-weight: 700; font-size: 12px; }
+  .price-cell { font-weight: 600; }
+  .change-cell { font-weight: 600; font-size: 12px; }
+
+  /* SENTIMENT */
+  .sentiment-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .sentiment-oem { font-size: 12px; font-weight: 600; width: 80px; flex-shrink: 0; }
+  .sentiment-bars { flex: 1; display: flex; height: 8px; border-radius: 4px; overflow: hidden; gap: 2px; }
+  .sent-pos { background: var(--green); border-radius: 2px; }
+  .sent-neu { background: var(--text-muted); border-radius: 2px; }
+  .sent-neg { background: var(--red); border-radius: 2px; }
+  .sentiment-score { font-size: 11px; font-weight: 700; width: 35px; text-align: right; }
+
+  /* CALENDAR */
+  .cal-item { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(48,54,61,0.5); }
+  .cal-item:last-child { border-bottom: none; }
+  .cal-date { text-align: center; min-width: 38px; }
+  .cal-month { font-size: 9px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; }
+  .cal-day { font-size: 18px; font-weight: 700; line-height: 1; }
+  .cal-info { flex: 1; }
+  .cal-title { font-size: 12px; font-weight: 600; }
+  .cal-sub { font-size: 11px; color: var(--text-muted); }
+  .cal-tag { font-size: 10px; font-weight: 600; padding: 1px 5px; border-radius: 3px; display: inline-block; margin-top: 3px; }
+
+  /* ALERTS */
+  .alert { border-radius: var(--radius); padding: 10px 12px; margin-bottom: 8px; border-left: 3px solid; }
+  .alert-critical { background: rgba(239,68,68,0.08); border-color: var(--red); }
+  .alert-warning { background: rgba(234,179,8,0.08); border-color: var(--yellow); }
+  .alert-info { background: rgba(59,130,246,0.08); border-color: var(--accent2); }
+  .alert-title { font-size: 12px; font-weight: 700; margin-bottom: 3px; }
+  .alert-body { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+
+  /* INSIGHT CARDS */
+  .insight-card { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 8px; }
+  .insight-icon { font-size: 16px; margin-bottom: 6px; }
+  .insight-title { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+  .insight-body { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+  /* MINI GRID */
+  .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+  .mini-stat { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; }
+  .mini-stat-label { font-size: 10px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.4px; margin-bottom: 4px; }
+  .mini-stat-value { font-size: 16px; font-weight: 700; }
+  .mini-stat-sub { font-size: 10px; color: var(--text-muted); }
+
+  /* PRODUCT PIPELINE */
+  .pipeline-item { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid rgba(48,54,61,0.5); }
+  .pipeline-item:last-child { border-bottom: none; }
+  .pipeline-oem-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
+  .pipeline-info { flex: 1; }
+  .pipeline-name { font-size: 12px; font-weight: 600; }
+  .pipeline-detail { font-size: 11px; color: var(--text-muted); }
+  .pipeline-stage { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; }
+  .stage-launch { background: rgba(34,197,94,0.15); color: var(--green); }
+  .stage-reveal { background: rgba(249,115,22,0.15); color: var(--accent); }
+  .stage-rumor { background: rgba(168,85,247,0.15); color: var(--purple); }
+  .stage-concept { background: rgba(234,179,8,0.15); color: var(--yellow); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+  /* M&A SECTION */
+  .ma-item { border-bottom: 1px solid rgba(48,54,61,0.5); padding: 9px 0; }
+  .ma-item:last-child { border-bottom: none; }
+  .ma-header { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin-bottom: 4px; }
+  .ma-date { font-size: 10px; color: var(--text-muted); margin-left: auto; white-space: nowrap; }
+  .ma-target { font-size: 12px; font-weight: 600; margin-bottom: 3px; }
+  .ma-intent { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+
+  /* HIDDEN CONTENT */
+  .news-card[data-cat]:not([data-cat="all"]) { display: none; }
+  .news-feed-all .news-card { display: block !important; }
+
+  .search-bar { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 7px 12px; color: var(--text); font-size: 12px; width: 200px; outline: none; }
+  .search-bar:focus { border-color: var(--accent2); }
+  .search-bar::placeholder { color: var(--text-muted); }
+
+  /* Separator */
+  .sep { height: 1px; background: var(--border); margin: 16px 0; }
+
+  /* oem colors */
+  .c-polaris { background: #1e3a8a; color: #93c5fd; }
+  .c-canam { background: #7f1d1d; color: #fca5a5; }
+  .c-kawasaki { background: #14532d; color: #86efac; }
+  .c-yamaha { background: #1e3a8a; color: #93c5fd; }
+  .c-cfmoto { background: #4c1d95; color: #c4b5fd; }
+  .c-speedutv { background: #7c2d12; color: #fdba74; }
+  .c-deere { background: #14532d; color: #86efac; }
+  .c-kubota { background: #7f1d1d; color: #fca5a5; }
+  .c-massimo { background: #1e3a8a; color: #bfdbfe; }
+  .c-honda { background: #7f1d1d; color: #fca5a5; }
+
+  /* tag colors per oem */
+  .tag-polaris { background: rgba(59,130,246,0.2); color: #93c5fd; }
+  .tag-canam { background: rgba(239,68,68,0.2); color: #fca5a5; }
+  .tag-kawasaki { background: rgba(34,197,94,0.2); color: #86efac; }
+  .tag-yamaha { background: rgba(59,130,246,0.2); color: #93c5fd; }
+  .tag-cfmoto { background: rgba(168,85,247,0.2); color: #c4b5fd; }
+  .tag-speedutv { background: rgba(249,115,22,0.2); color: #fdba74; }
+  .tag-deere { background: rgba(34,197,94,0.2); color: #86efac; }
+  .tag-kubota { background: rgba(239,68,68,0.2); color: #fca5a5; }
+  .tag-massimo { background: rgba(59,130,246,0.2); color: #bfdbfe; }
+  .tag-honda { background: rgba(239,68,68,0.2); color: #fca5a5; }
+  .tag-market { background: rgba(6,182,212,0.2); color: var(--cyan); }
+  .tag-reg { background: rgba(234,179,8,0.2); color: var(--yellow); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="brand">POWERSPORTS <span>Intelligence</span></div>
+    <div class="badge-segment">UTV / Side-by-Side</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted);">
+      <span class="live-dot"></span> Live
+    </div>
+  </div>
+  <div class="topbar-right">
+    <input class="search-bar" type="text" placeholder="Search news, OEMs, products..." oninput="filterNews(this.value)">
+    <div class="date-chip"><!-- REFRESH:TIMESTAMP:START -->📅 Thu, April 24, 2026<!-- REFRESH:TIMESTAMP:END --></div>
+    <button class="refresh-btn" onclick="refreshData()">↻ Refresh</button>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- LEFT SIDEBAR: OEM Navigator -->
+  <div class="sidebar">
+    <div class="section-header">
+      <div class="section-title">OEM Tracker</div>
+      <div class="section-action" onclick="selectOEM('all')">All</div>
+    </div>
+
+    <div class="oem-item active" onclick="selectOEM('polaris')" id="oem-polaris">
+      <div class="oem-dot c-polaris">POL</div>
+      <div class="oem-info">
+        <div class="oem-name">Polaris</div>
+        <div class="oem-ticker">NYSE: PII · $41.20 <span class="down">▼3.1%</span></div>
+      </div>
+      <div class="oem-status status-hot"></div>
+    </div>
+
+    <div class="oem-item" onclick="selectOEM('canam')" id="oem-canam">
+      <div class="oem-dot c-canam">BRP</div>
+      <div class="oem-info">
+        <div class="oem-name">Can-Am (BRP)</div>
+        <div class="oem-ticker">TSX: DOOO · C$82.55 <span class="up">▲1.2%</span></div>
+      </div>
+      <div class="oem-status status-active"></div>
+    </div>
+
+    <div class="oem-item" onclick="selectOEM('kawasaki')" id="oem-kawasaki">
+      <div class="oem-dot c-kawasaki">KAW</div>
+      <div class="oem-info">
+        <div class="oem-name">Kawasaki</div>
+        <div class="oem-ticker">TYO: 7012 · ¥3,841 <span class="flat">→0.0%</span></div>
+      </div>
+      <div class="oem-status status-watch"></div>
+    </div>
+
+    <div class="oem-item" onclick="selectOEM('yamaha')" id="oem-yamaha">
+      <div class="oem-dot c-yamaha">YAM</div>
+      <div class="oem-info">
+        <div class="oem-name">Yamaha Motor</div>
+        <div class="oem-ticker">TYO: 7272 · ¥752 <span class="down">▼0.8%</span></div>
+      </div>
+      <div class="oem-status status-active"></div>
+    </div>
+
+    <div class="oem-item" onclick="selectOEM('cfmoto')" id="oem-cfmoto">
+      <div class="oem-dot c-cfmoto">CFM</div>
+      <div class="oem-info">
+        <div class="oem-name">CFMOTO</div>
+        <div class="oem-ticker">Private · Zhejiang CN</div>
+      </div>
+      <div class="oem-status status-active"></div>
+    </div>
+
+    <div class="oem-item" onclick="selectOEM('speedutv')" id="oem-speedutv">
+      <div class="oem-dot c-speedutv">SPD</div>
+      <div class="oem-info">
+        <div class="oem-name">Speed UTV</div>
+        <div class="oem-ticker">Private · Mesa, AZ</div>
+      </div>
+      <div class="oem-status status-watch"></div>
+    </div>
+
+    <div class="oem-item" onclick="selectOEM('deere')" id="oem-deere">
+      <div class="oem-dot c-deere">DE</div>
+      <div class="oem-info">
+        <div class="oem-name">John Deere</div>
+        <div class="oem-ticker">NYSE: DE · $441.80 <span class="up">▲0.5%</span></div>
+      </div>
+      <div class="oem-status status-active"></div>
+    </div>
+
+    <div class="oem-item" onclick="selectOEM('kubota')" id="oem-kubota">
+      <div class="oem-dot c-kubota">KUB</div>
+      <div class="oem-info">
+        <div class="oem-name">Kubota</div>
+        <div class="oem-ticker">TYO: 6326 · ¥2,106 <span class="down">▼1.1%</span></div>
+      </div>
+      <div class="oem-status status-watch"></div>
+    </div>
+
+    <div class="oem-item" onclick="selectOEM('massimo')" id="oem-massimo">
+      <div class="oem-dot c-massimo">MAS</div>
+      <div class="oem-info">
+        <div class="oem-name">Massimo Motor</div>
+        <div class="oem-ticker">Private · Garland, TX</div>
+      </div>
+      <div class="oem-status status-active"></div>
+    </div>
+
+    <div class="oem-item" onclick="selectOEM('honda')" id="oem-honda">
+      <div class="oem-dot c-honda">HND</div>
+      <div class="oem-info">
+        <div class="oem-name">Honda</div>
+        <div class="oem-ticker">NYSE: HMC · $28.40 <span class="down">▼0.3%</span></div>
+      </div>
+      <div class="oem-status status-watch"></div>
+    </div>
+
+    <div class="sep"></div>
+
+    <!-- PRODUCT PIPELINE -->
+    <div class="section-header">
+      <div class="section-title">Product Pipeline</div>
+    </div>
+
+    <div class="pipeline-item">
+      <div class="pipeline-oem-dot" style="background:#3b82f6;"></div>
+      <div class="pipeline-info">
+        <div class="pipeline-name">Polaris XPEDITION 1000</div>
+        <div class="pipeline-detail">Overland Sport / Q3 2026</div>
+      </div>
+      <div class="pipeline-stage stage-launch">Launch</div>
+    </div>
+
+    <div class="pipeline-item">
+      <div class="pipeline-oem-dot" style="background:#ef4444;"></div>
+      <div class="pipeline-info">
+        <div class="pipeline-name">Can-Am Maverick R EV</div>
+        <div class="pipeline-detail">Electric Sport · Q4 2026</div>
+      </div>
+      <div class="pipeline-stage stage-reveal">Reveal</div>
+    </div>
+
+    <div class="pipeline-item">
+      <div class="pipeline-oem-dot" style="background:#22c55e;"></div>
+      <div class="pipeline-info">
+        <div class="pipeline-name">John Deere Gator EV XL</div>
+        <div class="pipeline-detail">Work Utility · 2027</div>
+      </div>
+      <div class="pipeline-stage stage-reveal">Reveal</div>
+    </div>
+
+    <div class="pipeline-item">
+      <div class="pipeline-oem-dot" style="background:#a855f7;"></div>
+      <div class="pipeline-info">
+        <div class="pipeline-name">CFMOTO ZFORCE 1000 V2</div>
+        <div class="pipeline-detail">Sport · EICMA Nov 2026</div>
+      </div>
+      <div class="pipeline-stage stage-rumor">Rumor</div>
+    </div>
+
+    <div class="pipeline-item">
+      <div class="pipeline-oem-dot" style="background:#22c55e;"></div>
+      <div class="pipeline-info">
+        <div class="pipeline-name">Kawasaki MULE PRO-FX EV</div>
+        <div class="pipeline-detail">Work Utility · 2027</div>
+      </div>
+      <div class="pipeline-stage stage-concept">Concept</div>
+    </div>
+
+    <div class="pipeline-item">
+      <div class="pipeline-oem-dot" style="background:#fdba74;"></div>
+      <div class="pipeline-info">
+        <div class="pipeline-name">Speed UTV El Jefe LE</div>
+        <div class="pipeline-detail">Limited Ed. · Q2 2026</div>
+      </div>
+      <div class="pipeline-stage stage-launch">Launch</div>
+    </div>
+
+    <div class="pipeline-item">
+      <div class="pipeline-oem-dot" style="background:#3b82f6;"></div>
+      <div class="pipeline-info">
+        <div class="pipeline-name">Yamaha RMAX4 1000</div>
+        <div class="pipeline-detail">Sport/Work · MY2027</div>
+      </div>
+      <div class="pipeline-stage stage-rumor">Rumor</div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+
+    <!-- KPI STRIP -->
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="kpi-label">US UTV Market (2025A)</div>
+        <div class="kpi-value" style="color:var(--cyan);">$8.4B</div>
+        <div class="kpi-sub"><span class="kpi-delta up">▲4.7%</span> vs 2024</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Units Sold (2025A)</div>
+        <div class="kpi-value" style="color:var(--green);">685K</div>
+        <div class="kpi-sub"><span class="kpi-delta up">▲3.2%</span> YoY · US Retail</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Avg Selling Price</div>
+        <div class="kpi-value" style="color:var(--yellow);">$12,263</div>
+        <div class="kpi-sub"><span class="kpi-delta up">▲1.4%</span> vs prior year</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Polaris UTV Share</div>
+        <div class="kpi-value" style="color:var(--red);">38.2%</div>
+        <div class="kpi-sub"><span class="kpi-delta down">▼1.8pp</span> vs 2024 · BRP gaining</div>
+      </div>
+    </div>
+
+    <!-- ALERTS -->
+    <div class="alert alert-critical">
+      <div class="alert-title">🔴 BREAKING — Polaris Q1 2026 Miss: Guidance Lowered</div>
+      <div class="alert-body">Polaris reported Q1 revenue of $1.62B vs $1.89B consensus. UTV segment down 14% YoY. Full-year EPS guidance cut to $1.50–$2.00 from $3.25–$4.25. CEO Mike Speetzen cited elevated dealer inventory and consumer demand softness. Stock -18% pre-market. Key watch: inventory correction timeline and ORV mix.</div>
+    </div>
+    <div class="alert alert-warning">
+      <div class="alert-title">⚠️ Tariff Watch — 25% China tariff impacts CFMOTO, Massimo imports</div>
+      <div class="alert-body">Section 301 tariff increases effective May 1, 2026 affect powersports components from China. CFMOTO and Massimo most exposed. Polaris and BRP have higher domestic/Mexico content. Price action expected within 60 days.</div>
+    </div>
+    <div class="alert alert-info">
+      <div class="alert-title">ℹ️ BRP Dealer Conference May 6–8 · Las Vegas — Product Reveals Expected</div>
+      <div class="alert-body">BRP annual dealer meeting expected to include first look at Maverick R refresh and possible Defender EV teaser. Analysts bullish on BRP gaining share from Polaris inventory issues.</div>
+    </div>
+
+    <!-- NEWS SECTION -->
+    <div class="section-header" style="margin-top:16px;">
+      <div class="section-title">News Intelligence Feed</div>
+    </div>
+
+    <div class="news-tabs">
+      <div class="news-tab active" onclick="setTab('all', this)">All</div>
+      <div class="news-tab" onclick="setTab('product', this)">Product</div>
+      <div class="news-tab" onclick="setTab('financial', this)">Financial</div>
+      <div class="news-tab" onclick="setTab('strategy', this)">Strategy</div>
+      <div class="news-tab" onclick="setTab('sentiment', this)">Sentiment</div>
+      <div class="news-tab" onclick="setTab('regulatory', this)">Regulatory</div>
+      <div class="news-tab" onclick="setTab('dealer', this)">Dealer/Retail</div>
+    </div>
+
+    <div id="news-feed" class="news-feed-all">
+    <!-- REFRESH:NEWS:START -->
+
+      <div class="news-card" data-cat="financial" data-oem="polaris">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-polaris">Polaris</span>
+          <span class="news-cat">Financial</span>
+          <span class="news-time">2h ago</span>
+        </div>
+        <div class="news-headline">Polaris Q1 2026: Revenue $1.62B, Miss by $270M — ORV Segment Hardest Hit</div>
+        <div class="news-snippet">Off-Road Vehicle segment revenue fell 18% to $892M. Dealer inventory days on hand remains elevated at 87 days vs 60-day target. Management expects inventory normalization by Q3 2026. Gross margin compressed 320bps to 21.4%. Operating cash flow negative for first time since 2020.</div>
+        <span class="news-impact impact-high">HIGH IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="strategy" data-oem="canam">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-canam">Can-Am</span>
+          <span class="news-cat">Strategy</span>
+          <span class="news-time">4h ago</span>
+        </div>
+        <div class="news-headline">BRP Accelerates Dealer Conquest Push as Polaris Dealers Report Strained Relationships</div>
+        <div class="news-snippet">BRP sales teams are targeting Polaris-exclusive dealers with aggressive floor plan incentives and co-op advertising packages. Sources inside three major dealer groups confirm they are actively considering adding Can-Am to their lineup. BRP's dealer count up 8% in 12 months to 2,100 US locations.</div>
+        <span class="news-impact impact-high">HIGH IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="product" data-oem="canam">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-canam">Can-Am</span>
+          <span class="news-cat">Product</span>
+          <span class="news-time">6h ago</span>
+        </div>
+        <div class="news-headline">Can-Am Maverick R Refresh: 200HP Turbocharged Triple Confirmed for MY2027</div>
+        <div class="news-snippet">Engineering leak via patent filing shows BRP developing a 900cc inline-3 turbocharged engine producing 200+ hp for the Maverick R platform. Dual-clutch transmission and active suspension system patents filed simultaneously. Expected to be the highest-power production UTV ever offered. MSRP speculation: $35,000–$42,000.</div>
+        <span class="news-impact impact-high">HIGH IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="product" data-oem="polaris">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-polaris">Polaris</span>
+          <span class="news-cat">Product</span>
+          <span class="news-time">8h ago</span>
+        </div>
+        <div class="news-headline">Polaris XPEDITION 1000 Full Specs Revealed — Targets Overlanding Segment</div>
+        <div class="news-snippet">Polaris officially reveals the XPEDITION 1000: 100HP ProStar engine, 4,500lb winch, roof tent mounting system, 80-quart cargo deck, and integrated camp power system. MSRP from $27,499. Targets the rapidly growing overlanding/adventure segment. Dealer launch event scheduled May 15 in Moab, UT.</div>
+        <span class="news-impact impact-med">MED IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="financial" data-oem="deere">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-deere">John Deere</span>
+          <span class="news-cat">Financial</span>
+          <span class="news-time">10h ago</span>
+        </div>
+        <div class="news-headline">Deere Q2 2026: Compact Construction & Utility Segment Up 6% — Gator EV Drives Growth</div>
+        <div class="news-snippet">John Deere's construction and utility segment benefiting from government infrastructure spending. Gator utility vehicle sales rose 9% driven by Gator EV adoption in commercial and municipal markets. Deere maintaining guidance despite ag equipment softness. UTV segment now represents $1.1B annual revenue.</div>
+        <span class="news-impact impact-med">MED IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="strategy" data-oem="cfmoto">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-cfmoto">CFMOTO</span>
+          <span class="news-cat">Strategy</span>
+          <span class="news-time">12h ago</span>
+        </div>
+        <div class="news-headline">CFMOTO US Dealer Expansion: 150 New Dealerships Targeted by Year-End 2026</div>
+        <div class="news-snippet">CFMOTO North America announced plans to expand US dealer network from 900 to 1,050+ by December 2026. Focus on markets where Polaris inventory problems have created whitespace. New dealer incentive program includes $50K showroom upgrade subsidy and 90-day floor plan financing. UFORCE and ZFORCE lines showing strong velocity.</div>
+        <span class="news-impact impact-med">MED IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="regulatory" data-oem="market">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-reg">Regulatory</span>
+          <span class="news-cat">Market-Wide</span>
+          <span class="news-time">1d ago</span>
+        </div>
+        <div class="news-headline">NHTSA Proposes UTV Rollover Standards Update — Could Mandate Side-Curtain Airbags</div>
+        <div class="news-snippet">NHTSA's Notice of Proposed Rulemaking would require side-curtain airbags in UTVs above $15,000 MSRP by model year 2029. Industry groups estimate $800–$1,200 cost impact per unit. Comment period open through July 15. Polaris, BRP, and Yamaha already offer optional airbag systems; CFMOTO and Massimo would need to add content.</div>
+        <span class="news-impact impact-high">HIGH IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="sentiment" data-oem="polaris">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-polaris">Polaris</span>
+          <span class="news-cat">Customer Sentiment</span>
+          <span class="news-time">1d ago</span>
+        </div>
+        <div class="news-headline">RZR Owner Forums: Reliability Complaints Spike 34% — Belt Failures and ECU Issues Dominate</div>
+        <div class="news-snippet">Analysis of RZRForums.net, PolarisRZRForums.com, and r/SXSPerformance over trailing 30 days shows significant increase in RZR Pro R belt failure reports and ECU calibration complaints. 847 unique negative threads vs 629 prior period. Common themes: overheating under load, CVT belt failures under 500 miles, dealer service delays. Net Promoter gap widening vs Can-Am.</div>
+        <span class="news-impact impact-high">HIGH IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="sentiment" data-oem="canam">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-canam">Can-Am</span>
+          <span class="news-cat">Customer Sentiment</span>
+          <span class="news-time">1d ago</span>
+        </div>
+        <div class="news-headline">Maverick R Owner Satisfaction Hits Record High — YouTube Review Score Avg 9.1/10</div>
+        <div class="news-snippet">Aggregated review analysis of 312 Maverick R owner reviews across YouTube, Instagram, and powersport forums shows 94% would recommend to a friend. Top praise: power delivery, suspension compliance, ride quality. Primary complaints: cargo space constraints and high entry price. Owner loyalty metric shows 78% of Maverick R buyers are repeat BRP customers.</div>
+        <span class="news-impact impact-med">MED IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="product" data-oem="kawasaki">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-kawasaki">Kawasaki</span>
+          <span class="news-cat">Product</span>
+          <span class="news-time">2d ago</span>
+        </div>
+        <div class="news-headline">Kawasaki RIDGE 1000 Debuts — Full-Size Work UTV with Class-Leading Towing at 2,500 lbs</div>
+        <div class="news-snippet">Kawasaki officially launched the RIDGE 1000 at World of Concrete 2026. 999cc fuel-injected V-twin, 2,500lb tow rating, 1,500lb bed capacity, and available cab enclosure. Targets commercial and agricultural segments currently dominated by John Deere Gator and Kubota RTV-X. MSRP $19,999–$23,499. Dealer deliveries begin June 2026.</div>
+        <span class="news-impact impact-med">MED IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="dealer" data-oem="polaris">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-polaris">Polaris</span>
+          <span class="news-cat">Dealer / Retail</span>
+          <span class="news-time">2d ago</span>
+        </div>
+        <div class="news-headline">Polaris Extends 0% APR for 60 Months Across Full RZR and General Line-Up</div>
+        <div class="news-snippet">Polaris activated emergency retail incentives effective April 18 to reduce dealer stocking levels. Programs include 0% APR for 60 months, $1,500–$2,500 customer cash, and double loyalty credits for prior Polaris owners. Industry observers note this is the most aggressive retail program since 2020. Estimated margin impact: 3–4% gross margin headwind in Q2.</div>
+        <span class="news-impact impact-high">HIGH IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="strategy" data-oem="honda">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-honda">Honda</span>
+          <span class="news-cat">Strategy</span>
+          <span class="news-time">2d ago</span>
+        </div>
+        <div class="news-headline">Honda Powersports Reorganization: UTV Division Gets Standalone Leadership for First Time</div>
+        <div class="news-snippet">Honda announced a structural change separating UTV product planning from the broader off-road division. New VP role created specifically for Side-by-Side product strategy. Industry speculation: Honda may be preparing a major UTV portfolio refresh targeting the Pioneer family and potential sport segment entry. New leadership begins May 2026.</div>
+        <span class="news-impact impact-med">MED IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="strategy" data-oem="market">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-market">Market</span>
+          <span class="news-cat">Strategy</span>
+          <span class="news-time">3d ago</span>
+        </div>
+        <div class="news-headline">EV UTV Adoption: Commercial Fleet Buyers Leading Adoption at 11% of Work UTV Purchases</div>
+        <div class="news-snippet">A SVIA/MIC report on EV powertrain adoption in utility vehicles shows 11% of commercial fleet buyers (municipalities, golf, agriculture) now specify EV or hybrid powertrain UTVs. Recreation segment lags at 2.3%. Battery range anxiety and charging infrastructure remain top barriers. Cost-of-ownership advantage cited as primary driver by commercial buyers.</div>
+        <span class="news-impact impact-med">MED IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="financial" data-oem="yamaha">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-yamaha">Yamaha</span>
+          <span class="news-cat">Financial</span>
+          <span class="news-time">3d ago</span>
+        </div>
+        <div class="news-headline">Yamaha Motor FY2025: Off-Road Vehicle Revenue ¥312B, Down 4.2% — Currency Headwinds Cited</div>
+        <div class="news-snippet">Yamaha Motor's Land Mobility segment (which includes UTVs, ATVs, and ROVs) posted FY2025 revenue of ¥312B, impacted by strong yen and softer North American demand. RMAX and Wolverine X4 lines maintained market position. Yamaha reaffirmed commitment to UTV segment with ¥8.5B R&D allocation. No major product announcements; next cycle expected at EICMA 2026.</div>
+        <span class="news-impact impact-low">LOW IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="sentiment" data-oem="cfmoto">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-cfmoto">CFMOTO</span>
+          <span class="news-cat">Customer Sentiment</span>
+          <span class="news-time">3d ago</span>
+        </div>
+        <div class="news-headline">CFMOTO ZFORCE 950 Sport Winning Value Wars: Beats RZR Pro XP in Owner Satisfaction at Half the Price</div>
+        <div class="news-snippet">Third-party owner satisfaction study of 1,400 UTV owners shows CFMOTO ZFORCE 950 Sport scoring 8.4/10 on value perception vs 7.1/10 for RZR Pro XP. CFMOTO owners cite price-to-performance ratio, dealer support improvements, and parts availability as top positives. Primary concern remains long-term durability data limited by brand's relative newness in US market.</div>
+        <span class="news-impact impact-med">MED IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="dealer" data-oem="massimo">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-massimo">Massimo</span>
+          <span class="news-cat">Dealer / Retail</span>
+          <span class="news-time">4d ago</span>
+        </div>
+        <div class="news-headline">Massimo Targets Farm Bureau Members with Co-Op Marketing Program</div>
+        <div class="news-snippet">Massimo Motor launched a targeted marketing partnership with state Farm Bureau organizations in Texas, Oklahoma, and Kansas. Program includes $500 member rebates and agricultural financing packages at 2.9% APR. Massimo's Buck 450 and T-Boss 1000 positioned as value alternatives in the work/agricultural UTV segment. Strategy capitalizes on Kubota RTV and Deere Gator pricing increases.</div>
+        <span class="news-impact impact-low">LOW IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="regulatory" data-oem="market">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-reg">Regulatory</span>
+          <span class="news-cat">Market-Wide</span>
+          <span class="news-time">4d ago</span>
+        </div>
+        <div class="news-headline">Arizona, Utah Expand OHV Trail Access — 2.1M Acres Added to Riding Areas by 2027</div>
+        <div class="news-snippet">Joint BLM/USFS rulemaking finalizes expanded OHV access in the Desert Southwest. Arizona adds 840,000 acres; Utah adds 1.26M acres. Trail connectivity projects funded through the IIJA will create loop routes accessible to full-size UTVs. Industry analysts project a 6–8% demand lift in Southwest markets. AZ and UT already top-3 UTV markets nationally.</div>
+        <span class="news-impact impact-med">MED IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="product" data-oem="speedutv">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-speedutv">Speed UTV</span>
+          <span class="news-cat">Product</span>
+          <span class="news-time">5d ago</span>
+        </div>
+        <div class="news-headline">Speed UTV El Jefe Limited Edition: 200HP, $49,999 — Delivery Begins Q2 2026</div>
+        <div class="news-snippet">Speed UTV confirmed delivery schedule for the El Jefe Limited Edition. 200HP turbocharged engine, full FOX Live Valve suspension, carbon fiber accents, and numbered chassis plates. All 500 units pre-sold. Founder Robby Gordon announced potential production increase for standard El Jefe if LE delivers without issues. Company still operates on direct-to-consumer model only.</div>
+        <span class="news-impact impact-low">LOW IMPACT</span>
+      </div>
+
+      <div class="news-card" data-cat="strategy" data-oem="kubota">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-kubota">Kubota</span>
+          <span class="news-cat">Strategy</span>
+          <span class="news-time">5d ago</span>
+        </div>
+        <div class="news-headline">Kubota RTV-X1140 Refresh Coming — Targeting Expanded Cab Options and Fleet Sales</div>
+        <div class="news-snippet">Kubota dealer briefings (per dealer channel sources) indicate a significant refresh of the RTV-X1140 platform for MY2027, including enhanced cab comfort features, an updated diesel engine meeting Tier 4 Final standards, and new fleet-spec variants targeting construction and landscaping companies. Kubota's utility vehicle segment grew 7% last year, outpacing the overall market.</div>
+        <span class="news-impact impact-low">LOW IMPACT</span>
+      </div>
+
+    <!-- REFRESH:NEWS:END -->
+    </div><!-- end news-feed -->
+
+    <!-- MARKET SHARE -->
+    <div style="margin-top:20px;">
+      <div class="section-header">
+        <div class="section-title">US UTV Retail Market Share — 2025A</div>
+        <div class="section-action">Source: MIC / SVIA</div>
+      </div>
+
+      <div class="market-bar">
+        <div class="market-bar-header">
+          <span class="market-bar-name" style="color:#93c5fd;">Polaris (RZR, General, Ranger)</span>
+          <span class="market-bar-pct">38.2% <span class="down">▼1.8pp</span></span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:76.4%;background:#3b82f6;"></div></div>
+      </div>
+
+      <div class="market-bar">
+        <div class="market-bar-header">
+          <span class="market-bar-name" style="color:#fca5a5;">Can-Am (Maverick, Defender, Commander)</span>
+          <span class="market-bar-pct">24.1% <span class="up">▲2.1pp</span></span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:48.2%;background:#ef4444;"></div></div>
+      </div>
+
+      <div class="market-bar">
+        <div class="market-bar-header">
+          <span class="market-bar-name" style="color:#93c5fd;">Yamaha (RMAX, Wolverine, Viking)</span>
+          <span class="market-bar-pct">12.4% <span class="flat">→flat</span></span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:24.8%;background:#6366f1;"></div></div>
+      </div>
+
+      <div class="market-bar">
+        <div class="market-bar-header">
+          <span class="market-bar-name" style="color:#86efac;">John Deere (Gator)</span>
+          <span class="market-bar-pct">9.8% <span class="up">▲0.4pp</span></span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:19.6%;background:#22c55e;"></div></div>
+      </div>
+
+      <div class="market-bar">
+        <div class="market-bar-header">
+          <span class="market-bar-name" style="color:#86efac;">Kawasaki (Mule, Ridge, Teryx)</span>
+          <span class="market-bar-pct">6.3% <span class="flat">→flat</span></span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:12.6%;background:#16a34a;"></div></div>
+      </div>
+
+      <div class="market-bar">
+        <div class="market-bar-header">
+          <span class="market-bar-name" style="color:#c4b5fd;">CFMOTO (UFORCE, ZFORCE)</span>
+          <span class="market-bar-pct">4.2% <span class="up">▲1.0pp</span></span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:8.4%;background:#a855f7;"></div></div>
+      </div>
+
+      <div class="market-bar">
+        <div class="market-bar-header">
+          <span class="market-bar-name" style="color:#fca5a5;">Honda (Pioneer, Talon)</span>
+          <span class="market-bar-pct">3.1% <span class="down">▼0.2pp</span></span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:6.2%;background:#dc2626;"></div></div>
+      </div>
+
+      <div class="market-bar">
+        <div class="market-bar-header">
+          <span class="market-bar-name" style="color:#fcd34d;">Kubota (RTV)</span>
+          <span class="market-bar-pct">1.4% <span class="flat">→flat</span></span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:2.8%;background:#d97706;"></div></div>
+      </div>
+
+      <div class="market-bar">
+        <div class="market-bar-header">
+          <span class="market-bar-name" style="color:var(--text-muted);">Other (Massimo, Speed UTV, etc.)</span>
+          <span class="market-bar-pct">0.5%</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:1%;background:var(--text-muted);"></div></div>
+      </div>
+    </div>
+
+  </div><!-- end main -->
+
+  <!-- RIGHT PANEL -->
+  <div class="rightpanel">
+
+    <!-- FINANCIALS -->
+    <div class="section-header">
+      <div class="section-title">Public OEM Equities</div>
+      <div class="section-action">15-min delay</div>
+    </div>
+
+    <table class="fin-table" style="margin-bottom:16px;">
+      <thead><tr>
+        <th>Ticker</th>
+        <th>Price</th>
+        <th>Chg</th>
+        <th>52W Rng</th>
+      </tr></thead>
+      <tbody>
+      <!-- REFRESH:STOCKS:START -->
+      <tr>
+        <td><span class="ticker-cell" style="color:#93c5fd;">PII</span><br><span style="font-size:10px;color:var(--text-muted);">Polaris</span></td>
+        <td class="price-cell">$41.20</td>
+        <td class="change-cell" style="color:var(--red);">▼$1.32<br><span style="font-size:10px;">▼3.1%</span></td>
+        <td style="font-size:10px;color:var(--text-muted);">$38–$83</td>
+      </tr>
+      <tr>
+        <td><span class="ticker-cell" style="color:#fca5a5;">DOOO</span><br><span style="font-size:10px;color:var(--text-muted);">BRP/Can-Am</span></td>
+        <td class="price-cell">C$82.55</td>
+        <td class="change-cell" style="color:var(--green);">▲C$0.97<br><span style="font-size:10px;">▲1.2%</span></td>
+        <td style="font-size:10px;color:var(--text-muted);">C$64–$104</td>
+      </tr>
+      <tr>
+        <td><span class="ticker-cell" style="color:#86efac;">DE</span><br><span style="font-size:10px;color:var(--text-muted);">John Deere</span></td>
+        <td class="price-cell">$441.80</td>
+        <td class="change-cell" style="color:var(--green);">▲$2.18<br><span style="font-size:10px;">▲0.5%</span></td>
+        <td style="font-size:10px;color:var(--text-muted);">$348–$468</td>
+      </tr>
+      <tr>
+        <td><span class="ticker-cell" style="color:#fca5a5;">HMC</span><br><span style="font-size:10px;color:var(--text-muted);">Honda</span></td>
+        <td class="price-cell">$28.40</td>
+        <td class="change-cell" style="color:var(--red);">▼$0.09<br><span style="font-size:10px;">▼0.3%</span></td>
+        <td style="font-size:10px;color:var(--text-muted);">$24–$38</td>
+      </tr>
+      <tr>
+        <td><span class="ticker-cell" style="color:#93c5fd;">7272.T</span><br><span style="font-size:10px;color:var(--text-muted);">Yamaha Motor</span></td>
+        <td class="price-cell">¥752</td>
+        <td class="change-cell" style="color:var(--red);">▼¥6<br><span style="font-size:10px;">▼0.8%</span></td>
+        <td style="font-size:10px;color:var(--text-muted);">¥630–¥990</td>
+      </tr>
+      <tr>
+        <td><span class="ticker-cell" style="color:#fca5a5;">6326.T</span><br><span style="font-size:10px;color:var(--text-muted);">Kubota</span></td>
+        <td class="price-cell">¥2,106</td>
+        <td class="change-cell" style="color:var(--red);">▼¥24<br><span style="font-size:10px;">▼1.1%</span></td>
+        <td style="font-size:10px;color:var(--text-muted);">¥1,820–¥2,590</td>
+      </tr>
+      <tr>
+        <td><span class="ticker-cell" style="color:#16a34a;">7012.T</span><br><span style="font-size:10px;color:var(--text-muted);">Kawasaki HI</span></td>
+        <td class="price-cell">¥3,841</td>
+        <td class="change-cell" style="color:var(--text-muted);">→¥0<br><span style="font-size:10px;">0.0%</span></td>
+        <td style="font-size:10px;color:var(--text-muted);">¥2,940–¥4,102</td>
+      </tr>
+      <!-- REFRESH:STOCKS:END -->
+      </tbody>
+    </table>
+
+    <div class="sep"></div>
+
+    <!-- CUSTOMER SENTIMENT -->
+    <div class="section-header">
+      <div class="section-title">Customer Sentiment Index</div>
+      <div class="section-action">30-day rolling</div>
+    </div>
+    <div style="font-size:10px;color:var(--text-muted);margin-bottom:8px;">Positive / Neutral / Negative (forums, reviews, social)</div>
+
+    <div class="sentiment-row">
+      <div class="sentiment-oem">Can-Am</div>
+      <div class="sentiment-bars">
+        <div class="sent-pos" style="width:71%;"></div>
+        <div class="sent-neu" style="width:19%;"></div>
+        <div class="sent-neg" style="width:10%;"></div>
+      </div>
+      <div class="sentiment-score up">8.3</div>
+    </div>
+
+    <div class="sentiment-row">
+      <div class="sentiment-oem">Kawasaki</div>
+      <div class="sentiment-bars">
+        <div class="sent-pos" style="width:66%;"></div>
+        <div class="sent-neu" style="width:24%;"></div>
+        <div class="sent-neg" style="width:10%;"></div>
+      </div>
+      <div class="sentiment-score up">7.8</div>
+    </div>
+
+    <div class="sentiment-row">
+      <div class="sentiment-oem">Yamaha</div>
+      <div class="sentiment-bars">
+        <div class="sent-pos" style="width:64%;"></div>
+        <div class="sent-neu" style="width:25%;"></div>
+        <div class="sent-neg" style="width:11%;"></div>
+      </div>
+      <div class="sentiment-score up">7.6</div>
+    </div>
+
+    <div class="sentiment-row">
+      <div class="sentiment-oem">John Deere</div>
+      <div class="sentiment-bars">
+        <div class="sent-pos" style="width:62%;"></div>
+        <div class="sent-neu" style="width:27%;"></div>
+        <div class="sent-neg" style="width:11%;"></div>
+      </div>
+      <div class="sentiment-score up">7.4</div>
+    </div>
+
+    <div class="sentiment-row">
+      <div class="sentiment-oem">CFMOTO</div>
+      <div class="sentiment-bars">
+        <div class="sent-pos" style="width:58%;"></div>
+        <div class="sent-neu" style="width:26%;"></div>
+        <div class="sent-neg" style="width:16%;"></div>
+      </div>
+      <div class="sentiment-score" style="color:var(--yellow);">6.9</div>
+    </div>
+
+    <div class="sentiment-row">
+      <div class="sentiment-oem">Honda</div>
+      <div class="sentiment-bars">
+        <div class="sent-pos" style="width:55%;"></div>
+        <div class="sent-neu" style="width:30%;"></div>
+        <div class="sent-neg" style="width:15%;"></div>
+      </div>
+      <div class="sentiment-score" style="color:var(--yellow);">6.6</div>
+    </div>
+
+    <div class="sentiment-row">
+      <div class="sentiment-oem">Kubota</div>
+      <div class="sentiment-bars">
+        <div class="sent-pos" style="width:54%;"></div>
+        <div class="sent-neu" style="width:31%;"></div>
+        <div class="sent-neg" style="width:15%;"></div>
+      </div>
+      <div class="sentiment-score" style="color:var(--yellow);">6.5</div>
+    </div>
+
+    <div class="sentiment-row">
+      <div class="sentiment-oem">Polaris</div>
+      <div class="sentiment-bars">
+        <div class="sent-pos" style="width:41%;"></div>
+        <div class="sent-neu" style="width:28%;"></div>
+        <div class="sent-neg" style="width:31%;"></div>
+      </div>
+      <div class="sentiment-score down">5.1</div>
+    </div>
+
+    <div class="sep"></div>
+
+    <!-- STRATEGIC INSIGHTS -->
+    <div class="section-header">
+      <div class="section-title">Strategic Insights</div>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-icon">🎯</div>
+      <div class="insight-title">Polaris Vulnerability Window</div>
+      <div class="insight-body">Polaris's inventory crisis, dealer stress, and falling sentiment creates a 12–18 month window of opportunity. BRP, CFMOTO, and Kawasaki are all running conquest programs targeting Polaris dealers and consumers simultaneously.</div>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-icon">⚡</div>
+      <div class="insight-title">EV Transition is Commercial-First</div>
+      <div class="insight-body">Recreation buyers are resistant to EV UTVs due to range, weight, and trail infrastructure. Commercial/fleet buyers (municipalities, ag, golf) are adopting EV at 11%. Strategy: prioritize EV in utility segment first, sport segment by 2029–2030.</div>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-icon">📦</div>
+      <div class="insight-title">Overlanding Segment Emerging</div>
+      <div class="insight-body">Polaris XPEDITION signals the overlanding/adventure UTV is becoming a distinct segment. Buyers want camp power systems, storage, trail navigation, and multi-day capability. No dominant player yet — white space opportunity for 2027–2028 cycle.</div>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-icon">🌏</div>
+      <div class="insight-title">CFMOTO Value Threat is Real</div>
+      <div class="insight-body">CFMOTO is no longer a fringe player. With 4.2% share (+1pp YoY), expanding dealer network, and strong owner satisfaction scores vs price, they are becoming the price anchor that pressures premium OEM margins across the board.</div>
+    </div>
+
+    <div class="sep"></div>
+
+    <!-- M&A / BUSINESS RELATIONSHIPS -->
+    <div class="section-header">
+      <div class="section-title">M&amp;A · Investments · Partnerships</div>
+      <div class="section-action" style="font-size:10px;" title="Edit ma_data.json to update">Edit file</div>
+    </div>
+    <div style="font-size:10px;color:var(--text-muted);margin-bottom:10px;">Team-curated · Verify before citing · Last verified April 2026</div>
+
+    <!-- REFRESH:MA_DEALS:START -->
+      <div class="ma-item">
+        <div class="ma-header">
+          <span class="news-oem-tag tag-polaris">Polaris</span>
+          <span style="background:rgba(239,68,68,0.15);color:var(--red);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;">Acquisition</span>
+          <span class="ma-date">Jul 2023</span>
+        </div>
+        <div class="ma-target">→ Walker Evans Enterprises</div>
+        <div class="ma-intent">Brings premium racing shock and suspension IP in-house for the RZR Pro R platform and future high-performance UTVs; simultaneously restricts competitors from accessing a key performance supplier.</div>
+      </div>
+      <div class="ma-item">
+        <div class="ma-header">
+          <span class="news-oem-tag tag-deere">John Deere</span>
+          <span style="background:rgba(239,68,68,0.15);color:var(--red);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;">Acquisition</span>
+          <span class="ma-date">Dec 2025</span>
+        </div>
+        <div class="ma-target">→ Tenna</div>
+        <div class="ma-intent">Adds fleet asset-tracking and telematics software to Deere's connected equipment ecosystem; directly relevant to commercial Gator buyers in construction, landscaping, and agriculture who manage large vehicle fleets.</div>
+      </div>
+      <div class="ma-item">
+        <div class="ma-header">
+          <span class="news-oem-tag tag-cfmoto">CFMOTO</span> &amp; KTM
+          <span style="background:rgba(34,197,94,0.15);color:var(--green);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;">Manufacturing JV</span>
+          <span class="ma-date">Est. 2013 / Expanded 2020</span>
+          <span style="font-size:10px;color:var(--green);font-weight:600;">Active</span>
+        </div>
+        <div class="ma-intent">CFMOTO produces KTM and Husqvarna models in China and co-develops off-road platforms; CFMOTO gains engineering credibility and European performance DNA, while KTM secures cost-competitive manufacturing at scale.</div>
+      </div>
+      <div class="ma-item">
+        <div class="ma-header">
+          <span class="news-oem-tag tag-kawasaki">Kawasaki</span> &amp; <span class="news-oem-tag tag-yamaha">Yamaha</span> &amp; <span class="news-oem-tag tag-honda">Honda</span>
+          <span style="background:rgba(234,179,8,0.15);color:var(--yellow);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;">R&amp;D Consortium</span>
+          <span class="ma-date">2021</span>
+          <span style="font-size:10px;color:var(--green);font-weight:600;">Active</span>
+        </div>
+        <div class="ma-intent">Joint development of hydrogen-combustion ICE engines as an alternative propulsion path alongside battery EV; signals these OEMs are hedging against full electrification and preserving the ICE experience for recreation-oriented buyers.</div>
+      </div>
+    <!-- REFRESH:MA_DEALS:END -->
+
+    <div class="sep"></div>
+
+    <!-- UPCOMING CALENDAR -->
+    <div class="section-header">
+      <div class="section-title">Upcoming Calendar</div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">MAY</div><div class="cal-day">1</div></div>
+      <div class="cal-info">
+        <div class="cal-title">China Tariff Increase Effective</div>
+        <div class="cal-sub">25% on powersports components</div>
+        <span class="cal-tag" style="background:rgba(239,68,68,0.15);color:var(--red);">Regulatory</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">MAY</div><div class="cal-day">6</div></div>
+      <div class="cal-info">
+        <div class="cal-title">BRP Dealer Conference</div>
+        <div class="cal-sub">Las Vegas — product reveals expected</div>
+        <span class="cal-tag" style="background:rgba(249,115,22,0.15);color:var(--accent);">Product</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">MAY</div><div class="cal-day">15</div></div>
+      <div class="cal-info">
+        <div class="cal-title">Polaris XPEDITION Launch Event</div>
+        <div class="cal-sub">Moab, UT — Dealer & media ride</div>
+        <span class="cal-tag" style="background:rgba(59,130,246,0.15);color:var(--accent2);">Launch</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">MAY</div><div class="cal-day">22</div></div>
+      <div class="cal-info">
+        <div class="cal-title">Polaris Q2 2026 Earnings</div>
+        <div class="cal-sub">Guidance update — watch ORV inventory</div>
+        <span class="cal-tag" style="background:rgba(234,179,8,0.15);color:var(--yellow);">Financial</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">JUN</div><div class="cal-day">4</div></div>
+      <div class="cal-info">
+        <div class="cal-title">SVIA Annual Summit</div>
+        <div class="cal-sub">Industry association meeting & market data</div>
+        <span class="cal-tag" style="background:rgba(6,182,212,0.15);color:var(--cyan);">Industry</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">JUN</div><div class="cal-day">12</div></div>
+      <div class="cal-info">
+        <div class="cal-title">Kawasaki RIDGE Media Drive</div>
+        <div class="cal-sub">Nashville, TN — commercial media fleet review</div>
+        <span class="cal-tag" style="background:rgba(34,197,94,0.15);color:var(--green);">Product</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">JUL</div><div class="cal-day">15</div></div>
+      <div class="cal-info">
+        <div class="cal-title">NHTSA Airbag Comment Deadline</div>
+        <div class="cal-sub">UTV rollover standard comment period closes</div>
+        <span class="cal-tag" style="background:rgba(234,179,8,0.15);color:var(--yellow);">Regulatory</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">NOV</div><div class="cal-day">3</div></div>
+      <div class="cal-info">
+        <div class="cal-title">EICMA 2026 — Milan</div>
+        <div class="cal-sub">MY2027 product reveal season begins</div>
+        <span class="cal-tag" style="background:rgba(249,115,22,0.15);color:var(--accent);">Product</span>
+      </div>
+    </div>
+
+  </div><!-- end right panel -->
+
+</div><!-- end layout -->
+
+<script>
+  // ---- NEWS FILTERING ----
+  let currentTab = 'all';
+
+  function setTab(cat, el) {
+    currentTab = cat;
+    document.querySelectorAll('.news-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    filterFeed();
+  }
+
+  function filterNews(query) {
+    filterFeed(query);
+  }
+
+  function filterFeed(query) {
+    const q = (query || document.querySelector('.search-bar').value || '').toLowerCase();
+    const cards = document.querySelectorAll('.news-card');
+    cards.forEach(card => {
+      const cat = card.getAttribute('data-cat') || '';
+      const oem = card.getAttribute('data-oem') || '';
+      const text = card.textContent.toLowerCase();
+      const tabMatch = currentTab === 'all' || cat === currentTab;
+      const qMatch = !q || text.includes(q);
+      card.style.display = (tabMatch && qMatch) ? 'block' : 'none';
+    });
+  }
+
+  // ---- OEM SELECTION ----
+  function selectOEM(oem) {
+    document.querySelectorAll('.oem-item').forEach(el => el.classList.remove('active'));
+    if (oem !== 'all') {
+      const el = document.getElementById('oem-' + oem);
+      if (el) el.classList.add('active');
+    }
+    // filter news by OEM
+    const cards = document.querySelectorAll('.news-card');
+    cards.forEach(card => {
+      const cardOem = card.getAttribute('data-oem') || '';
+      const cat = card.getAttribute('data-cat') || '';
+      const tabMatch = currentTab === 'all' || cat === currentTab;
+      if (oem === 'all') {
+        card.style.display = tabMatch ? 'block' : 'none';
+      } else {
+        card.style.display = (cardOem === oem && tabMatch) ? 'block' : 'none';
+      }
+    });
+  }
+
+  // ---- REFRESH ----
+  function refreshData() {
+    const btn = document.querySelector('.refresh-btn');
+    btn.textContent = '↻ Updating...';
+    btn.style.opacity = '0.6';
+    setTimeout(() => {
+      btn.textContent = '↻ Refresh';
+      btn.style.opacity = '1';
+      // Update timestamp
+      const now = new Date();
+      document.querySelector('.date-chip').textContent =
+        '📅 Last updated: ' + now.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
+    }, 1200);
+  }
+
+  // Animate bars on load
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.bar-fill').forEach(bar => {
+      const w = bar.style.width;
+      bar.style.width = '0';
+      setTimeout(() => { bar.style.width = w; }, 100);
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "_note": "Team-curated. Verify all entries before citing. Update manually as new deals close.",
+  "_last_verified": "April 2026",
+
+  "deals": [
+    {
+      "date": "Jul 2023",
+      "acquirer": "Polaris",
+      "acquirer_key": "polaris",
+      "target": "Walker Evans Enterprises",
+      "type": "Acquisition",
+      "value": "Undisclosed",
+      "intent": "Brings premium racing shock and suspension IP in-house for the RZR Pro R platform and future high-performance UTVs; simultaneously restricts competitors from accessing a key performance supplier."
+    },
+    {
+      "date": "Dec 2025",
+      "acquirer": "John Deere",
+      "acquirer_key": "deere",
+      "target": "Tenna",
+      "type": "Acquisition",
+      "value": "Undisclosed",
+      "intent": "Adds fleet asset-tracking and telematics software to Deere's connected equipment ecosystem; directly relevant to commercial Gator buyers in construction, landscaping, and agriculture who manage large vehicle fleets."
+    }
+  ],
+
+  "partnerships": [
+    {
+      "date": "Est. 2013 / Expanded 2020",
+      "parties": ["CFMOTO", "KTM"],
+      "party_keys": ["cfmoto", ""],
+      "type": "Manufacturing JV",
+      "intent": "CFMOTO produces KTM and Husqvarna models in China and co-develops off-road platforms; CFMOTO gains engineering credibility and access to European performance DNA, while KTM secures cost-competitive manufacturing at scale.",
+      "status": "Active"
+    },
+    {
+      "date": "2021",
+      "parties": ["Kawasaki", "Yamaha", "Honda", "Suzuki"],
+      "party_keys": ["kawasaki", "yamaha", "honda", ""],
+      "type": "R&D Consortium",
+      "intent": "Joint development of hydrogen-combustion internal combustion engines as an alternative propulsion path alongside battery EV; signals these OEMs are hedging against full electrification in powersports and preserving the ICE experience for recreation-oriented buyers.",
+      "status": "Active"
+    }
+  ]
+}

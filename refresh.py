@@ -1,0 +1,448 @@
+#!/usr/bin/env python3
+"""
+Daily refresh script for UTV / Powersports Intelligence Dashboard.
+Fetches live stock prices and RSS news, then injects into index.html.
+Run automatically via GitHub Actions or manually: python refresh.py
+"""
+
+import re
+import time
+import html as html_lib
+import json
+from datetime import datetime, timezone, timedelta
+from pathlib import Path
+from urllib.parse import quote_plus
+
+try:
+    import yfinance as yf
+    HAS_YF = True
+except ImportError:
+    HAS_YF = False
+    print("WARNING: yfinance not installed — stock data skipped")
+
+try:
+    import feedparser
+    HAS_FP = True
+except ImportError:
+    HAS_FP = False
+    print("WARNING: feedparser not installed — RSS feeds skipped")
+
+# ── Paths ─────────────────────────────────────────────────────────────────────
+
+ROOT      = Path(__file__).parent
+DASHBOARD = ROOT / "index.html"
+MA_DATA   = ROOT / "ma_data.json"
+
+# ── Stock Tickers ─────────────────────────────────────────────────────────────
+# (yfinance_symbol, display_symbol, name, exchange, hex_color, css_tag_class)
+
+TICKERS = [
+    ("PII",     "PII",    "Polaris",      "NYSE", "#93c5fd", "tag-polaris"),
+    ("DOOO.TO", "DOOO",   "BRP/Can-Am",   "TSX",  "#fca5a5", "tag-canam"),
+    ("DE",      "DE",     "John Deere",   "NYSE", "#86efac", "tag-deere"),
+    ("HMC",     "HMC",    "Honda",        "NYSE", "#fca5a5", "tag-honda"),
+    ("7272.T",  "7272.T", "Yamaha Motor", "TYO",  "#93c5fd", "tag-yamaha"),
+    ("6326.T",  "6326.T", "Kubota",       "TYO",  "#fca5a5", "tag-kubota"),
+    ("7012.T",  "7012.T", "Kawasaki HI",  "TYO",  "#86efac", "tag-kawasaki"),
+]
+
+# ── RSS Feeds ─────────────────────────────────────────────────────────────────
+
+DIRECT_FEEDS = [
+    {
+        "url":   "https://powersportsbusiness.com/category/news/feed/",
+        "label": "Powersports Business",
+        "badge": "trade",
+    },
+    {
+        "url":   "https://www.utvdriver.com/feed/",
+        "label": "UTV Driver",
+        "badge": "editorial",
+    },
+]
+
+# (google_query, oem_key, oem_display, css_tag_class)
+GNEWS_QUERIES = [
+    ('Polaris RZR OR "Polaris Ranger" OR "Polaris XPEDITION"', "polaris",  "Polaris",   "tag-polaris"),
+    ('"Can-Am" Maverick OR Defender OR Commander',             "canam",    "Can-Am",    "tag-canam"),
+    ('Kawasaki Teryx OR "Kawasaki Mule" OR "Kawasaki RIDGE"', "kawasaki", "Kawasaki",  "tag-kawasaki"),
+    ('Yamaha RMAX OR "Yamaha Wolverine" OR "Yamaha Viking"',  "yamaha",   "Yamaha",    "tag-yamaha"),
+    ('CFMOTO ZFORCE OR UFORCE',                               "cfmoto",   "CFMOTO",    "tag-cfmoto"),
+    ('"Speed UTV" OR "El Jefe UTV"',                          "speedutv", "Speed UTV", "tag-speedutv"),
+    ('"John Deere" Gator utility vehicle',                    "deere",    "John Deere","tag-deere"),
+    ('Kubota RTV utility vehicle',                            "kubota",   "Kubota",    "tag-kubota"),
+    ('"Massimo Motor" OR "Massimo UTV"',                      "massimo",  "Massimo",   "tag-massimo"),
+    ('Honda Pioneer OR "Honda Talon" side-by-side',           "honda",    "Honda",     "tag-honda"),
+    ('UTV acquisition OR powersports merger OR "powersports" investment', "market", "M&A",        "tag-market"),
+    ('UTV NHTSA OR powersports tariff OR "off-road vehicle" regulation',  "market", "Regulatory", "tag-reg"),
+]
+
+# ── Classification Maps ───────────────────────────────────────────────────────
+
+OEM_KEYWORDS = {
+    "polaris":  ["polaris", "rzr", "ranger", "general", "xpedition"],
+    "canam":    ["can-am", "canam", "maverick", "defender", "commander", "brp"],
+    "kawasaki": ["kawasaki", "teryx", "mule", "ridge"],
+    "yamaha":   ["yamaha", "rmax", "wolverine", "viking", "yxz"],
+    "cfmoto":   ["cfmoto", "cf moto", "zforce", "uforce"],
+    "speedutv": ["speed utv", "el jefe"],
+    "deere":    ["john deere", "gator"],
+    "kubota":   ["kubota", "rtv"],
+    "massimo":  ["massimo"],
+    "honda":    ["honda pioneer", "honda talon"],
+}
+
+CAT_KEYWORDS = {
+    "financial":  ["earnings", "revenue", "profit", "stock", "guidance", "quarterly",
+                   "fiscal", "acquisition", "merger", "invest"],
+    "product":    ["launch", "reveal", "new model", "announces", "specs", "price",
+                   "msrp", "horsepower", "engine", "debut"],
+    "strategy":   ["strategy", "partnership", "dealer", "expansion", "market share",
+                   "compete", "distribution"],
+    "sentiment":  ["review", "test drive", "owner", "love", "hate", "problems",
+                   "issues", "complaint", "opinion"],
+    "regulatory": ["nhtsa", "epa", "regulation", "tariff", "safety", "recall",
+                   "compliance", "trail access", "blm"],
+    "dealer":     ["dealer", "retail", "floor plan", "inventory", "financing",
+                   "apr", "incentive"],
+}
+
+OEM_TAG_MAP = {
+    "polaris":  ("Polaris",   "tag-polaris"),
+    "canam":    ("Can-Am",    "tag-canam"),
+    "kawasaki": ("Kawasaki",  "tag-kawasaki"),
+    "yamaha":   ("Yamaha",    "tag-yamaha"),
+    "cfmoto":   ("CFMOTO",    "tag-cfmoto"),
+    "speedutv": ("Speed UTV", "tag-speedutv"),
+    "deere":    ("John Deere","tag-deere"),
+    "kubota":   ("Kubota",    "tag-kubota"),
+    "massimo":  ("Massimo",   "tag-massimo"),
+    "honda":    ("Honda",     "tag-honda"),
+    "market":   ("Market",    "tag-market"),
+}
+
+BADGE_STYLES = {
+    "trade":    ("rgba(6,182,212,0.15)",    "var(--cyan)",       "PSB"),
+    "editorial":("rgba(168,85,247,0.15)",   "var(--purple)",     "UTV Driver"),
+    "news":     ("rgba(139,148,158,0.15)",  "var(--text-muted)", "News"),
+}
+
+MA_TYPE_STYLES = {
+    "Acquisition":      ("rgba(239,68,68,0.15)",   "var(--red)"),
+    "Investment":       ("rgba(59,130,246,0.15)",   "var(--accent2)"),
+    "Manufacturing JV": ("rgba(34,197,94,0.15)",    "var(--green)"),
+    "R&D Consortium":   ("rgba(234,179,8,0.15)",    "var(--yellow)"),
+    "Partnership":      ("rgba(168,85,247,0.15)",   "var(--purple)"),
+}
+
+# ── Helpers ───────────────────────────────────────────────────────────────────
+
+def strip_html(text):
+    return re.sub(r"<[^>]+>", " ", text or "").strip()
+
+def relative_time(dt):
+    now = datetime.now(timezone.utc)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    delta = now - dt
+    if delta.total_seconds() < 0:
+        return "just now"
+    if delta.days > 6:
+        return dt.strftime("%b %-d")
+    if delta.days >= 1:
+        return f"{delta.days}d ago"
+    hours = delta.seconds // 3600
+    if hours >= 1:
+        return f"{hours}h ago"
+    mins = delta.seconds // 60
+    return f"{mins}m ago" if mins > 0 else "just now"
+
+def struct_to_dt(struct):
+    if struct is None:
+        return datetime.now(timezone.utc)
+    try:
+        return datetime(*struct[:6], tzinfo=timezone.utc)
+    except Exception:
+        return datetime.now(timezone.utc)
+
+def detect_oem(text):
+    t = text.lower()
+    for oem, kws in OEM_KEYWORDS.items():
+        if any(kw in t for kw in kws):
+            return oem
+    return "market"
+
+def detect_cat(text):
+    t = text.lower()
+    for cat, kws in CAT_KEYWORDS.items():
+        if any(kw in t for kw in kws):
+            return cat
+    return "product"
+
+def truncate(text, n=200):
+    text = " ".join(strip_html(text).split())
+    return text[:n].rsplit(" ", 1)[0] + "…" if len(text) > n else text
+
+def fmt_price(symbol, value):
+    if value is None:
+        return "N/A"
+    if ".T" in symbol and "DOOO" not in symbol:
+        return f"¥{value:,.0f}"
+    if "DOOO" in symbol:
+        return f"C${value:,.2f}"
+    return f"${value:,.2f}"
+
+# ── Fetchers ──────────────────────────────────────────────────────────────────
+
+def fetch_stocks():
+    if not HAS_YF:
+        return []
+    rows = []
+    for sym, disp, name, exch, color, tag_cls in TICKERS:
+        try:
+            fi    = yf.Ticker(sym).fast_info
+            price = fi.last_price
+            prev  = fi.previous_close
+            if price is None or prev is None:
+                raise ValueError("missing price data")
+            change = price - prev
+            pct    = (change / prev) * 100
+            rows.append({
+                "sym":   disp,
+                "name":  name,
+                "price": fmt_price(sym, price),
+                "chg":   fmt_price(sym, abs(change)),
+                "pct":   abs(pct),
+                "range": f"{fmt_price(sym, fi.year_low)}–{fmt_price(sym, fi.year_high)}",
+                "color": color,
+                "dir":   "up" if change >= 0 else "down",
+                "arrow": "▲" if change >= 0 else "▼",
+            })
+            time.sleep(0.4)
+        except Exception as e:
+            print(f"  ✗ {sym}: {e}")
+    return rows
+
+def fetch_direct_feeds(max_per=12):
+    if not HAS_FP:
+        return []
+    articles = []
+    for cfg in DIRECT_FEEDS:
+        try:
+            print(f"  Fetching {cfg['label']}...")
+            d = feedparser.parse(cfg["url"])
+            for e in d.entries[:max_per]:
+                title   = strip_html(e.get("title", ""))
+                summary = e.get("summary") or e.get("description", "")
+                link    = e.get("link", "#")
+                dt      = struct_to_dt(e.get("published_parsed"))
+                body    = f"{title} {summary}"
+                articles.append({
+                    "title":   title,
+                    "snippet": truncate(summary),
+                    "link":    link,
+                    "dt":      dt,
+                    "oem":     detect_oem(body),
+                    "cat":     detect_cat(body),
+                    "label":   cfg["label"],
+                    "badge":   cfg["badge"],
+                })
+        except Exception as e:
+            print(f"  ✗ {cfg['label']}: {e}")
+    return articles
+
+def fetch_gnews(max_per=5):
+    if not HAS_FP:
+        return []
+    articles, seen = [], set()
+    for query, oem_key, _, _ in GNEWS_QUERIES:
+        try:
+            url = (f"https://news.google.com/rss/search"
+                   f"?q={quote_plus(query)}&hl=en-US&gl=US&ceid=US:en")
+            d, n = feedparser.parse(url), 0
+            for e in d.entries:
+                if n >= max_per:
+                    break
+                title = strip_html(e.get("title", ""))
+                # Strip trailing " - Source Name" Google appends
+                title = re.sub(r"\s*[-–]\s*\S[^-–]{0,40}$", "", title).strip()
+                key = title[:55]
+                if not title or key in seen:
+                    continue
+                seen.add(key)
+                summary = e.get("summary") or e.get("description", "")
+                body    = f"{title} {summary}"
+                articles.append({
+                    "title":   title,
+                    "snippet": truncate(summary),
+                    "link":    e.get("link", "#"),
+                    "dt":      struct_to_dt(e.get("published_parsed")),
+                    "oem":     oem_key,
+                    "cat":     detect_cat(body),
+                    "label":   "Google News",
+                    "badge":   "news",
+                })
+                n += 1
+            time.sleep(1.2)
+        except Exception as e:
+            print(f"  ✗ GNews '{query[:40]}…': {e}")
+    return articles
+
+# ── HTML Builders ─────────────────────────────────────────────────────────────
+
+def build_stock_rows(stocks):
+    if not stocks:
+        return ('      <tr><td colspan="4" style="color:var(--text-muted);'
+                'text-align:center;padding:16px;font-size:12px;">'
+                'Stock data unavailable — check network</td></tr>')
+    parts = []
+    for s in stocks:
+        c = "var(--green)" if s["dir"] == "up" else "var(--red)"
+        parts.append(
+            f'      <tr>\n'
+            f'        <td><span class="ticker-cell" style="color:{s["color"]};">{s["sym"]}</span>'
+            f'<br><span style="font-size:10px;color:var(--text-muted);">{s["name"]}</span></td>\n'
+            f'        <td class="price-cell">{s["price"]}</td>\n'
+            f'        <td class="change-cell" style="color:{c};">{s["arrow"]}{s["chg"]}'
+            f'<br><span style="font-size:10px;">{s["arrow"]}{s["pct"]:.1f}%</span></td>\n'
+            f'        <td style="font-size:10px;color:var(--text-muted);">{s["range"]}</td>\n'
+            f'      </tr>'
+        )
+    return "\n".join(parts)
+
+def build_news_cards(articles, max_items=35):
+    if not articles:
+        return ('      <div style="color:var(--text-muted);padding:20px;'
+                'text-align:center;font-size:12px;">'
+                'No articles fetched — check RSS feeds or network.</div>')
+    seen, unique = set(), []
+    for a in sorted(articles, key=lambda x: x["dt"], reverse=True):
+        k = a["title"][:55]
+        if k not in seen:
+            seen.add(k)
+            unique.append(a)
+    parts = []
+    for a in unique[:max_items]:
+        oem_label, tag_cls = OEM_TAG_MAP.get(a["oem"], ("Market", "tag-market"))
+        bg, fg, badge_text = BADGE_STYLES.get(a["badge"], BADGE_STYLES["news"])
+        rel     = relative_time(a["dt"])
+        snippet = html_lib.escape(truncate(a["snippet"], 180))
+        parts.append(
+            f'      <div class="news-card" data-cat="{a["cat"]}" data-oem="{a["oem"]}">\n'
+            f'        <div class="news-meta">\n'
+            f'          <span class="news-oem-tag {tag_cls}">{html_lib.escape(oem_label)}</span>\n'
+            f'          <span style="background:{bg};color:{fg};font-size:10px;font-weight:700;'
+            f'padding:1px 5px;border-radius:3px;">{badge_text}</span>\n'
+            f'          <span class="news-cat">{a["cat"].title()}</span>\n'
+            f'          <span class="news-time">{rel}</span>\n'
+            f'        </div>\n'
+            f'        <div class="news-headline">'
+            f'<a href="{html_lib.escape(a["link"])}" target="_blank" rel="noopener" '
+            f'style="color:inherit;text-decoration:none;">'
+            f'{html_lib.escape(a["title"])}</a></div>\n'
+            f'        <div class="news-snippet">{snippet}</div>\n'
+            f'      </div>'
+        )
+    return "\n".join(parts)
+
+def build_ma_section():
+    if not MA_DATA.exists():
+        return ('      <div style="color:var(--text-muted);font-size:12px;">'
+                'ma_data.json not found.</div>')
+    data  = json.loads(MA_DATA.read_text(encoding="utf-8"))
+    parts = []
+
+    for deal in data.get("deals", []):
+        acq_key  = deal.get("acquirer_key", "")
+        _, tag   = OEM_TAG_MAP.get(acq_key, ("", "tag-market"))
+        bg, fg   = MA_TYPE_STYLES.get(deal.get("type", ""), ("rgba(139,148,158,0.15)", "var(--text-muted)"))
+        val_str  = (f'&nbsp;·&nbsp;{html_lib.escape(deal["value"])}'
+                    if deal.get("value") and deal["value"] != "Undisclosed" else "")
+        parts.append(
+            f'      <div class="ma-item">\n'
+            f'        <div class="ma-header">\n'
+            f'          <span class="news-oem-tag {tag}">{html_lib.escape(deal["acquirer"])}</span>\n'
+            f'          <span style="background:{bg};color:{fg};font-size:10px;font-weight:700;'
+            f'padding:1px 6px;border-radius:3px;">{html_lib.escape(deal["type"])}</span>\n'
+            f'          <span class="ma-date">{html_lib.escape(deal["date"])}{val_str}</span>\n'
+            f'        </div>\n'
+            f'        <div class="ma-target">→ {html_lib.escape(deal["target"])}</div>\n'
+            f'        <div class="ma-intent">{html_lib.escape(deal["intent"])}</div>\n'
+            f'      </div>'
+        )
+
+    for p in data.get("partnerships", []):
+        keys    = p.get("party_keys", [])
+        names   = p.get("parties", [])
+        tags_html = " &amp; ".join(
+            (f'<span class="news-oem-tag {OEM_TAG_MAP[k][1]}">{html_lib.escape(n)}</span>'
+             if k and k in OEM_TAG_MAP else html_lib.escape(n))
+            for k, n in zip(keys, names)
+        )
+        bg, fg = MA_TYPE_STYLES.get(p.get("type", ""), ("rgba(139,148,158,0.15)", "var(--text-muted)"))
+        sc     = "var(--green)" if p.get("status") == "Active" else "var(--text-muted)"
+        parts.append(
+            f'      <div class="ma-item">\n'
+            f'        <div class="ma-header">\n'
+            f'          {tags_html}\n'
+            f'          <span style="background:{bg};color:{fg};font-size:10px;font-weight:700;'
+            f'padding:1px 6px;border-radius:3px;">{html_lib.escape(p["type"])}</span>\n'
+            f'          <span class="ma-date">{html_lib.escape(p["date"])}</span>\n'
+            f'          <span style="font-size:10px;color:{sc};font-weight:600;">'
+            f'{html_lib.escape(p.get("status",""))}</span>\n'
+            f'        </div>\n'
+            f'        <div class="ma-intent">{html_lib.escape(p["intent"])}</div>\n'
+            f'      </div>'
+        )
+    return "\n".join(parts)
+
+def build_timestamp():
+    et = datetime.now(timezone.utc) - timedelta(hours=4)  # EDT; close enough year-round for daily brief
+    return f'📅 {et.strftime("%a, %B %-d, %Y")} &nbsp;·&nbsp; Refreshed {et.strftime("%-I:%M %p ET")}'
+
+# ── Inject & Write ────────────────────────────────────────────────────────────
+
+def inject(html, marker, content):
+    start   = f"<!-- REFRESH:{marker}:START -->"
+    end     = f"<!-- REFRESH:{marker}:END -->"
+    pattern = re.compile(
+        re.escape(start) + r".*?" + re.escape(end), re.DOTALL
+    )
+    replacement = f"{start}\n{content}\n      {end}"
+    result, n = pattern.subn(lambda _: replacement, html)
+    if n == 0:
+        print(f"  WARNING: marker REFRESH:{marker} not found in template")
+    return result
+
+def main():
+    print("=" * 52)
+    print("  Powersports Dashboard — Daily Refresh")
+    print("=" * 52)
+
+    print("\n[1/4] Fetching stock prices...")
+    stocks = fetch_stocks()
+    print(f"      {len(stocks)}/{len(TICKERS)} tickers OK")
+
+    print("\n[2/4] Fetching direct RSS feeds...")
+    direct = fetch_direct_feeds()
+    print(f"      {len(direct)} articles")
+
+    print("\n[3/4] Fetching Google News RSS...")
+    gnews = fetch_gnews()
+    print(f"      {len(gnews)} articles")
+
+    total = len(direct) + len(gnews)
+    print(f"\n[4/4] Building dashboard ({total} total articles)...")
+    template = DASHBOARD.read_text(encoding="utf-8")
+    out = template
+    out = inject(out, "TIMESTAMP", build_timestamp())
+    out = inject(out, "STOCKS",    build_stock_rows(stocks))
+    out = inject(out, "NEWS",      build_news_cards(direct + gnews))
+    out = inject(out, "MA_DEALS",  build_ma_section())
+    DASHBOARD.write_text(out, encoding="utf-8")
+
+    print(f"      Written → {DASHBOARD.name}")
+    print("\n✓ Done.\n")
+
+if __name__ == "__main__":
+    main()

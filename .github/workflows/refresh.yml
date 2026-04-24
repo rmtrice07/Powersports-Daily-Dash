@@ -1,0 +1,39 @@
+name: Daily Dashboard Refresh
+
+on:
+  schedule:
+    # 12:00 UTC = 8:00 AM EDT (weekdays). Adjust to 13:00 UTC for EST in winter.
+    - cron: '0 12 * * 1-5'
+  workflow_dispatch:  # Allow manual trigger from GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run refresh script
+        run: python refresh.py
+
+      - name: Commit updated dashboard
+        run: |
+          git config user.name  "dashboard-bot"
+          git config user.email "dashboard-bot@users.noreply.github.com"
+          git add index.html
+          git diff --staged --quiet || \
+            git commit -m "chore: daily refresh $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
