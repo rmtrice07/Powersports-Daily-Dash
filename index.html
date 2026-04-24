@@ -176,9 +176,6 @@
   .ma-target { font-size: 12px; font-weight: 600; margin-bottom: 3px; }
   .ma-intent { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
 
-  /* HIDDEN CONTENT */
-  .news-card[data-cat]:not([data-cat="all"]) { display: none; }
-  .news-feed-all .news-card { display: block !important; }
 
   .search-bar { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 7px 12px; color: var(--text); font-size: 12px; width: 200px; outline: none; }
   .search-bar:focus { border-color: var(--accent2); }
@@ -1135,8 +1132,9 @@
     }, 1200);
   }
 
-  // Animate bars on load
+  // Initialize view and animate bars on load
   window.addEventListener('load', () => {
+    filterFeed();
     document.querySelectorAll('.bar-fill').forEach(bar => {
       const w = bar.style.width;
       bar.style.width = '0';
