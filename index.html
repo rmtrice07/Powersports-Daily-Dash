@@ -233,7 +233,7 @@
   <div class="topbar-right">
     <input class="search-bar" type="text" placeholder="Search news, OEMs, products..." oninput="filterNews(this.value)">
     <div class="date-chip"><!-- REFRESH:TIMESTAMP:START -->
-📅 Tue, April 28, 2026 &nbsp;·&nbsp; Refreshed 1:59 PM ET
+📅 Wed, April 29, 2026 &nbsp;·&nbsp; Refreshed 9:08 AM ET
       <!-- REFRESH:TIMESTAMP:END --></div>
     <button class="refresh-btn" onclick="refreshData()">↻ Refresh</button>
   </div>
@@ -345,10 +345,53 @@
   <div class="main">
 
     <!-- REFRESH:MARKET_CAPS:START -->
-    <div style="background:var(--surface);border:1px dashed var(--border);border-radius:var(--radius);padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;">
-      <span style="font-size:20px;flex-shrink:0;">📊</span>
-      <div style="font-size:12px;color:var(--text-muted);">Public OEM Market Snapshot — refreshes daily</div>
-    </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;margin-bottom:16px;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:10px;">Public OEM Market Snapshot &nbsp;&middot;&nbsp; Market Cap &amp; 30-Day Performance</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <div style="flex:1;min-width:110px;background:var(--bg);border-radius:6px;padding:9px 11px;border:1px solid var(--border);">
+          <div style="margin-bottom:5px;"><span class="news-oem-tag tag-polaris" style="font-size:9px;padding:1px 5px;">Polaris</span></div>
+          <div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">NYSE: PII</div>
+          <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$3.8B</div>
+          <div style="font-size:11px;color:var(--green);font-weight:600;margin-top:3px;">▲24.5% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
+        </div>
+        <div style="flex:1;min-width:110px;background:var(--bg);border-radius:6px;padding:9px 11px;border:1px solid var(--border);">
+          <div style="margin-bottom:5px;"><span class="news-oem-tag tag-canam" style="font-size:9px;padding:1px 5px;">BRP/Can-Am</span></div>
+          <div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">Nasdaq: DOO</div>
+          <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$3.9B</div>
+          <div style="font-size:11px;color:var(--red);font-weight:600;margin-top:3px;">▼21.9% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
+        </div>
+        <div style="flex:1;min-width:110px;background:var(--bg);border-radius:6px;padding:9px 11px;border:1px solid var(--border);">
+          <div style="margin-bottom:5px;"><span class="news-oem-tag tag-deere" style="font-size:9px;padding:1px 5px;">John Deere</span></div>
+          <div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">NYSE: DE</div>
+          <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$152.3B</div>
+          <div style="font-size:11px;color:var(--green);font-weight:600;margin-top:3px;">▲1.8% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
+        </div>
+        <div style="flex:1;min-width:110px;background:var(--bg);border-radius:6px;padding:9px 11px;border:1px solid var(--border);">
+          <div style="margin-bottom:5px;"><span class="news-oem-tag tag-honda" style="font-size:9px;padding:1px 5px;">Honda</span></div>
+          <div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">NYSE: HMC</div>
+          <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$31.4B</div>
+          <div style="font-size:11px;color:var(--green);font-weight:600;margin-top:3px;">▲2.3% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
+        </div>
+        <div style="flex:1;min-width:110px;background:var(--bg);border-radius:6px;padding:9px 11px;border:1px solid var(--border);">
+          <div style="margin-bottom:5px;"><span class="news-oem-tag tag-yamaha" style="font-size:9px;padding:1px 5px;">Yamaha Motor</span></div>
+          <div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">OTC: YMHAY</div>
+          <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$6.7B</div>
+          <div style="font-size:11px;color:var(--red);font-weight:600;margin-top:3px;">▼0.1% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
+        </div>
+        <div style="flex:1;min-width:110px;background:var(--bg);border-radius:6px;padding:9px 11px;border:1px solid var(--border);">
+          <div style="margin-bottom:5px;"><span class="news-oem-tag tag-kubota" style="font-size:9px;padding:1px 5px;">Kubota</span></div>
+          <div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">OTC: KUBTY</div>
+          <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$18.5B</div>
+          <div style="font-size:11px;color:var(--green);font-weight:600;margin-top:3px;">▲6.1% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
+        </div>
+        <div style="flex:1;min-width:110px;background:var(--bg);border-radius:6px;padding:9px 11px;border:1px solid var(--border);">
+          <div style="margin-bottom:5px;"><span class="news-oem-tag tag-kawasaki" style="font-size:9px;padding:1px 5px;">Kawasaki HI</span></div>
+          <div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">OTC: KWHIF</div>
+          <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$15.4B</div>
+          <div style="font-size:11px;color:var(--green);font-weight:600;margin-top:3px;">▲2.2% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
+        </div>
+        </div>
+      </div>
       <!-- REFRESH:MARKET_CAPS:END -->
 
     <!-- ALERTS -->
@@ -374,32 +417,72 @@
 
     <div id="news-feed" class="news-feed-all">
     <!-- REFRESH:NEWS:START -->
-      <div class="news-card" data-cat="dealer" data-oem="market">
-        <div class="news-meta">
-          <span class="news-oem-tag tag-market">Market</span>
-          <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
-          <span class="news-cat">Dealer</span>
-          <span class="news-time">1h ago</span>
-        </div>
-        <div class="news-headline"><a href="https://powersportsbusiness.com/news/side-by-side/2026/04/28/honda-celebrates-the-start-of-production-for-new-pioneer-1000-deluxe/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Honda celebrates the start of production for new Pioneer 1000 Deluxe</a></div>
-        <div class="news-snippet">On April 24 at its South Carolina Manufacturing facility (SCM), approximately 700 associates were on hand as American Honda commenced production on the 2026 Pioneer 1000 Deluxe,…</div>
-      </div>
       <div class="news-card" data-cat="product" data-oem="kawasaki">
         <div class="news-meta">
           <span class="news-oem-tag tag-kawasaki">Kawasaki</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">1h ago</span>
+          <span class="news-time">3h ago</span>
         </div>
-        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQdGMyRkZyMHpRVXRNRjY1N0FqRFBSNjZYSk5sZkl5QzNyRFZnWXA0WDhsN0tqLUV6QkN6c3BnRWM5ckZOUkx0Q2c1TGh0aXdVelphWHI2eTNUdVpDR2VEQldKRzBTNkZMNDd6VFUxM0Z4NTAzN1oxdXBUbGdQalhOcFJaVzdhdlN6MEUxekFTM21oZGl0NGswaEd5Q0NGaC1aTzJmTUI5Qmo?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Kawasaki Prairie 360 Parts Kawasaki Mule 3000 3010 4000 4010 Oil Filler Cap 11065-1167 - Power ATV Fuel Gauge</a></div>
-        <div class="news-snippet">Kawasaki Prairie 360 Parts Kawasaki Mule 3000 3010 4000 4010 Oil Filler Cap 11065-1167 - Power ATV Fuel Gauge &amp;nbsp;&amp;nbsp; portalcantagalo.com.br</div>
+        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOMktfU1B5UUlhVnFFX0w5cGFaNDhvQkl5WkdSQWhzbzVYcTJtLVhBZVVxaFhMUFVFSzhoRjNaLWpOWVVCLXBPYnRlWFpNLXV1NEFUMFkyS1BBdG5DNkFxMTBsM2pwc0JwT3dvenBYYVdad3g3X0lzMTYtSnJ2SG5ITzAyb2JuUDZFS3lZdm9RWTNPN3hlTzhUWWRsLWZ2bWFRSl9ybW5LcGxJaF9mX2c?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Kawasaki Mule Front Suspension Part Kawasaki Mule Knuckle East Lake Front Right Knuckle Assembly For Kawasaki Mule 2500-4010 Series - OEM Replacement Kit Right Side Steering Knuckle 39186-0328 Replacement</a></div>
+        <div class="news-snippet">Kawasaki Mule Front Suspension Part Kawasaki Mule Knuckle East Lake Front Right Knuckle Assembly For Kawasaki Mule 2500-4010 Series - OEM Replacement Kit Right Side Steering…</div>
+      </div>
+      <div class="news-card" data-cat="product" data-oem="canam">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-canam">Can-Am</span>
+          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
+          <span class="news-cat">Product</span>
+          <span class="news-time">4h ago</span>
+        </div>
+        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPSWNyZU5UdVg5VllRbFJJNEhObVU3WWVhaGF3eTlUM3FfTEppVVh3Mm0yT1M4Z29WbDNkUGJfMGtENTNITjZicTNMQlNnaUVEQS1MM3hGNDFPcWt5cmpKaDczNkRxMldWZjdwVHJVVTNMalFhR1ZPUnp4QVNzajRyUnUtM1BBV3R1MFl1dE5yd3hFVDF0YnJ6ZndJSFFZNjNEWEZsVXZ4VHV4Umc?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">UTV Drive Shaft Part Can-am Xds Parts Caltric Rear Propeller Drive Shaft For Can-am Maverick 1000 XDS 2015-2017 Models Rear Prop Shaft Front Rear Wear Ring</a></div>
+        <div class="news-snippet">UTV Drive Shaft Part Can-am Xds Parts Caltric Rear Propeller Drive Shaft For Can-am Maverick 1000 XDS 2015-2017 Models Rear Prop Shaft Front Rear Wear Ring &amp;nbsp;&amp;nbsp;…</div>
+      </div>
+      <div class="news-card" data-cat="product" data-oem="polaris">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-polaris">Polaris</span>
+          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
+          <span class="news-cat">Product</span>
+          <span class="news-time">8h ago</span>
+        </div>
+        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOQnBrVEgyc0lLbGxHV2RhRXI0aTA1RE9WaWFNY2h4cmtsbFJtQlJTRjJpVWNCX0JfWnplNUxlNGFERkRfWjhFZXQwdEw0b2VnLXk2TGtjZnNYYTdsd0VQY1l3TGVwSml1TUFHUU44ZnF2RmNjOHZuVzRDSEFmSzVrZ2licWdLeXhmeXpFZFhqTmpSY1VKZC05NEFjdnEtd0h0dDJqeS1UZw?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Utv Storage Assault Industries Bag For Polaris RZR - Mounts To Cage, Multiple Compartments UTV Storage Bag</a></div>
+        <div class="news-snippet">Utv Storage Assault Industries Bag For Polaris RZR - Mounts To Cage, Multiple Compartments UTV Storage Bag &amp;nbsp;&amp;nbsp; portalcantagalo.com.br</div>
+      </div>
+      <div class="news-card" data-cat="product" data-oem="canam">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-canam">Can-Am</span>
+          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
+          <span class="news-cat">Product</span>
+          <span class="news-time">11h ago</span>
+        </div>
+        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTFBrMDcxeFVFR0hESWNBOWZkMzE5R2FPN29fQVljUjg5dnkwZ2k5WnhGOXlDTWdKenJSRFphZ25lOEJWbm5iU1VUVXNaOWMyRzMxX3Z1QUFrQVJPbGJaai1aUDhYcFkwQQ?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Kyle Chaney takes dramatic win at the Silver State 300 behind the wheel of his Can-Am Maverick R</a></div>
+        <div class="news-snippet">Kyle Chaney takes dramatic win at the Silver State 300 behind the wheel of his Can-Am Maverick R &amp;nbsp;&amp;nbsp; utvguide.net</div>
+      </div>
+      <div class="news-card" data-cat="product" data-oem="canam">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-canam">Can-Am</span>
+          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
+          <span class="news-cat">Product</span>
+          <span class="news-time">19h ago</span>
+        </div>
+        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxONmp1VWVSX2tqdkRITzZYa2tHcG5ESW1heXFLN2QxRHBBSDRMUFpRN3RTUzlUdzlpQlE2UHlidEJuYjM4Q0ZZQTRaVzVXWmlwNUt4TW9LUzhhU2JqYnpxTFJrekVjSUVaLURQVVhIRUV5eVJCMXdKNDNqVllKcm5rTThUR2tqUDNXZEgxdktnZUZkTHhCTHp2YUtrWHNHa21LMmhV?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">DirtHammer.com Hosts No-Reserve Auction for Richard Rawlings’ Can-Am Maverick X3</a></div>
+        <div class="news-snippet">DirtHammer.com Hosts No-Reserve Auction for Richard Rawlings’ Can-Am Maverick X3 &amp;nbsp;&amp;nbsp; Motorcycle &amp; Powersports News</div>
+      </div>
+      <div class="news-card" data-cat="dealer" data-oem="market">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-market">Market</span>
+          <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
+          <span class="news-cat">Dealer</span>
+          <span class="news-time">20h ago</span>
+        </div>
+        <div class="news-headline"><a href="https://powersportsbusiness.com/news/side-by-side/2026/04/28/honda-celebrates-the-start-of-production-for-new-pioneer-1000-deluxe/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Honda celebrates the start of production for new Pioneer 1000 Deluxe</a></div>
+        <div class="news-snippet">On April 24 at its South Carolina Manufacturing facility (SCM), approximately 700 associates were on hand as American Honda commenced production on the 2026 Pioneer 1000 Deluxe,…</div>
       </div>
       <div class="news-card" data-cat="product" data-oem="canam">
         <div class="news-meta">
           <span class="news-oem-tag tag-canam">Can-Am</span>
           <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">2h ago</span>
+          <span class="news-time">21h ago</span>
         </div>
         <div class="news-headline"><a href="https://powersportsbusiness.com/news/can-am/2026/04/28/can-am-introduces-global-collective-untieing-3-wheel-riding-community/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Can-Am introduces global collective uniting 3-wheel riding community</a></div>
         <div class="news-snippet">Through the 3 Wheel Collective, members gain access to curated group rides, exclusive events, unique merchandise and once-in-a-lifetime riding experiences. The post Can-Am…</div>
@@ -409,7 +492,7 @@
           <span class="news-oem-tag tag-market">Market</span>
           <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">2h ago</span>
+          <span class="news-time">21h ago</span>
         </div>
         <div class="news-headline"><a href="https://powersportsbusiness.com/news/arctic-cat/2026/04/28/arctic-cat-marks-one-year-under-new-ownership-with-focus-on-growth-product-development/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Arctic Cat marks one year under new ownership with focus on growth, product development</a></div>
         <div class="news-snippet">Arctic Cat is celebrating the first anniversary of its return to independent ownership, highlighting a year of operational recovery, product launches and renewed dealer and rider…</div>
@@ -419,7 +502,7 @@
           <span class="news-oem-tag tag-market">Market</span>
           <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
           <span class="news-cat">Strategy</span>
-          <span class="news-time">3h ago</span>
+          <span class="news-time">22h ago</span>
         </div>
         <div class="news-headline"><a href="https://powersportsbusiness.com/features/2026/04/28/feature-film-about-motorcycle-icon-iron-lilly-farrow-looks-to-uplift-an-industry/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Feature film about motorcycle icon ‘Iron Lilly’ Farrow looks to uplift an industry</a></div>
         <div class="news-snippet">The film will center on Lilly Farrow, a trailblazer in the motorcycle industry who co-founded the country&#x27;s oldest Harley-Davidson dealership. The post Feature film about…</div>
@@ -429,7 +512,7 @@
           <span class="news-oem-tag tag-market">Market</span>
           <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">3h ago</span>
+          <span class="news-time">22h ago</span>
         </div>
         <div class="news-headline"><a href="https://powersportsbusiness.com/news/motorcycle/2026/04/28/deacon-denno-wins-2026-smx-next-supercross-ama-national-championship/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Deacon Denno wins 2026 SMX Next Supercross AMA National Championship</a></div>
         <div class="news-snippet">Denno’s title run was defined by consistency across the five-round series. He became the only rider to finish inside the top five at every round and the only repeat winner during…</div>
@@ -439,7 +522,7 @@
           <span class="news-oem-tag tag-polaris">Polaris</span>
           <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">3h ago</span>
+          <span class="news-time">22h ago</span>
         </div>
         <div class="news-headline"><a href="https://powersportsbusiness.com/news/polaris/2026/04/28/polaris-marks-20-years-of-trails-grants-with-spring-2026-awards/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Polaris marks 20 years of TRAILS GRANTS with spring 2026 awards</a></div>
         <div class="news-snippet">The latest round of funding comes as the program celebrates its 20th anniversary and surpasses $4 million in total giving since launching in 2006. The post Polaris marks 20 years…</div>
@@ -449,37 +532,17 @@
           <span class="news-oem-tag tag-massimo">Massimo</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Strategy</span>
-          <span class="news-time">4h ago</span>
+          <span class="news-time">1d ago</span>
         </div>
-        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMihwJBVV95cUxOZW1JWkJScURyN2dTV2VBM3F2U2ZtRDctRUhRMXNjRUdTOE9uWG1XQi1LUzZuUC1NS0VtU21VT3Z0WmpBdHAydUduZEF1SkE1Si1uTklfRk9GOFlTTFVNLUdaMG5XbzY0NWhwd3Zxa0ZGS0J0SkhqVV94T1hjSnRUdUE2ODE5SzlmUzZGaWVnWG1hNGNVMm4tb0U3bkd6Y1FsYU5LZGN1dmF6cDJHMFB6MTNWWmo0MTZhR0RJRHZQcFJkTWdHSEFFM202Z1RIRHk4QjNwOHZVb2QydzMtVUIxdHBZWXV2SVExbXRQelVCUTd5U0hjSEpsSXZpZTU3R2dVTENpdzdLZ9IBjAJBVV95cUxPQTh3dnMxbXhPMVJGWFhFUjZOTFFfUTNnNXdLdVV0WWR0TEU3cHRrWmFXenZTQXZDVjRDc1NKbTQ3Q2VLSVlOOXRPb05VR1kzdDEwMWI0cjhVY3l6OHBlVnVpWjI3NWpPY3I5dWkzUzc3ZnVIQ1Q2bWtRb00zRWkybGQzdWs4dTFLcXdFcmItUkRHMDF3elprZFZOelFWUHpjQkhmLWVVY3l6Z0pucGZabFNWRHZFamdVWnFCSDFkT1F4bHBBMjBTTkVoelVKbWZ0YXRBUDY2X0xRNDdwREdIenh4N2I2dUgyY2E5MWphMDk3TmhmMXcwZDdtOE53dVItaXpIemIxMm9tMFZu?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Massimo Motor Accelerates Fleet Expansion; Strong Demand for HVAC-Equipped Utility Platforms at NAFA 2026</a></div>
-        <div class="news-snippet">Massimo Motor Accelerates Fleet Expansion; Strong Demand for HVAC-Equipped Utility Platforms at NAFA 2026 &amp;nbsp;&amp;nbsp; The Manila Times</div>
-      </div>
-      <div class="news-card" data-cat="product" data-oem="polaris">
-        <div class="news-meta">
-          <span class="news-oem-tag tag-polaris">Polaris</span>
-          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
-          <span class="news-cat">Product</span>
-          <span class="news-time">11h ago</span>
-        </div>
-        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxOaFhUcXJmV1cwc1pIWm9ENjlsejFYVFBJQ3VYNkJJcEIycTdVanZpa2NfVk9UcmtTc0VYd3FPUGh2V0lnNkxYV2ZualEtMkhvSHZOTWZPYzJPaTVNb1RTdS1kYjZvcTZCbHZTdHBpSGhZd01pTU9maDZFcTFWcGZBOTJ6OWtNQlBZQzhRYnF1Ym03TVdWZHBXOW1WSVBXR0ZhRlJZ?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">SuperATV Glass Windshield For 2020-2024 Polaris RZR PRO XP/PRO XP 4 | Lightly Tinted To Reduce Glare | Manual Wiper Included | Built-In Vent | DOT-Approved | Perfect Scratch Resistance, Windshields - Canada</a></div>
-        <div class="news-snippet">SuperATV Glass Windshield For 2020-2024 Polaris RZR PRO XP/PRO XP 4 | Lightly Tinted To Reduce Glare | Manual Wiper Included | Built-In Vent | DOT-Approved | Perfect Scratch…</div>
-      </div>
-      <div class="news-card" data-cat="product" data-oem="kawasaki">
-        <div class="news-meta">
-          <span class="news-oem-tag tag-kawasaki">Kawasaki</span>
-          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
-          <span class="news-cat">Product</span>
-          <span class="news-time">12h ago</span>
-        </div>
-        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxQVVN1bkZmYmt6bElfQjNoWTB3ZGlzVEZVM2RWMXd1R0xMd29CTEdvOUVZaWN2WkZYSlk2ZGprQVVudGMyc2RKTkNVMXdJZ2RqV3htVUdNSmNtQXJMczB5NTFfaUpfbFBxMk9jWFlFeGY3VWNjRGZGVllSVGZfeUFaQ0FjNGNNMWJQekE?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">2004 Polaris Sportsman 400 Parts Kawasaki Teryx Heavy Duty Tie Rod Kit ATV Steering Replacement Kit</a></div>
-        <div class="news-snippet">2004 Polaris Sportsman 400 Parts Kawasaki Teryx Heavy Duty Tie Rod Kit ATV Steering Replacement Kit &amp;nbsp;&amp;nbsp; portalcantagalo.com.br</div>
+        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMi8gFBVV95cUxOZzBYb1BpdUNTeGh1bjlNblZOYkhfLVhlb0tONDA0M2hxU1Q4eEF0b0x3NGkxQkpUN2trcU5wdUF2V0lleU9BR3ctQk0tY3R5N29uMlNjbUVpb1h5cHQ2d0VaTWl3MGRtcVZwNF9udXZaT2cwOTdkc09PYTQ4RUF0ZFIyd250ZzVYcG1kZUVrWmpOb21HMWQ1WU44bFVSZ3lfRVNNQk5fREI5REhQZ0Y5czdDNW1qX3REVkRnbXgzaWM5TVlrR2RSWURSeHJEenVPZjA5WmdDN2dmanNFQktRYkxOeTA4dWhTTWtpMmx2YjJZQQ?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Massimo Motor Accelerates Fleet Expansion; Strong Demand for HVAC-Equipped Utility Platforms at NAFA 2026</a></div>
+        <div class="news-snippet">Massimo Motor Accelerates Fleet Expansion; Strong Demand for HVAC-Equipped Utility Platforms at NAFA 2026 &amp;nbsp;&amp;nbsp; PR Newswire</div>
       </div>
       <div class="news-card" data-cat="product" data-oem="deere">
         <div class="news-meta">
           <span class="news-oem-tag tag-deere">John Deere</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">2d ago</span>
+          <span class="news-time">3d ago</span>
         </div>
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNZXRwU3lIWTJNaVBsN1Z5UEMtbk5HcFNZZDFRUUNHNkhTZ3lCQ1hFa0lYcUZESU1IR2UyU1ItS195MGtDdEtfY3lWTXVEVHdJWFdnNDhPemNrVDJuVEJhVGM4X2EtaW8yTnhUODg4TmxwbkxsT1drQ190Smp0c0xxQmY5clVIZ1E?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">John Deere Gator Tailgate Bed Latches (Pair) - Part # VGA12138 And</a></div>
         <div class="news-snippet">John Deere Gator Tailgate Bed Latches (Pair) - Part # VGA12138 And &amp;nbsp;&amp;nbsp; aviglianonews.it</div>
@@ -489,7 +552,7 @@
           <span class="news-oem-tag tag-polaris">Polaris</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">4d ago</span>
+          <span class="news-time">5d ago</span>
         </div>
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNZlJmbUZZdEt1TkxyXzJGY05ram5nMkI3X3V4UVFiOVlXdzE4Zl9Ld2Y4a0dJYUg3NjgxQ0NvOHZLbW1XT0tKcmEtZVRYOGlPM2kxdVNZcWNiNXpMNnA4RWJHeEpfUU5DY3ZFdU1odjZXWEVMXzVwT3JWLTB3Z0gxZWRJaDBQNk5IWDlVa2hpTFkycnhuRTRCZ0k2Y0lqd2l0cE1aRnNfdTYwREtWZTVyMWp3?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">These Polaris Side-By-Sides Deals Are Insane, And They Include Thousands Off RZRs</a></div>
         <div class="news-snippet">These Polaris Side-By-Sides Deals Are Insane, And They Include Thousands Off RZRs &amp;nbsp;&amp;nbsp; RideApart.com</div>
@@ -499,7 +562,7 @@
           <span class="news-oem-tag tag-cfmoto">CFMOTO</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Financial</span>
-          <span class="news-time">4d ago</span>
+          <span class="news-time">5d ago</span>
         </div>
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxObHMtVzN4YlQxRFdOMXM2eXhKR196NFBBU1RpSGhnVTJhNnB1NVFyUVpDbTJPWGtfQnNvaUIxbktkdzk0cXU5bUp1eVpUekhWMFpWTTVXeFg1Mm9hYmFYQ2JQX2c3WGFFcmZXMTVOM1dQVUhDS1hxSTE4M3pGZTE1bzdYX3pOaXdpNnZKRlJnSFplNnctdHRLRkEyc3RxOVFqODdZX0xoSUZsVmk3TFdQdlFqcHVLRGllVm15LXBGeTZNbDFPWDhEUjZoZXpCcG1OcFR2LW5iTGg?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Sun Powersports Announces Arrival of the All-New 2026 CFMOTO ZFORCE Z10 -- Now In Stock</a></div>
         <div class="news-snippet">Sun Powersports Announces Arrival of the All-New 2026 CFMOTO ZFORCE Z10 -- Now In Stock &amp;nbsp;&amp;nbsp; PR Newswire</div>
@@ -544,35 +607,15 @@
         <div class="news-headline"><a href="https://powersportsbusiness.com/news/motorcycle/2026/04/23/royal-enfield-celebrates-125-years-with-stacked-2026-event-program/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Royal Enfield celebrates 125 years with stacked 2026 event program</a></div>
         <div class="news-snippet">As Royal Enfield celebrates its 125th Anniversary in 2026, the brand’s event program shifts up a gear heading into spring, with more events than ever before. The post Royal…</div>
       </div>
-      <div class="news-card" data-cat="product" data-oem="canam">
-        <div class="news-meta">
-          <span class="news-oem-tag tag-canam">Can-Am</span>
-          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
-          <span class="news-cat">Product</span>
-          <span class="news-time">6d ago</span>
-        </div>
-        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxQS0J4bkZheHR2RnlpbGFsaXhJQUxtSXFwSXcyOHdoX3BjU0dzRnF1YkZ6VVpoeTROSllpSy1mUWxRZFMyS2FMalhNb3dBb2d0NzJCdUczaVNGRndNdnRveHJpY0pxWllUZHdPMnlXX0lGYVc4WGFHV2RROFJobmNsOFFYRjZCakpyaFpfcTZTOGV1Ync?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Richard Rawlings&#x27; Can-Am Maverick X3 Auction on DirtHammer.com!</a></div>
-        <div class="news-snippet">Richard Rawlings&#x27; Can-Am Maverick X3 Auction on DirtHammer.com! &amp;nbsp;&amp;nbsp; Yahoo Finance</div>
-      </div>
       <div class="news-card" data-cat="financial" data-oem="massimo">
         <div class="news-meta">
           <span class="news-oem-tag tag-massimo">Massimo</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Financial</span>
-          <span class="news-time">6d ago</span>
-        </div>
-        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxONHhYVzAxRXBOSkNja2d2cUZ1ekx2MllTTVJpcmR2NlNGZHhNOG8wTm9nemo5cVEwZ19ka1hiWC1OTjBHakg3UDdpcGhKNmhmYVdlNzNWeEJaX0lyTG5LNURzVGlZRldqNmw5UzEzZmtETVBzNGczU29sb3cyYVI5NVFiYUcxWnpfcHc2Um1kbkhPMWxoMnhMVFQxNGZlYk9VaFlMSnpBR2lWRW5VOE1pbS0xc1hNSWNaZnFtQXB4MnpzSk0?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Massimo Motor expands electric fleet, develops autonomous patrol carts By Investing.com</a></div>
-        <div class="news-snippet">Massimo Motor expands electric fleet, develops autonomous patrol carts By Investing.com &amp;nbsp;&amp;nbsp; Investing.com Australia</div>
-      </div>
-      <div class="news-card" data-cat="product" data-oem="kawasaki">
-        <div class="news-meta">
-          <span class="news-oem-tag tag-kawasaki">Kawasaki</span>
-          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
-          <span class="news-cat">Product</span>
           <span class="news-time">Apr 21</span>
         </div>
-        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMGhFUzBQOUFwcTQtRmt2VHRBRllLRTZ4U3RRYW5UY2RycTREeTJsU201ZzhpNm1OZ2pwRTlYOWZwYXFjbWwyYUlLZjg0YjdUSFk3SGtpN1N5blJhQTcxelNVUnB2VUpkbTdod2UxOEFfUWkyYnpQbkFPMjM5X1VxR2JPUkxVM05hdV9haGFiRmw2WXZ4UFFueTBjSnNRNE9qN2l6aU9MQjU2YUR3cWxQbGEyNjFmallrOVdjY2N1QWpzNGfSAcgBQVVfeXFMTmM0amdodHRLRURPUHhHLTlhbS14TlJ2YjR1cWZoQUR0UlZoMlVNSlNiUHVKdnEyV1ZpZkpSakp1SDRpS1EtMHlKQmp5dW8wNDFZMTdZbGNpYm1reFlyM3ctVXhGOUF2YW5aaWw1TjczcE9sWDVBRFVVbkFlSzFhTGh4Zl9ieUhxMTFRaTNqTklvSlYtQi1hNGVMV3dndVhqNkFVNENWTmtfM0RWLVFnNGhpMWpxazdoSE5pN0FwZ2t0WmlvNnpneVQ?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Support Ogeechee Area Hospice for your chance to win a 2026 Kawasaki Mule SX</a></div>
-        <div class="news-snippet">Support Ogeechee Area Hospice for your chance to win a 2026 Kawasaki Mule SX &amp;nbsp;&amp;nbsp; Grice Connect</div>
+        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxPdXV5cjRzSl80TlB0LXRTekM0RzdVeG9YeTI5TlRzLXpIaTItUHp6SVViSU1KZjF6eDMwdXFjN1czVzNiLWRfYVZGaWtzWndtT2ZicTcxS2xLSmhEMmdMRHZLemFMZHktZGtUX21Lby1DZm4ydkxlRUVZVHlkREZ0bkNMakJHUUl1eFh3NkJtVFFqY2JqcjQ3eG5ySVpCMWdNcXhtS0FaZDRTb0Z1Ql9DeE9BVEwxbUdRS0ZEa2lrZ0RwM28?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Massimo Motor expands electric fleet, develops autonomous patrol carts By Investing.com</a></div>
+        <div class="news-snippet">Massimo Motor expands electric fleet, develops autonomous patrol carts By Investing.com &amp;nbsp;&amp;nbsp; Investing.com South Africa</div>
       </div>
       <div class="news-card" data-cat="product" data-oem="honda">
         <div class="news-meta">
@@ -619,6 +662,16 @@
           <span class="news-oem-tag tag-cfmoto">CFMOTO</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Product</span>
+          <span class="news-time">Apr 15</span>
+        </div>
+        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMickFVX3lxTE1TdENiTzNQWkFtVVFPTmM2N0Z3VGxkRi1MN2NDU1o4eWMxNUlJZV9lQnhuYWlMUk56R2JIQ3U1dUZ1UzdOZy05QnlxZmJ4aHJ3MFZnaXNwVUxXb0hZaXJ0S20wYWlXTF9uNWhpZmtnaXJrQQ?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">CFMOTO ZFORCE Z10 vs. CAM-AM MAVERICK X3 DS</a></div>
+        <div class="news-snippet">CFMOTO ZFORCE Z10 vs. CAM-AM MAVERICK X3 DS &amp;nbsp;&amp;nbsp; utvguide.net</div>
+      </div>
+      <div class="news-card" data-cat="product" data-oem="cfmoto">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-cfmoto">CFMOTO</span>
+          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
+          <span class="news-cat">Product</span>
           <span class="news-time">Apr 9</span>
         </div>
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE5OSkpwMG9xd3JORTRMckxQZkNTQVduOFhBMmRSMmhYM1NKWWFCTVVDaUdxd0c5UE8yWDRyb0dCcDFvT2VhZFBwRTZDMkZ6VW1qTUxKLXNjYnJSSUt4Y3dBeUk1MXBTZEFxSjhsY0tEbFU2M3l4X3JySWtqQQ?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">CFMOTO Launches ZFORCE Z10-4</a></div>
@@ -644,15 +697,15 @@
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQQ0FPeXhKZnNGQ0hWNktaa1Y5Q1l3OHY0UFBjellOc2YxY0pBbmJTaTMzaUcxb3JKV2V4RjdXN2hKZ0VNeVNVOVlzSXlzeU5sTXVYVk44OWdEQy1idlNvLTlhaHk1RnlLVWhSWlFVMlFPYnRneU9pNnlaTkdpeHhqMHFEcmI4cHFlcWEtM2tZcDI5V0JlVFRDYkctS1hmUXFXVWFEb0RKWEtuVl83RFU5Mg?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Polaris Teams Up with Cleetus McFarland and His Motorsports Community</a></div>
         <div class="news-snippet">Polaris Teams Up with Cleetus McFarland and His Motorsports Community &amp;nbsp;&amp;nbsp; polaris.com</div>
       </div>
-      <div class="news-card" data-cat="product" data-oem="cfmoto">
+      <div class="news-card" data-cat="product" data-oem="kawasaki">
         <div class="news-meta">
-          <span class="news-oem-tag tag-cfmoto">CFMOTO</span>
+          <span class="news-oem-tag tag-kawasaki">Kawasaki</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">Apr 6</span>
+          <span class="news-time">Apr 1</span>
         </div>
-        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiUEFVX3lxTE9EQk1VSDd1YklPemN5OGoxMC1qSXVWNFRfdi0xanc4cWlGNXMxRFV5YlpSZVdMOVI2dk5jMmlEVnlLYVZBRmt4WXlOWlBPVWFx?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">CFMOTO USA Announces ZFORCE Z10 and Z10-4 SxS Models</a></div>
-        <div class="news-snippet">CFMOTO USA Announces ZFORCE Z10 and Z10-4 SxS Models &amp;nbsp;&amp;nbsp; utvguide.net</div>
+        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOUS1OajJpRjNJM0NTTGdDWnA5Q1N0STJidEEwM19ZMmg0Q3lUNVF0Z3ZhMWU4akh5ZWhjNVVtaWRDYkh5bEtjX0VBN1dGQ0pLZ2ZXc3hxMGVuTk1raUQ1X09xOXV1Y2xyam9XS2lNZ09UVXBEZmxSZ19mdjBMTGVDM1pkUEFLT0xpMkcyOGlhbDV4ak5DVjE3bDFlOHFHdWZ5cXc?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">2027 Kawasaki MULE 4000 and Mule 4010 Side x Side Lineup</a></div>
+        <div class="news-snippet">2027 Kawasaki MULE 4000 and Mule 4010 Side x Side Lineup &amp;nbsp;&amp;nbsp; Motor Sports Newswire</div>
       </div>
       <div class="news-card" data-cat="product" data-oem="deere">
         <div class="news-meta">
@@ -714,16 +767,6 @@
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTFBoaER6RFlGTlY4ZzdzRzdMR0hxd3Bnc2ljTGpEdUNaR3daaTR5NUVkYi1vRDFxZ3NweUVqNWcxbUlfM1lJS0Z3bUF5dllNWGVPckZKWXJSYkxRUnotbW1kUGliWHFma0dkd3pCRUZRbE9ROGdJcFVOOA?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Despite An Ongoing Stop-Drive, Kawasaki’s 2026 Teryx H2 UTV Add a New Color And Sacrifices Nothing</a></div>
         <div class="news-snippet">Despite An Ongoing Stop-Drive, Kawasaki’s 2026 Teryx H2 UTV Add a New Color And Sacrifices Nothing &amp;nbsp;&amp;nbsp; RideApart.com</div>
       </div>
-      <div class="news-card" data-cat="product" data-oem="kawasaki">
-        <div class="news-meta">
-          <span class="news-oem-tag tag-kawasaki">Kawasaki</span>
-          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
-          <span class="news-cat">Product</span>
-          <span class="news-time">Feb 17</span>
-        </div>
-        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTFB2NUJuNF9tenB0bWNDVEdnOW9QQ2p1M3dLdnJRSVpPYmlBTlZ1bEFlZGU1Z19XVVRtV2lSb194WXVTUXA2QjBaSDNMdVA2REtUNm0wSlRuSDVnSnBwd2J2N3ZHUGc3X1I3Si05R0p0Sy13eW1XOEM1aWFR?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">What’s Going on with the Kawasaki Teryx H2?</a></div>
-        <div class="news-snippet">What’s Going on with the Kawasaki Teryx H2? &amp;nbsp;&amp;nbsp; UTV Driver</div>
-      </div>
       <!-- REFRESH:NEWS:END -->
     </div><!-- end news-feed -->
 
@@ -736,6 +779,14 @@
     </div>
 
     <!-- REFRESH:SEC_FILINGS:START -->
+      <div class="sec-item">
+        <div class="sec-header">
+          <span class="news-oem-tag tag-polaris">Polaris Inc.</span>
+          <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;">10-Q</span>
+          <span class="sec-date">Apr 28, 2026 <span style="color:var(--text-muted);">· 10-Q</span></span>
+          <a href="https://www.sec.gov/Archives/edgar/data/931015/000162828026027854/0001628280-26-027854-index.htm" target="_blank" rel="noopener" class="sec-link">View →</a>
+        </div>
+      </div>
       <div class="sec-item">
         <div class="sec-header">
           <span class="news-oem-tag tag-polaris">Polaris Inc.</span>
@@ -848,14 +899,6 @@
           <a href="https://www.sec.gov/Archives/edgar/data/931015/000162828026008033/0001628280-26-008033-index.htm" target="_blank" rel="noopener" class="sec-link">View →</a>
         </div>
       </div>
-      <div class="sec-item">
-        <div class="sec-header">
-          <span class="news-oem-tag tag-polaris">Polaris Inc.</span>
-          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;">144</span>
-          <span class="sec-date">Feb 12, 2026</span>
-          <a href="https://www.sec.gov/Archives/edgar/data/931015/000195004726001189/0001950047-26-001189-index.htm" target="_blank" rel="noopener" class="sec-link">View →</a>
-        </div>
-      </div>
       <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(48,54,61,0.5);">
         <div style="display:flex;align-items:center;gap:6px;padding:4px 0;">
           <span class="news-oem-tag tag-canam">BRP Inc.</span>
@@ -890,39 +933,45 @@
       <!-- REFRESH:STOCKS:START -->
       <tr>
         <td><span class="ticker-cell" style="color:#93c5fd;">PII</span><br><span style="font-size:10px;color:var(--text-muted);">Polaris</span></td>
-        <td class="price-cell">$64.88</td>
-        <td class="change-cell" style="color:var(--green);">▲$2.88<br><span style="font-size:10px;">▲4.6%</span></td>
-        <td style="font-size:10px;color:var(--text-muted);">$31.56–$75.25</td>
+        <td class="price-cell">$66.47</td>
+        <td class="change-cell" style="color:var(--green);">▲$0.35<br><span style="font-size:10px;">▲0.5%</span></td>
+        <td style="font-size:10px;color:var(--text-muted);">$31.85–$75.25</td>
+      </tr>
+      <tr>
+        <td><span class="ticker-cell" style="color:#fca5a5;">DOO</span><br><span style="font-size:10px;color:var(--text-muted);">BRP/Can-Am</span></td>
+        <td class="price-cell">$53.34</td>
+        <td class="change-cell" style="color:var(--green);">▲$0.00<br><span style="font-size:10px;">▲0.0%</span></td>
+        <td style="font-size:10px;color:var(--text-muted);">$32.54–$81.89</td>
       </tr>
       <tr>
         <td><span class="ticker-cell" style="color:#86efac;">DE</span><br><span style="font-size:10px;color:var(--text-muted);">John Deere</span></td>
-        <td class="price-cell">$564.30</td>
-        <td class="change-cell" style="color:var(--red);">▼$3.70<br><span style="font-size:10px;">▼0.7%</span></td>
+        <td class="price-cell">$563.86</td>
+        <td class="change-cell" style="color:var(--green);">▲$2.32<br><span style="font-size:10px;">▲0.4%</span></td>
         <td style="font-size:10px;color:var(--text-muted);">$433.00–$674.19</td>
       </tr>
       <tr>
         <td><span class="ticker-cell" style="color:#fca5a5;">HMC</span><br><span style="font-size:10px;color:var(--text-muted);">Honda</span></td>
         <td class="price-cell">$24.20</td>
-        <td class="change-cell" style="color:var(--red);">▼$0.29<br><span style="font-size:10px;">▼1.2%</span></td>
+        <td class="change-cell" style="color:var(--green);">▲$0.00<br><span style="font-size:10px;">▲0.0%</span></td>
         <td style="font-size:10px;color:var(--text-muted);">$23.25–$34.89</td>
       </tr>
       <tr>
-        <td><span class="ticker-cell" style="color:#93c5fd;">7272.T</span><br><span style="font-size:10px;color:var(--text-muted);">Yamaha Motor</span></td>
-        <td class="price-cell">¥1,094</td>
-        <td class="change-cell" style="color:var(--green);">▲¥12<br><span style="font-size:10px;">▲1.2%</span></td>
-        <td style="font-size:10px;color:var(--text-muted);">¥1,022–¥1,288</td>
+        <td><span class="ticker-cell" style="color:#93c5fd;">YMHAY</span><br><span style="font-size:10px;color:var(--text-muted);">Yamaha Motor</span></td>
+        <td class="price-cell">$13.74</td>
+        <td class="change-cell" style="color:var(--green);">▲$0.21<br><span style="font-size:10px;">▲1.6%</span></td>
+        <td style="font-size:10px;color:var(--text-muted);">$13.05–$16.56</td>
       </tr>
       <tr>
-        <td><span class="ticker-cell" style="color:#fca5a5;">6326.T</span><br><span style="font-size:10px;color:var(--text-muted);">Kubota</span></td>
-        <td class="price-cell">¥2,598</td>
-        <td class="change-cell" style="color:var(--green);">▲¥96<br><span style="font-size:10px;">▲3.8%</span></td>
-        <td style="font-size:10px;color:var(--text-muted);">¥1,527–¥3,268</td>
+        <td><span class="ticker-cell" style="color:#fca5a5;">KUBTY</span><br><span style="font-size:10px;color:var(--text-muted);">Kubota</span></td>
+        <td class="price-cell">$81.14</td>
+        <td class="change-cell" style="color:var(--green);">▲$3.02<br><span style="font-size:10px;">▲3.9%</span></td>
+        <td style="font-size:10px;color:var(--text-muted);">$52.43–$107.97</td>
       </tr>
       <tr>
-        <td><span class="ticker-cell" style="color:#86efac;">7012.T</span><br><span style="font-size:10px;color:var(--text-muted);">Kawasaki HI</span></td>
-        <td class="price-cell">¥3,243</td>
-        <td class="change-cell" style="color:var(--green);">▲¥168<br><span style="font-size:10px;">▲5.5%</span></td>
-        <td style="font-size:10px;color:var(--text-muted);">¥1,602–¥3,766</td>
+        <td><span class="ticker-cell" style="color:#86efac;">KWHIF</span><br><span style="font-size:10px;color:var(--text-muted);">Kawasaki HI</span></td>
+        <td class="price-cell">$18.40</td>
+        <td class="change-cell" style="color:var(--red);">▼$0.66<br><span style="font-size:10px;">▼3.5%</span></td>
+        <td style="font-size:10px;color:var(--text-muted);">$17.95–$121.25</td>
       </tr>
       <!-- REFRESH:STOCKS:END -->
       </tbody>
@@ -938,25 +987,25 @@
 
     <!-- REFRESH:NEWS_VOLUME:START -->
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
-        <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">Kawasaki</div>
-        <div style="flex:1;background:var(--border);border-radius:3px;height:7px;overflow:hidden;">
-          <div style="width:100.0%;height:100%;background:#86efac;border-radius:3px;"></div>
-        </div>
-        <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#86efac;text-align:right;">8</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
         <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">Polaris</div>
         <div style="flex:1;background:var(--border);border-radius:3px;height:7px;overflow:hidden;">
-          <div style="width:87.5%;height:100%;background:#93c5fd;border-radius:3px;"></div>
+          <div style="width:100.0%;height:100%;background:#93c5fd;border-radius:3px;"></div>
         </div>
-        <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#93c5fd;text-align:right;">7</div>
+        <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#93c5fd;text-align:right;">8</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
+        <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">Kawasaki</div>
+        <div style="flex:1;background:var(--border);border-radius:3px;height:7px;overflow:hidden;">
+          <div style="width:87.5%;height:100%;background:#86efac;border-radius:3px;"></div>
+        </div>
+        <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#86efac;text-align:right;">7</div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
         <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">Can-Am</div>
         <div style="flex:1;background:var(--border);border-radius:3px;height:7px;overflow:hidden;">
-          <div style="width:37.5%;height:100%;background:#fca5a5;border-radius:3px;"></div>
+          <div style="width:75.0%;height:100%;background:#fca5a5;border-radius:3px;"></div>
         </div>
-        <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#fca5a5;text-align:right;">3</div>
+        <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#fca5a5;text-align:right;">6</div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
         <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">Yamaha</div>
@@ -987,13 +1036,6 @@
         <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#c4b5fd;text-align:right;">1</div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
-        <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">Honda</div>
-        <div style="flex:1;background:var(--border);border-radius:3px;height:7px;overflow:hidden;">
-          <div style="width:12.5%;height:100%;background:#fca5a5;border-radius:3px;"></div>
-        </div>
-        <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#fca5a5;text-align:right;">1</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
         <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">Speed UTV</div>
         <div style="flex:1;background:var(--border);border-radius:3px;height:7px;overflow:hidden;">
           <div style="width:0.0%;height:100%;background:#fdba74;border-radius:3px;"></div>
@@ -1002,6 +1044,13 @@
       </div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
         <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">Kubota</div>
+        <div style="flex:1;background:var(--border);border-radius:3px;height:7px;overflow:hidden;">
+          <div style="width:0.0%;height:100%;background:#fca5a5;border-radius:3px;"></div>
+        </div>
+        <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#fca5a5;text-align:right;">0</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
+        <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">Honda</div>
         <div style="flex:1;background:var(--border);border-radius:3px;height:7px;overflow:hidden;">
           <div style="width:0.0%;height:100%;background:#fca5a5;border-radius:3px;"></div>
         </div>
@@ -1113,19 +1162,19 @@
 <script>
 (function(){
   var el = document.getElementById("sidebar-ticker-polaris");
-  if (el) el.innerHTML = "NYSE: PII · $64.88 <span class='up'>▲4.6%</span>";
+  if (el) el.innerHTML = "NYSE: PII · $66.47 <span class='up'>▲0.5%</span>";
   var el = document.getElementById("sidebar-ticker-canam");
-  if (el) el.innerHTML = "Nasdaq: DOO · $53.34";
+  if (el) el.innerHTML = "Nasdaq: DOO · $53.34 <span class='up'>▲0.0%</span>";
   var el = document.getElementById("sidebar-ticker-deere");
-  if (el) el.innerHTML = "NYSE: DE · $564.30 <span class='down'>▼0.7%</span>";
+  if (el) el.innerHTML = "NYSE: DE · $563.86 <span class='up'>▲0.4%</span>";
   var el = document.getElementById("sidebar-ticker-honda");
-  if (el) el.innerHTML = "NYSE: HMC · $24.20 <span class='down'>▼1.2%</span>";
+  if (el) el.innerHTML = "NYSE: HMC · $24.20 <span class='up'>▲0.0%</span>";
   var el = document.getElementById("sidebar-ticker-yamaha");
-  if (el) el.innerHTML = "OTC: YMHAY · $13.74";
+  if (el) el.innerHTML = "OTC: YMHAY · $13.74 <span class='up'>▲1.6%</span>";
   var el = document.getElementById("sidebar-ticker-kubota");
-  if (el) el.innerHTML = "OTC: KUBTY · $81.14";
+  if (el) el.innerHTML = "OTC: KUBTY · $81.14 <span class='up'>▲3.9%</span>";
   var el = document.getElementById("sidebar-ticker-kawasaki");
-  if (el) el.innerHTML = "OTC: KWHIF · $18.40";
+  if (el) el.innerHTML = "OTC: KWHIF · $18.40 <span class='down'>▼3.5%</span>";
 })();
 </script>
       <!-- REFRESH:SIDEBAR_TICKERS:END -->
