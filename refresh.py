@@ -357,17 +357,19 @@ def fetch_gnews(max_per=5):
 
 def build_sidebar_tickers(stocks):
     if not stocks:
-        return "<script>const SIDEBAR_PRICES = {};</script>"
-    entries = []
+        return "<!-- no stock data available -->"
+    lines = []
     for s in stocks:
-        entries.append(
-            f'  "{s["oem_key"]}": {{'
-            f'"exch":"{s["exch"]}", "sym":"{s["sym"]}", "price":"{s["price"]}", '
-            f'"arrow":"{s["arrow"]}", "pct":"{s["pct"]:.1f}", "dir":"{s["dir"]}"'
-            f'}}'
+        dir_ = s["dir"]
+        pct  = f"{s['pct']:.1f}"
+        inner = f"{s['exch']}: {s['sym']} · {s['price']} <span class='{dir_}'>{s['arrow']}{pct}%</span>"
+        inner_js = inner.replace("\\", "\\\\").replace('"', '\\"')
+        lines.append(
+            f'  var el = document.getElementById("sidebar-ticker-{s["oem_key"]}");\n'
+            f'  if (el) el.innerHTML = "{inner_js}";'
         )
-    inner = ",\n".join(entries)
-    return f"<script>\nconst SIDEBAR_PRICES = {{\n{inner}\n}};\n</script>"
+    body = "\n".join(lines)
+    return f"<script>\n(function(){{\n{body}\n}})();\n</script>"
 
 def build_stock_rows(stocks):
     if not stocks:
