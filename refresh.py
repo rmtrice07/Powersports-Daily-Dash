@@ -12,7 +12,7 @@ import json
 import urllib.request
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, urlparse
 
 try:
     import yfinance as yf
@@ -192,6 +192,52 @@ OEM_CHART_ORDER = [
     "speedutv", "deere", "kubota", "massimo", "honda",
 ]
 
+# ── News Quality Filter ───────────────────────────────────────────────────────
+
+SPAM_DOMAINS = {
+    "portalcantagalo.com.br",
+    "aviglianonews.it",
+    "manilatimes.net",
+    "griceconnect.com",
+    "wvnews.com",
+}
+
+SPAM_URL_SEGMENTS = {
+    "/parts/", "/accessories/", "/shop/", "/product/", "/products/",
+    "/catalog/", "/store/", "/buy/", "/order/",
+}
+
+SPAM_TITLE_PATTERNS = [
+    # Fitment / parts listings  e.g. "For 2021-2024 Polaris RZR"
+    re.compile(r"\bfor\s+20\d{2}[-–]\d{2,4}\b", re.IGNORECASE),
+    # Bare part-number slugs    e.g. "2884623 OEM Polaris"
+    re.compile(r"\b\d{6,}\b"),
+    # Police / crime blotter
+    re.compile(r"\b(arrested|charged|indicted|pleaded guilty|sentenced|sheriff|police|crash|fatally|killed|died)\b", re.IGNORECASE),
+    # Raffle / giveaway
+    re.compile(r"\b(raffle|giveaway|win a|sweepstakes|enter to win)\b", re.IGNORECASE),
+    # Job postings
+    re.compile(r"\b(hiring|we.re hiring|job opening|careers at|apply now)\b", re.IGNORECASE),
+]
+
+def is_spam(title, link):
+    """Return True if the article should be dropped before adding to the feed."""
+    try:
+        parsed = urlparse(link)
+        domain = parsed.netloc.lower().lstrip("www.")
+        path   = parsed.path.lower()
+    except Exception:
+        domain, path = "", ""
+
+    if domain in SPAM_DOMAINS:
+        return True
+    if any(seg in path for seg in SPAM_URL_SEGMENTS):
+        return True
+    for pat in SPAM_TITLE_PATTERNS:
+        if pat.search(title):
+            return True
+    return False
+
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def strip_html(text):
@@ -314,11 +360,12 @@ def fetch_gnews(max_per=5):
     if not HAS_FP:
         return []
     articles, seen = [], set()
+    total_dropped = 0
     for query, oem_key, _, _ in GNEWS_QUERIES:
         try:
             url = (f"https://news.google.com/rss/search"
                    f"?q={quote_plus(query)}&hl=en-US&gl=US&ceid=US:en")
-            d, n = feedparser.parse(url), 0
+            d, n, dropped = feedparser.parse(url), 0, 0
             for e in d.entries:
                 if n >= max_per:
                     break
@@ -328,6 +375,12 @@ def fetch_gnews(max_per=5):
                 key = title[:55]
                 if not title or key in seen:
                     continue
+                link = e.get("link", "#")
+                # Drop spam/low-quality articles before dedup so they don't
+                # consume the per-query slot.
+                if is_spam(title, link):
+                    dropped += 1
+                    continue
                 seen.add(key)
                 summary = e.get("summary") or e.get("description", "")
                 body    = f"{title} {summary}"
@@ -336,11 +389,12 @@ def fetch_gnews(max_per=5):
                 # boolean matching which returns off-topic results.
                 if oem_key != "market" and OEM_KEYWORDS.get(oem_key):
                     if not any(kw in body.lower() for kw in OEM_KEYWORDS[oem_key]):
+                        dropped += 1
                         continue
                 articles.append({
                     "title":   title,
                     "snippet": truncate(summary),
-                    "link":    e.get("link", "#"),
+                    "link":    link,
                     "dt":      struct_to_dt(e.get("published_parsed")),
                     "oem":     oem_key,
                     "cat":     detect_cat(body),
@@ -348,9 +402,14 @@ def fetch_gnews(max_per=5):
                     "badge":   "news",
                 })
                 n += 1
+            if dropped:
+                print(f"    ↳ dropped {dropped} spam/low-quality for '{query[:38]}…'")
+            total_dropped += dropped
             time.sleep(1.2)
         except Exception as e:
             print(f"  ✗ GNews '{query[:40]}…': {e}")
+    if total_dropped:
+        print(f"  ✓ GNews quality filter: {total_dropped} articles dropped total")
     return articles
 
 # ── HTML Builders ─────────────────────────────────────────────────────────────
