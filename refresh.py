@@ -39,13 +39,13 @@ HISTORY_FILE = ROOT / "news_history.json"
 # (yfinance_symbol, display_symbol, name, exchange, hex_color, css_tag_class)
 
 TICKERS = [
-    ("PII",     "PII",    "Polaris",      "NYSE", "#93c5fd", "tag-polaris",  "polaris"),
-    ("DOOO.TO", "DOOO",   "BRP/Can-Am",   "TSX",  "#fca5a5", "tag-canam",    "canam"),
-    ("DE",      "DE",     "John Deere",   "NYSE", "#86efac", "tag-deere",    "deere"),
-    ("HMC",     "HMC",    "Honda",        "NYSE", "#fca5a5", "tag-honda",    "honda"),
-    ("7272.T",  "7272.T", "Yamaha Motor", "TYO",  "#93c5fd", "tag-yamaha",   "yamaha"),
-    ("6326.T",  "6326.T", "Kubota",       "TYO",  "#fca5a5", "tag-kubota",   "kubota"),
-    ("7012.T",  "7012.T", "Kawasaki HI",  "TYO",  "#86efac", "tag-kawasaki", "kawasaki"),
+    ("PII",   "PII",   "Polaris",      "NYSE",   "#93c5fd", "tag-polaris",  "polaris"),
+    ("DOO",   "DOO",   "BRP/Can-Am",   "Nasdaq", "#fca5a5", "tag-canam",    "canam"),
+    ("DE",    "DE",    "John Deere",   "NYSE",   "#86efac", "tag-deere",    "deere"),
+    ("HMC",   "HMC",  "Honda",        "NYSE",   "#fca5a5", "tag-honda",    "honda"),
+    ("YMHAY", "YMHAY","Yamaha Motor",  "OTC",    "#93c5fd", "tag-yamaha",   "yamaha"),
+    ("KUBTY", "KUBTY","Kubota",        "OTC",    "#fca5a5", "tag-kubota",   "kubota"),
+    ("KWHIF", "KWHIF","Kawasaki HI",   "OTC",    "#86efac", "tag-kawasaki", "kawasaki"),
 ]
 
 # ── RSS Feeds ─────────────────────────────────────────────────────────────────
@@ -289,11 +289,16 @@ def truncate(text, n=200):
 def fmt_price(symbol, value):
     if value is None:
         return "N/A"
-    if ".T" in symbol and "DOOO" not in symbol:
-        return f"¥{value:,.0f}"
-    if "DOOO" in symbol:
-        return f"C${value:,.2f}"
     return f"${value:,.2f}"
+
+def fmt_market_cap(value):
+    if not value or value <= 0:
+        return "—"
+    if value >= 1e12:
+        return f"${value/1e12:.2f}T"
+    if value >= 1e9:
+        return f"${value/1e9:.1f}B"
+    return f"${value/1e6:.0f}M"
 
 # ── Fetchers ──────────────────────────────────────────────────────────────────
 
@@ -303,25 +308,37 @@ def fetch_stocks():
     rows = []
     for sym, disp, name, exch, color, tag_cls, oem_key in TICKERS:
         try:
-            fi    = yf.Ticker(sym).fast_info
+            tkr   = yf.Ticker(sym)
+            fi    = tkr.fast_info
             price = fi.last_price
             prev  = fi.previous_close
             if price is None or prev is None:
                 raise ValueError("missing price data")
             change = price - prev
             pct    = (change / prev) * 100
+            try:
+                mkt_cap = fi.market_cap
+            except Exception:
+                mkt_cap = None
+            try:
+                hist    = tkr.history(period="1mo")
+                perf_30d = ((price - hist["Close"].iloc[0]) / hist["Close"].iloc[0]) * 100 if len(hist) >= 2 else None
+            except Exception:
+                perf_30d = None
             rows.append({
-                "sym":     disp,
-                "name":    name,
-                "exch":    exch,
-                "oem_key": oem_key,
-                "price":   fmt_price(sym, price),
-                "chg":     fmt_price(sym, abs(change)),
-                "pct":     abs(pct),
-                "range":   f"{fmt_price(sym, fi.year_low)}–{fmt_price(sym, fi.year_high)}",
-                "color":   color,
-                "dir":     "up" if change >= 0 else "down",
-                "arrow":   "▲" if change >= 0 else "▼",
+                "sym":      disp,
+                "name":     name,
+                "exch":     exch,
+                "oem_key":  oem_key,
+                "price":    fmt_price(sym, price),
+                "chg":      fmt_price(sym, abs(change)),
+                "pct":      abs(pct),
+                "range":    f"{fmt_price(sym, fi.year_low)}–{fmt_price(sym, fi.year_high)}",
+                "color":    color,
+                "dir":      "up" if change >= 0 else "down",
+                "arrow":    "▲" if change >= 0 else "▼",
+                "mkt_cap":  mkt_cap,
+                "perf_30d": perf_30d,
             })
             time.sleep(0.4)
         except Exception as e:
@@ -429,6 +446,51 @@ def build_sidebar_tickers(stocks):
         )
     body = "\n".join(lines)
     return f"<script>\n(function(){{\n{body}\n}})();\n</script>"
+
+def build_market_caps(stocks):
+    if not stocks:
+        return (
+            '      <div style="background:var(--surface);border:1px dashed var(--border);'
+            'border-radius:var(--radius);padding:14px 18px;margin-bottom:16px;">'
+            '<span style="color:var(--text-muted);font-size:12px;">Market data unavailable — check network.</span>'
+            '</div>'
+        )
+    cards = []
+    for s in stocks:
+        cap_str = fmt_market_cap(s.get("mkt_cap"))
+        perf    = s.get("perf_30d")
+        if perf is not None:
+            perf_color = "var(--green)" if perf >= 0 else "var(--red)"
+            perf_str   = f'{"▲" if perf >= 0 else "▼"}{abs(perf):.1f}%'
+        else:
+            perf_color, perf_str = "var(--text-muted)", "—"
+        _, tag_cls = OEM_TAG_MAP.get(s["oem_key"], ("", "tag-market"))
+        cards.append(
+            f'        <div style="flex:1;min-width:110px;background:var(--bg);'
+            f'border-radius:6px;padding:9px 11px;border:1px solid var(--border);">\n'
+            f'          <div style="margin-bottom:5px;">'
+            f'<span class="news-oem-tag {tag_cls}" style="font-size:9px;padding:1px 5px;">'
+            f'{html_lib.escape(s["name"])}</span></div>\n'
+            f'          <div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">'
+            f'{html_lib.escape(s["exch"])}: {html_lib.escape(s["sym"])}</div>\n'
+            f'          <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">'
+            f'{cap_str}</div>\n'
+            f'          <div style="font-size:11px;color:{perf_color};font-weight:600;margin-top:3px;">'
+            f'{perf_str} <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>\n'
+            f'        </div>'
+        )
+    cards_html = "\n".join(cards)
+    return (
+        '      <div style="background:var(--surface);border:1px solid var(--border);'
+        'border-radius:var(--radius);padding:14px 18px;margin-bottom:16px;">\n'
+        '        <div style="font-size:11px;font-weight:700;text-transform:uppercase;'
+        'letter-spacing:.06em;color:var(--text-muted);margin-bottom:10px;">'
+        'Public OEM Market Snapshot &nbsp;&middot;&nbsp; Market Cap &amp; 30-Day Performance</div>\n'
+        '        <div style="display:flex;flex-wrap:wrap;gap:8px;">\n'
+        + cards_html + '\n'
+        '        </div>\n'
+        '      </div>'
+    )
 
 def build_stock_rows(stocks):
     if not stocks:
@@ -767,6 +829,7 @@ def main():
     template = DASHBOARD.read_text(encoding="utf-8")
     out = template
     out = inject(out, "TIMESTAMP",       build_timestamp())
+    out = inject(out, "MARKET_CAPS",     build_market_caps(stocks))
     out = inject(out, "STOCKS",          build_stock_rows(stocks))
     out = inject(out, "SIDEBAR_TICKERS", build_sidebar_tickers(stocks))
     out = inject(out, "NEWS",            build_news_cards(all_articles))
