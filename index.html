@@ -127,6 +127,8 @@
   .cal-title { font-size: 12px; font-weight: 600; }
   .cal-sub { font-size: 11px; color: var(--text-muted); }
   .cal-tag { font-size: 10px; font-weight: 600; padding: 1px 5px; border-radius: 3px; display: inline-block; margin-top: 3px; }
+  .cal-item.cal-past { opacity: 0.45; }
+  .cal-group { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); padding: 8px 0 5px; border-bottom: 1px solid var(--border); margin-bottom: 4px; }
 
   /* ALERTS */
   .alert { border-radius: var(--radius); padding: 10px 12px; margin-bottom: 8px; border-left: 3px solid; }
@@ -1140,9 +1142,88 @@
 
     <div class="sep"></div>
 
-    <!-- UPCOMING CALENDAR -->
+    <!-- INDUSTRY CALENDAR -->
     <div class="section-header">
-      <div class="section-title">Upcoming Calendar</div>
+      <div class="section-title">Industry Calendar</div>
+    </div>
+    <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">Past 2026 events shown for 2027 planning reference.</div>
+
+    <!-- ── 2026 · Past Reference ───────────────────────────────── -->
+    <div class="cal-group">2026 · Past Reference</div>
+
+    <div class="cal-item cal-past">
+      <div class="cal-date"><div class="cal-month">JAN</div><div class="cal-day" style="font-size:13px;">7–9</div></div>
+      <div class="cal-info">
+        <div class="cal-title">AIMExpo 2026</div>
+        <div class="cal-sub">Anaheim Convention Center, CA · Completed · 2027: Mar 2–6, Orlando</div>
+        <span class="cal-tag" style="background:rgba(6,182,212,0.15);color:var(--cyan);">Trade Show</span>
+      </div>
+    </div>
+
+    <div class="cal-item cal-past">
+      <div class="cal-date"><div class="cal-month">JAN–FEB</div><div class="cal-day" style="font-size:11px;">29–Feb 7</div></div>
+      <div class="cal-info">
+        <div class="cal-title">King of the Hammers 2026</div>
+        <div class="cal-sub">Johnson Valley, CA · Completed · 2027: Jan 21–Feb 6</div>
+        <span class="cal-tag" style="background:rgba(249,115,22,0.15);color:#fdba74;">Off-Road</span>
+      </div>
+    </div>
+
+    <div class="cal-item cal-past">
+      <div class="cal-date"><div class="cal-month">FEB</div><div class="cal-day" style="font-size:13px;">10–12</div></div>
+      <div class="cal-info">
+        <div class="cal-title">World Ag Expo 2026</div>
+        <div class="cal-sub">Tulare, CA · Completed · 2027: Feb 9–11</div>
+        <span class="cal-tag" style="background:rgba(34,197,94,0.15);color:var(--green);">Ag &amp; Commercial</span>
+      </div>
+    </div>
+
+    <div class="cal-item cal-past">
+      <div class="cal-date"><div class="cal-month">APR</div><div class="cal-day" style="font-size:13px;">23–25</div></div>
+      <div class="cal-info">
+        <div class="cal-title">MOAB RedRok Rally 2026</div>
+        <div class="cal-sub">Old Spanish Trail Arena, Moab UT · Completed · 2027 dates TBD</div>
+        <span class="cal-tag" style="background:rgba(249,115,22,0.15);color:#fdba74;">Off-Road</span>
+      </div>
+    </div>
+
+    <!-- ── Upcoming · May–Dec 2026 ────────────────────────────── -->
+    <div class="cal-group">Upcoming · May–Dec 2026</div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">MAY</div><div class="cal-day">8</div></div>
+      <div class="cal-info">
+        <div class="cal-title">Kubota Q1 FY2026 Earnings</div>
+        <div class="cal-sub">OTC: KUBTY · kubota.com/investors</div>
+        <span class="cal-tag" style="background:rgba(234,179,8,0.15);color:var(--yellow);">Financial</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">MAY</div><div class="cal-day">12</div></div>
+      <div class="cal-info">
+        <div class="cal-title">Kawasaki HI FY2025 Full-Year Earnings</div>
+        <div class="cal-sub">OTC: KWHIF · global.kawasaki.com/ir</div>
+        <span class="cal-tag" style="background:rgba(234,179,8,0.15);color:var(--yellow);">Financial</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">MAY</div><div class="cal-day">14</div></div>
+      <div class="cal-info">
+        <div class="cal-title">Honda FY2026 Full-Year Earnings</div>
+        <div class="cal-sub">NYSE: HMC · global.honda/investors · 13:30 JST</div>
+        <span class="cal-tag" style="background:rgba(234,179,8,0.15);color:var(--yellow);">Financial</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">MAY</div><div class="cal-day">21</div></div>
+      <div class="cal-info">
+        <div class="cal-title">John Deere Q2 FY2026 Earnings</div>
+        <div class="cal-sub">NYSE: DE · investors.deere.com</div>
+        <span class="cal-tag" style="background:rgba(234,179,8,0.15);color:var(--yellow);">Financial</span>
+      </div>
     </div>
 
     <div class="cal-item">
@@ -1151,6 +1232,162 @@
         <div class="cal-title">Polaris Q2 2026 Earnings</div>
         <div class="cal-sub">NYSE: PII · investor.polaris.com for webcast link</div>
         <span class="cal-tag" style="background:rgba(234,179,8,0.15);color:var(--yellow);">Financial</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">MAY</div><div class="cal-day">28</div></div>
+      <div class="cal-info">
+        <div class="cal-title">BRP Annual &amp; Special Meeting of Shareholders</div>
+        <div class="cal-sub">Nasdaq: DOO · ir.brp.com/investors/events</div>
+        <span class="cal-tag" style="background:rgba(234,179,8,0.15);color:var(--yellow);">Corporate</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">JUN</div><div class="cal-day" style="font-size:13px;">16–21</div></div>
+      <div class="cal-info">
+        <div class="cal-title">UTV Takeover — Coos Bay</div>
+        <div class="cal-sub">Boxcar Hill Campground, OR · utvtakeover.com</div>
+        <span class="cal-tag" style="background:rgba(249,115,22,0.15);color:#fdba74;">Off-Road</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">JUL–AUG</div><div class="cal-day" style="font-size:12px;color:var(--text-muted);">EST.</div></div>
+      <div class="cal-info">
+        <div class="cal-title">Polaris MY2027 Announcement Window</div>
+        <div class="cal-sub">Estimated · Prior patterns: Jul 29, 2025 &amp; Jul 29, 2024 · Official date TBD</div>
+        <span class="cal-tag" style="background:rgba(168,85,247,0.15);color:var(--purple);">Product Watch</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">AUG</div><div class="cal-day" style="font-size:12px;color:var(--text-muted);">EST.</div></div>
+      <div class="cal-info">
+        <div class="cal-title">Can-Am MY2027 Announcement Window</div>
+        <div class="cal-sub">Estimated · Prior patterns: Aug 21, 2024 &amp; Aug 2025 · Official date TBD</div>
+        <span class="cal-tag" style="background:rgba(168,85,247,0.15);color:var(--purple);">Product Watch</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">AUG</div><div class="cal-day" style="font-size:13px;">11–16</div></div>
+      <div class="cal-info">
+        <div class="cal-title">UTV Takeover — Winchester Bay</div>
+        <div class="cal-sub">Winchester Bay Dunes, OR · utvtakeover.com</div>
+        <span class="cal-tag" style="background:rgba(249,115,22,0.15);color:#fdba74;">Off-Road</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">AUG–SEP</div><div class="cal-day" style="font-size:12px;color:var(--text-muted);">EST.</div></div>
+      <div class="cal-info">
+        <div class="cal-title">CFMOTO MY2027 Dealer Conference &amp; Reveal</div>
+        <div class="cal-sub">Estimated · Dealer meeting first, public announcement ~1 week later · Official date TBD</div>
+        <span class="cal-tag" style="background:rgba(168,85,247,0.15);color:var(--purple);">Product Watch</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">SEP</div><div class="cal-day" style="font-size:13px;">1–3</div></div>
+      <div class="cal-info">
+        <div class="cal-title">Farm Progress Show</div>
+        <div class="cal-sub">Boone, Iowa · farmprogressshow.com · 2027: Aug 31–Sep 2, Decatur IL</div>
+        <span class="cal-tag" style="background:rgba(34,197,94,0.15);color:var(--green);">Ag &amp; Commercial</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">EARLY SEP</div><div class="cal-day" style="font-size:12px;color:var(--text-muted);">EST.</div></div>
+      <div class="cal-info">
+        <div class="cal-title">Yamaha Motor MY2027 Announcement Window</div>
+        <div class="cal-sub">Estimated · Most consistent OEM: Sep 10, 2025 &amp; Aug 7, 2024 · Official date TBD</div>
+        <span class="cal-tag" style="background:rgba(168,85,247,0.15);color:var(--purple);">Product Watch</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">SEP–OCT</div><div class="cal-day" style="font-size:12px;color:var(--text-muted);">EST.</div></div>
+      <div class="cal-info">
+        <div class="cal-title">Kawasaki MY2027 Announcement Window</div>
+        <div class="cal-sub">Estimated · Pre-SEMA timing pattern · Official date TBD</div>
+        <span class="cal-tag" style="background:rgba(168,85,247,0.15);color:var(--purple);">Product Watch</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">OCT</div><div class="cal-day" style="font-size:13px;">20–25</div></div>
+      <div class="cal-info">
+        <div class="cal-title">UTV Takeover — Hurricane</div>
+        <div class="cal-sub">Sand Hollow State Park, UT · utvtakeover.com</div>
+        <span class="cal-tag" style="background:rgba(249,115,22,0.15);color:#fdba74;">Off-Road</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">NOV</div><div class="cal-day" style="font-size:13px;">3–6</div></div>
+      <div class="cal-info">
+        <div class="cal-title">SEMA Show</div>
+        <div class="cal-sub">Las Vegas Convention Center · semashow.com</div>
+        <span class="cal-tag" style="background:rgba(6,182,212,0.15);color:var(--cyan);">Trade Show</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">NOV</div><div class="cal-day" style="font-size:13px;">5–8</div></div>
+      <div class="cal-info">
+        <div class="cal-title">EICMA — Milan Motorcycle Show</div>
+        <div class="cal-sub">Fiera Milano – Rho, Italy · eicma.it</div>
+        <span class="cal-tag" style="background:rgba(6,182,212,0.15);color:var(--cyan);">Trade Show</span>
+      </div>
+    </div>
+
+    <!-- ── 2027 ──────────────────────────────────────────────── -->
+    <div class="cal-group">2027</div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">JAN</div><div class="cal-day" style="font-size:13px;">18–21</div></div>
+      <div class="cal-info">
+        <div class="cal-title">World of Concrete</div>
+        <div class="cal-sub">Las Vegas Convention Center · worldofconcrete.com · Relevant: Deere &amp; Kubota commercial buyers</div>
+        <span class="cal-tag" style="background:rgba(34,197,94,0.15);color:var(--green);">Ag &amp; Commercial</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">JAN–FEB</div><div class="cal-day" style="font-size:11px;">21–Feb 6</div></div>
+      <div class="cal-info">
+        <div class="cal-title">King of the Hammers</div>
+        <div class="cal-sub">Johnson Valley, CA · kingofthehammers.com</div>
+        <span class="cal-tag" style="background:rgba(249,115,22,0.15);color:#fdba74;">Off-Road</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">FEB '27</div><div class="cal-day" style="font-size:12px;color:var(--text-muted);">EST.</div></div>
+      <div class="cal-info">
+        <div class="cal-title">Honda MY2027 Announcement Window</div>
+        <div class="cal-sub">Estimated · Prior patterns: Feb 10, 2026 &amp; Feb 2, 2025 · Official date TBD</div>
+        <span class="cal-tag" style="background:rgba(168,85,247,0.15);color:var(--purple);">Product Watch</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">FEB</div><div class="cal-day" style="font-size:13px;">9–11</div></div>
+      <div class="cal-info">
+        <div class="cal-title">World Ag Expo</div>
+        <div class="cal-sub">Tulare, CA · worldagexpo.com</div>
+        <span class="cal-tag" style="background:rgba(34,197,94,0.15);color:var(--green);">Ag &amp; Commercial</span>
+      </div>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-date"><div class="cal-month">MAR</div><div class="cal-day" style="font-size:13px;">2–6</div></div>
+      <div class="cal-info">
+        <div class="cal-title">AIMExpo</div>
+        <div class="cal-sub">Orlando, FL · aimexpousa.com · Show floor Mar 3–5 · Moved from Anaheim</div>
+        <span class="cal-tag" style="background:rgba(6,182,212,0.15);color:var(--cyan);">Trade Show</span>
       </div>
     </div>
 
