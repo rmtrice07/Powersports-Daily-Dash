@@ -65,10 +65,7 @@
   .oem-info { flex: 1; min-width: 0; }
   .oem-name { font-weight: 600; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .oem-ticker { font-size: 10px; color: var(--text-muted); }
-  .oem-status { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-  .status-hot { background: var(--red); }
-  .status-active { background: var(--green); }
-  .status-watch { background: var(--yellow); }
+
 
   /* NEWS FEED */
   .news-tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap; }
@@ -257,7 +254,6 @@
         <div class="oem-name">Polaris</div>
         <div class="oem-ticker" id="sidebar-ticker-polaris">NYSE: PII · —</div>
       </div>
-      <div class="oem-status status-hot"></div>
     </div>
 
     <div class="oem-item" onclick="selectOEM('canam')" id="oem-canam">
@@ -266,7 +262,6 @@
         <div class="oem-name">Can-Am (BRP)</div>
         <div class="oem-ticker" id="sidebar-ticker-canam">Nasdaq: DOO · —</div>
       </div>
-      <div class="oem-status status-active"></div>
     </div>
 
     <div class="oem-item" onclick="selectOEM('kawasaki')" id="oem-kawasaki">
@@ -275,7 +270,6 @@
         <div class="oem-name">Kawasaki</div>
         <div class="oem-ticker" id="sidebar-ticker-kawasaki">OTC: KWHIF · —</div>
       </div>
-      <div class="oem-status status-watch"></div>
     </div>
 
     <div class="oem-item" onclick="selectOEM('yamaha')" id="oem-yamaha">
@@ -284,7 +278,6 @@
         <div class="oem-name">Yamaha Motor</div>
         <div class="oem-ticker" id="sidebar-ticker-yamaha">OTC: YMHAY · —</div>
       </div>
-      <div class="oem-status status-active"></div>
     </div>
 
     <div class="oem-item" onclick="selectOEM('cfmoto')" id="oem-cfmoto">
@@ -293,7 +286,6 @@
         <div class="oem-name">CFMOTO</div>
         <div class="oem-ticker">Private · Zhejiang CN</div>
       </div>
-      <div class="oem-status status-active"></div>
     </div>
 
     <div class="oem-item" onclick="selectOEM('speedutv')" id="oem-speedutv">
@@ -302,7 +294,6 @@
         <div class="oem-name">Speed UTV</div>
         <div class="oem-ticker">Private · Mesa, AZ</div>
       </div>
-      <div class="oem-status status-watch"></div>
     </div>
 
     <div class="oem-item" onclick="selectOEM('deere')" id="oem-deere">
@@ -311,7 +302,6 @@
         <div class="oem-name">John Deere</div>
         <div class="oem-ticker" id="sidebar-ticker-deere">NYSE: DE · —</div>
       </div>
-      <div class="oem-status status-active"></div>
     </div>
 
     <div class="oem-item" onclick="selectOEM('kubota')" id="oem-kubota">
@@ -320,7 +310,6 @@
         <div class="oem-name">Kubota</div>
         <div class="oem-ticker" id="sidebar-ticker-kubota">OTC: KUBTY · —</div>
       </div>
-      <div class="oem-status status-watch"></div>
     </div>
 
     <div class="oem-item" onclick="selectOEM('massimo')" id="oem-massimo">
@@ -329,7 +318,6 @@
         <div class="oem-name">Massimo Motor</div>
         <div class="oem-ticker">Private · Garland, TX</div>
       </div>
-      <div class="oem-status status-active"></div>
     </div>
 
     <div class="oem-item" onclick="selectOEM('honda')" id="oem-honda">
@@ -338,7 +326,6 @@
         <div class="oem-name">Honda</div>
         <div class="oem-ticker" id="sidebar-ticker-honda">NYSE: HMC · —</div>
       </div>
-      <div class="oem-status status-watch"></div>
     </div>
 
   </div>
