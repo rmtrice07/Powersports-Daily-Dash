@@ -88,10 +88,10 @@ OEM_KEYWORDS = {
     "yamaha":   ["yamaha", "rmax", "yamaha wolverine", "yamaha viking", "yxz"],
     "cfmoto":   ["cfmoto", "cf moto", "zforce", "uforce"],
     "speedutv": ["speed utv", "el jefe"],
-    "deere":    ["john deere", "deere gator", "gator utv"],
+    "deere":    ["john deere", "deere gator", "gator utv", "deere"],
     "kubota":   ["kubota", "kubota rtv"],
     "massimo":  ["massimo"],
-    "honda":    ["honda pioneer", "honda talon"],
+    "honda":    ["honda pioneer", "honda talon", "honda"],
 }
 
 CAT_KEYWORDS = {
@@ -200,6 +200,7 @@ SPAM_DOMAINS = {
     "manilatimes.net",
     "griceconnect.com",
     "wvnews.com",
+    "motorsportsnewswire.com",
 }
 
 SPAM_URL_SEGMENTS = {
@@ -208,29 +209,46 @@ SPAM_URL_SEGMENTS = {
 }
 
 SPAM_TITLE_PATTERNS = [
-    # Fitment / parts listings  e.g. "For 2021-2024 Polaris RZR"
-    re.compile(r"\bfor\s+20\d{2}[-–]\d{2,4}\b", re.IGNORECASE),
+    # Fitment / parts listings  e.g. "For 2021-2024..." or "1995-2005 Yamaha..."
+    re.compile(r"(?:\bfor\s+|\A)(?:19|20)\d{2}[-–]\d{2,4}\b", re.IGNORECASE),
     # Bare part-number slugs    e.g. "2884623 OEM Polaris"
     re.compile(r"\b\d{6,}\b"),
+    # Hyphenated part numbers   e.g. "44300-21G00"
+    re.compile(r"\b\d{4,}[-–][A-Z0-9]{2,}\b"),
     # Police / crime blotter
-    re.compile(r"\b(arrested|charged|indicted|pleaded guilty|sentenced|sheriff|police|crash|fatally|killed|died)\b", re.IGNORECASE),
+    re.compile(r"\b(arrest\w*|charged|indicted|pleaded guilty|sentenced|sheriff|police|crash|fatally|killed|died|domestic violence)\b", re.IGNORECASE),
     # Raffle / giveaway
     re.compile(r"\b(raffle|giveaway|win a|sweepstakes|enter to win)\b", re.IGNORECASE),
     # Job postings
     re.compile(r"\b(hiring|we.re hiring|job opening|careers at|apply now)\b", re.IGNORECASE),
+    # Auction listings
+    re.compile(r"\bauction\b", re.IGNORECASE),
 ]
 
-def is_spam(title, link):
+def is_spam(title, link, source_url=""):
     """Return True if the article should be dropped before adding to the feed."""
     try:
         parsed = urlparse(link)
-        domain = parsed.netloc.lower().lstrip("www.")
-        path   = parsed.path.lower()
+        domain = parsed.netloc.lower()
+        if domain.startswith("www."):
+            domain = domain[4:]
+        path = parsed.path.lower()
     except Exception:
         domain, path = "", ""
 
     if domain in SPAM_DOMAINS:
         return True
+    # For Google News, entry.link is a news.google.com redirect; check the original source domain.
+    if source_url:
+        try:
+            src_parsed = urlparse(source_url)
+            src_domain = src_parsed.netloc.lower()
+            if src_domain.startswith("www."):
+                src_domain = src_domain[4:]
+            if src_domain in SPAM_DOMAINS:
+                return True
+        except Exception:
+            pass
     if any(seg in path for seg in SPAM_URL_SEGMENTS):
         return True
     for pat in SPAM_TITLE_PATTERNS:
@@ -393,9 +411,11 @@ def fetch_gnews(max_per=5):
                 if not title or key in seen:
                     continue
                 link = e.get("link", "#")
+                src = e.get("source", {})
+                source_url = src.get("href", "") if isinstance(src, dict) else ""
                 # Drop spam/low-quality articles before dedup so they don't
                 # consume the per-query slot.
-                if is_spam(title, link):
+                if is_spam(title, link, source_url):
                     dropped += 1
                     continue
                 seen.add(key)
