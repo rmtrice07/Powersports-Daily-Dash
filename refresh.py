@@ -156,21 +156,76 @@ SEC_NO_EDGAR = [
 SEC_USER_AGENT = "Powersports Dashboard rich.macauleyiii@gmail.com"
 
 SEC_EXCLUDED_FORMS = {
+    # Insider ownership / transactions
     "4", "4/A", "3", "3/A", "5", "5/A",
+    # 13G/D filed under both "SC 13G" and "SCHEDULE 13G" depending on filer
     "SC 13G", "SC 13G/A", "SC 13D", "SC 13D/A",
+    "SCHEDULE 13G", "SCHEDULE 13G/A", "SCHEDULE 13D", "SCHEDULE 13D/A",
+    "144",
+    # Compliance filings with no strategic content
+    "11-K", "SD",
+    # Registration / structural / boilerplate
     "8-A12B", "8-A12G", "S-8", "S-8 POS",
-    "FWP", "424B2", "424B3", "424B5",
-    "DEFA14A", "ARS", "SD", "CORRESP", "UPLOAD",
+    "FWP", "ARS", "CORRESP", "UPLOAD",
 }
 
 FORM_COLORS = {
     "10-K":    ("rgba(59,130,246,0.15)",  "var(--accent2)"),
+    "10-K/A":  ("rgba(59,130,246,0.15)",  "var(--accent2)"),
     "10-Q":    ("rgba(6,182,212,0.15)",   "var(--cyan)"),
+    "10-Q/A":  ("rgba(6,182,212,0.15)",   "var(--cyan)"),
     "8-K":     ("rgba(234,179,8,0.15)",   "var(--yellow)"),
+    "8-K/A":   ("rgba(234,179,8,0.15)",   "var(--yellow)"),
     "DEF 14A": ("rgba(168,85,247,0.15)", "var(--purple)"),
+    "DEFA14A": ("rgba(168,85,247,0.15)", "var(--purple)"),
     "20-F":    ("rgba(59,130,246,0.15)",  "var(--accent2)"),
     "6-K":     ("rgba(34,197,94,0.15)",   "var(--green)"),
 }
+
+# Human-readable labels derived deterministically from form type.
+FORM_EVENT_TAGS = {
+    "10-K":    "Annual Report",
+    "10-K/A":  "Annual Report — Amended",
+    "10-Q":    "Quarterly Results",
+    "10-Q/A":  "Quarterly Results — Amended",
+    "DEF 14A": "Proxy Statement",
+    "DEFA14A": "Proxy — Additional Materials",
+    "6-K":     "Foreign Filer Report",
+    "20-F":    "Annual Report (Foreign)",
+    "S-1":     "Securities Registration",
+    "S-3":     "Securities Registration",
+    "S-4":     "Securities Registration",
+}
+
+# 8-K Item codes → labels per SEC regulation. None = skip as primary tag.
+ITEM_8K_TAGS = {
+    "1.01": "Material Agreement",
+    "1.02": "Termination of Material Agreement",
+    "1.03": "Bankruptcy / Receivership",
+    "2.01": "Acquisition or Disposition",
+    "2.02": "Earnings Release",
+    "2.03": "Material Debt Obligation",
+    "2.04": "Triggering Events Affecting Debt",
+    "2.05": "Exit / Disposal Activities",
+    "2.06": "Material Impairments",
+    "3.01": "Listing Notice / Delisting",
+    "3.02": "Unregistered Sale of Equity",
+    "3.03": "Modification to Securityholder Rights",
+    "4.01": "Auditor Change",
+    "4.02": "Non-Reliance on Prior Financials",
+    "5.01": "Change in Control",
+    "5.02": "Executive / Board Changes",
+    "5.03": "Bylaw / Charter Amendment",
+    "5.07": "Shareholder Vote Results",
+    "7.01": "Regulation FD Disclosure",
+    "8.01": "Other Events",
+    "9.01": None,  # financial statements/exhibits — skip as primary tag
+}
+
+# Priority order when an 8-K reports multiple items (most strategically meaningful first).
+ITEM_8K_PRIORITY = ["5.02", "2.01", "1.01", "2.02", "5.07"]
+
+_FORM_424B = re.compile(r"^424B", re.IGNORECASE)
 
 # ── News Volume Chart ─────────────────────────────────────────────────────────
 
@@ -618,6 +673,34 @@ def build_ma_section():
         )
     return "\n".join(parts)
 
+def _tag_8k(items_str):
+    """Derive a human-readable label from an 8-K's Items field."""
+    if not items_str or not items_str.strip():
+        return "General Disclosure"
+    raw   = [i.strip() for i in re.split(r"[,;\s]+", items_str) if i.strip()]
+    items = [i for i in raw if i != "9.01"]
+    if not items:
+        return "General Disclosure"
+    for p in ITEM_8K_PRIORITY:
+        if p in items:
+            label = ITEM_8K_TAGS.get(p) or f"Item {p}"
+            rest  = [i for i in items if i != p]
+            return f"{label} +more" if rest else label
+    first = items[0]
+    label = ITEM_8K_TAGS.get(first) or f"Item {first}"
+    rest  = items[1:]
+    return f"{label} +more" if rest else label
+
+def tag_filing_event(form, items_str=""):
+    """Return a human-readable event tag for a filing, or None if unknown."""
+    if form in ("8-K", "8-K/A"):
+        return _tag_8k(items_str)
+    if form in FORM_EVENT_TAGS:
+        return FORM_EVENT_TAGS[form]
+    if _FORM_424B.match(form):
+        return "Prospectus"
+    return None
+
 def fetch_sec_filings(days_back=90, max_per_cik=10, top_n=15):
     results = []
     cutoff = datetime.now(timezone.utc) - timedelta(days=days_back)
@@ -631,12 +714,13 @@ def fetch_sec_filings(days_back=90, max_per_cik=10, top_n=15):
             forms        = recent.get("form", [])
             dates        = recent.get("filingDate", [])
             accnos       = recent.get("accessionNumber", [])
-            descriptions = recent.get("primaryDocDescription", [])
-            count = 0
-            for form, date_str, accno, desc in zip(forms, dates, accnos, descriptions):
+            items_list   = recent.get("items", [])
+            count, filtered = 0, 0
+            for i, (form, date_str, accno) in enumerate(zip(forms, dates, accnos)):
                 if count >= max_per_cik:
                     break
                 if form in SEC_EXCLUDED_FORMS:
+                    filtered += 1
                     continue
                 try:
                     filing_dt = datetime.strptime(date_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
@@ -644,6 +728,7 @@ def fetch_sec_filings(days_back=90, max_per_cik=10, top_n=15):
                     continue
                 if filing_dt < cutoff:
                     break  # EDGAR returns newest-first
+                items_str  = items_list[i] if i < len(items_list) else ""
                 cik_int        = int(padded_cik)
                 accno_nodashes = accno.replace("-", "")
                 filing_url = (
@@ -651,17 +736,23 @@ def fetch_sec_filings(days_back=90, max_per_cik=10, top_n=15):
                     f"{accno_nodashes}/{accno}-index.htm"
                 )
                 results.append({
-                    "oem_key":  oem_key,
-                    "company":  display_name,
-                    "form":     form,
-                    "date":     filing_dt,
-                    "date_str": filing_dt.strftime("%b %-d, %Y"),
-                    "desc":     (desc or "").strip(),
-                    "url":      filing_url,
+                    "oem_key":   oem_key,
+                    "company":   display_name,
+                    "form":      form,
+                    "items_str": items_str,
+                    "event_tag": tag_filing_event(form, items_str),
+                    "date":      filing_dt,
+                    "date_str":  filing_dt.strftime("%b %-d, %Y"),
+                    "url":       filing_url,
                 })
                 count += 1
             time.sleep(0.2)
-            print(f"  ✓ {display_name}: {count} filings in window")
+            if count == 0 and filtered > 0:
+                print(f"  ⚠ {display_name}: 0 filings kept ({filtered} filtered) — panel empty for this company")
+            elif filtered:
+                print(f"  ✓ {display_name}: {count} kept, {filtered} filtered out")
+            else:
+                print(f"  ✓ {display_name}: {count} filings in window")
         except Exception as e:
             print(f"  ✗ {display_name}: {e}")
     results.sort(key=lambda x: x["date"], reverse=True)
@@ -677,17 +768,22 @@ def build_sec_section(filings):
         )
     else:
         for f in filings:
-            _, tag_cls = OEM_TAG_MAP.get(f["oem_key"], ("Market", "tag-market"))
-            bg, fg     = FORM_COLORS.get(f["form"], ("rgba(139,148,158,0.15)", "var(--text-muted)"))
-            desc_part  = (f' <span style="color:var(--text-muted);">· {html_lib.escape(f["desc"])}</span>'
-                          if f["desc"] else "")
+            _, tag_cls  = OEM_TAG_MAP.get(f["oem_key"], ("Market", "tag-market"))
+            bg, fg      = FORM_COLORS.get(f["form"], ("rgba(139,148,158,0.15)", "var(--text-muted)"))
+            event_tag   = f.get("event_tag")
+            event_part  = (
+                f'<span style="color:var(--text-muted);font-size:10px;font-weight:400;">'
+                f'· {html_lib.escape(event_tag)}</span> '
+                if event_tag else ""
+            )
             parts.append(
                 f'      <div class="sec-item">\n'
                 f'        <div class="sec-header">\n'
                 f'          <span class="news-oem-tag {tag_cls}">{html_lib.escape(f["company"])}</span>\n'
                 f'          <span style="background:{bg};color:{fg};font-size:10px;font-weight:700;'
                 f'padding:1px 6px;border-radius:3px;">{html_lib.escape(f["form"])}</span>\n'
-                f'          <span class="sec-date">{f["date_str"]}{desc_part}</span>\n'
+                f'          {event_part}'
+                f'<span class="sec-date">{f["date_str"]}</span>\n'
                 f'          <a href="{html_lib.escape(f["url"])}" target="_blank" rel="noopener" '
                 f'class="sec-link">View →</a>\n'
                 f'        </div>\n'
@@ -844,6 +940,12 @@ def main():
     print("\n[5/6] Fetching SEC EDGAR filings...")
     filings = fetch_sec_filings()
     print(f"      {len(filings)} filings fetched")
+    if filings:
+        print(f"\n      {'FORM':<12} {'EVENT TAG':<38} {'DATE':<14} COMPANY")
+        print(f"      {'-'*12} {'-'*38} {'-'*14} {'-'*20}")
+        for f in filings:
+            tag = f.get("event_tag") or "—"
+            print(f"      {f['form']:<12} {tag:<38} {f['date'].strftime('%Y-%m-%d'):<14} {f['company']}")
 
     print(f"\n[6/6] Building dashboard ({len(all_articles)} articles)...")
     template = DASHBOARD.read_text(encoding="utf-8")
