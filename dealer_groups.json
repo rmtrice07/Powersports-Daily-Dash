@@ -1,0 +1,138 @@
+{
+  "_purpose": "Dealer Group Tracker roster — single authoritative source for the dashboard's dealer section. Edit this file to add, remove, or update dealer entries. Do NOT add store-count numbers for private dealers — footprint is qualitative only.",
+  "_last_verified": "May 2026",
+  "_edit_notes": [
+    "brands_note fields describe what is publicly known; verify current brand authorizations at each dealer's website before updating.",
+    "news_terms drive the Google News RSS queries that populate the Dealer/Channel news feed tab.",
+    "filing_caveat text is displayed on SEC filings entries to prevent misreading corporate-level filings as powersports-only.",
+    "Do not add site-selection language or dealer-siting recommendations anywhere in this file."
+  ],
+
+  "national_tier": [
+    {
+      "key": "ridenow",
+      "name": "RideNow Group, Inc.",
+      "formerly": "RumbleOn",
+      "public": true,
+      "ticker": "RDNW",
+      "exchange": "Nasdaq",
+      "cik": "0001596961",
+      "footprint": "Nationwide multi-brand dealer group",
+      "brands_note": "Multi-brand (verify current brand authorizations at ridenow.com)",
+      "hq": "Scottsdale, AZ",
+      "news_terms": ["RideNow Group", "RideNow Powersports", "RumbleOn Powersports", "RDNW powersports"]
+    },
+    {
+      "key": "sonic",
+      "name": "Sonic Powersports",
+      "parent": "Sonic Automotive, Inc.",
+      "public": true,
+      "ticker": "SAH",
+      "exchange": "NYSE",
+      "cik": "0001043509",
+      "footprint": "Multi-region powersports rooftops; UTV-relevant stores operate as Team Mancuso Powersports",
+      "brands_note": "Harley-Davidson / motorcycle-skewed; multi-brand at Team Mancuso locations (verify current authorizations)",
+      "filing_caveat": "Corporate-level filing — Sonic Automotive files as a full automotive + powersports company. Powersports is a reported segment, not the whole business.",
+      "hq": "Charlotte, NC",
+      "news_terms": ["Team Mancuso Powersports", "Sonic Powersports", "Sonic Automotive powersports"]
+    }
+  ],
+
+  "regional_tier": [
+    {
+      "region": "Desert Southwest",
+      "region_key": "desert-sw",
+      "dealers": [
+        {
+          "key": "berts",
+          "name": "Bert's Mega Mall",
+          "public": false,
+          "footprint": "Single location · Covina, CA",
+          "hq": "Covina, CA",
+          "news_terms": ["Bert's Mega Mall", "Berts Mega Mall"]
+        },
+        {
+          "key": "delamo",
+          "name": "Del Amo Motorsports",
+          "public": false,
+          "footprint": "Multi-store · Southern California",
+          "hq": "Southern California",
+          "news_terms": ["Del Amo Motorsports"]
+        }
+      ]
+    },
+    {
+      "region": "Mountain West",
+      "region_key": "mountain-west",
+      "dealers": [
+        {
+          "key": "westside",
+          "name": "Westside Motorsports",
+          "public": false,
+          "footprint": "Single location · Spokane, WA",
+          "hq": "Spokane, WA",
+          "news_terms": ["Westside Motorsports Spokane"]
+        },
+        {
+          "key": "procaliber",
+          "name": "Pro Caliber",
+          "public": false,
+          "footprint": "Multi-store · Bend OR &amp; Vancouver WA",
+          "hq": "Bend, OR",
+          "news_terms": ["Pro Caliber Powersports", "Pro Caliber Motorsports"]
+        }
+      ]
+    },
+    {
+      "region": "Heartland / Ag Belt",
+      "region_key": "heartland",
+      "dealers": [
+        {
+          "key": "cedarcreek",
+          "name": "Cedar Creek Motorsports",
+          "public": false,
+          "footprint": "Single location · Cedarburg, WI",
+          "hq": "Cedarburg, WI",
+          "news_terms": ["Cedar Creek Motorsports", "Cedar Creek Mega Mall"]
+        },
+        {
+          "key": "i69",
+          "name": "Interstate 69 Motorsports",
+          "public": false,
+          "footprint": "Single location · Union City, TN",
+          "hq": "Union City, TN",
+          "news_terms": ["Interstate 69 Motorsports", "I-69 Motorsports"]
+        }
+      ]
+    },
+    {
+      "region": "Eastern Trail Belt",
+      "region_key": "eastern-trail",
+      "dealers": [
+        {
+          "key": "unitedmoto",
+          "name": "United Motorsports",
+          "public": false,
+          "footprint": "Multi-location group · KY / OH / WV",
+          "hq": "KY / OH / WV",
+          "notes": "Anchored on the Hatfield-McCoy trail region",
+          "news_terms": ["United Motorsports powersports", "United Motorsports KY"]
+        }
+      ]
+    },
+    {
+      "region": "Southeast",
+      "region_key": "southeast",
+      "dealers": [
+        {
+          "key": "mountainmoto",
+          "name": "Mountain Motorsports",
+          "public": false,
+          "footprint": "Multi-location group · GA / AL / TN",
+          "hq": "GA / AL / TN",
+          "news_terms": ["Mountain Motorsports dealer"]
+        }
+      ]
+    }
+  ]
+}

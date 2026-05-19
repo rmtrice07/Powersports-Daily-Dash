@@ -23,6 +23,9 @@
     }
   ],
 
+  "_channel_consolidation_note": "Add verified dealer-level M&A here. Same evidence standard as deals — dated, sourced, no speculation. Leave array empty until a deal is confirmed.",
+  "channel_consolidation": [],
+
   "partnerships": [
     {
       "date": "Ongoing",

@@ -216,6 +216,24 @@
   .tag-honda { background: rgba(239,68,68,0.2); color: #fca5a5; }
   .tag-market { background: rgba(6,182,212,0.2); color: var(--cyan); }
   .tag-reg { background: rgba(234,179,8,0.2); color: var(--yellow); }
+
+  /* DEALER GROUP TRACKER */
+  .dealer-section { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px 18px; margin-bottom:16px; }
+  .dealer-tier-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); padding:5px 0 9px; border-bottom:1px solid var(--border); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .dealer-card { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:11px 13px; flex:1; min-width:200px; }
+  .dealer-card-name { font-size:13px; font-weight:700; margin-bottom:2px; }
+  .dealer-card-sub { font-size:10px; color:var(--text-muted); }
+  .dealer-region-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(175px,1fr)); gap:9px; }
+  .dealer-region-block { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:9px 11px; }
+  .dealer-region-label { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); margin-bottom:7px; }
+  .dealer-item { padding:5px 0; border-bottom:1px solid rgba(48,54,61,0.5); }
+  .dealer-item:last-child { border-bottom:none; }
+  .dealer-item-name { font-size:12px; font-weight:600; }
+  .dealer-item-fp { font-size:10px; color:var(--text-muted); }
+  .dealer-inventory-slot { display:none; } /* extensibility hook — future inventory panel attaches here */
+  .tag-ridenow { background:rgba(6,182,212,0.2); color:var(--cyan); }
+  .tag-sonic   { background:rgba(168,85,247,0.2); color:var(--purple); }
+  .tag-dealer  { background:rgba(249,115,22,0.2); color:var(--accent); }
 </style>
 </head>
 <body>
@@ -389,6 +407,99 @@
       <div class="alert-body">Next scheduled Polaris Industries (NYSE: PII) earnings release. Monitor investor.polaris.com for confirmed call time, webcast link, and prepared remarks as the date approaches.</div>
     </div>
 
+    <!-- DEALER GROUP TRACKER -->
+    <div class="section-header" style="margin-top:16px;">
+      <div class="section-title">Dealer Group Tracker</div>
+      <div style="font-size:10px;color:var(--text-muted);">Channel Intelligence &nbsp;·&nbsp; Downstream Retail Monitoring</div>
+    </div>
+    <div class="dealer-section">
+
+      <!-- National Tier — equity data injected by refresh.py -->
+      <div class="dealer-tier-label">
+        National Tier
+        <span style="background:rgba(59,130,246,0.15);color:var(--accent2);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Publicly Traded</span>
+      </div>
+      <!-- REFRESH:DEALER_CAPS:START -->
+      <div style="color:var(--text-muted);font-size:11px;padding:6px 0;">Market data loading…</div>
+      <!-- REFRESH:DEALER_CAPS:END -->
+
+      <!-- Regional Tier — static roster; footprint is qualitative only for private groups -->
+      <div class="dealer-tier-label" style="margin-top:14px;">
+        Regional Tier
+        <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Private Groups</span>
+      </div>
+      <div class="dealer-region-grid">
+
+        <!-- Desert Southwest -->
+        <div class="dealer-region-block" id="region-desert-sw">
+          <div class="dealer-region-label">Desert Southwest</div>
+          <div class="dealer-item" id="dealer-berts">
+            <div class="dealer-item-name">Bert's Mega Mall</div>
+            <div class="dealer-item-fp">Single location · Covina, CA</div>
+            <!-- INVENTORY-SLOT: berts — future inventory panel attaches here -->
+            <div class="dealer-inventory-slot" id="inventory-berts"></div>
+          </div>
+          <div class="dealer-item" id="dealer-delamo">
+            <div class="dealer-item-name">Del Amo Motorsports</div>
+            <div class="dealer-item-fp">Multi-store · Southern California</div>
+            <div class="dealer-inventory-slot" id="inventory-delamo"></div>
+          </div>
+        </div>
+
+        <!-- Mountain West -->
+        <div class="dealer-region-block" id="region-mountain-west">
+          <div class="dealer-region-label">Mountain West</div>
+          <div class="dealer-item" id="dealer-westside">
+            <div class="dealer-item-name">Westside Motorsports</div>
+            <div class="dealer-item-fp">Single location · Spokane, WA</div>
+            <div class="dealer-inventory-slot" id="inventory-westside"></div>
+          </div>
+          <div class="dealer-item" id="dealer-procaliber">
+            <div class="dealer-item-name">Pro Caliber</div>
+            <div class="dealer-item-fp">Multi-store · Bend OR &amp; Vancouver WA</div>
+            <div class="dealer-inventory-slot" id="inventory-procaliber"></div>
+          </div>
+        </div>
+
+        <!-- Heartland / Ag Belt -->
+        <div class="dealer-region-block" id="region-heartland">
+          <div class="dealer-region-label">Heartland / Ag Belt</div>
+          <div class="dealer-item" id="dealer-cedarcreek">
+            <div class="dealer-item-name">Cedar Creek Motorsports</div>
+            <div class="dealer-item-fp">Single location · Cedarburg, WI</div>
+            <div class="dealer-inventory-slot" id="inventory-cedarcreek"></div>
+          </div>
+          <div class="dealer-item" id="dealer-i69">
+            <div class="dealer-item-name">Interstate 69 Motorsports</div>
+            <div class="dealer-item-fp">Single location · Union City, TN</div>
+            <div class="dealer-inventory-slot" id="inventory-i69"></div>
+          </div>
+        </div>
+
+        <!-- Eastern Trail Belt -->
+        <div class="dealer-region-block" id="region-eastern-trail">
+          <div class="dealer-region-label">Eastern Trail Belt</div>
+          <div class="dealer-item" id="dealer-unitedmoto">
+            <div class="dealer-item-name">United Motorsports</div>
+            <div class="dealer-item-fp">Multi-location group · KY / OH / WV</div>
+            <div class="dealer-item-fp" style="font-style:italic;margin-top:1px;">Hatfield-McCoy trail region</div>
+            <div class="dealer-inventory-slot" id="inventory-unitedmoto"></div>
+          </div>
+        </div>
+
+        <!-- Southeast -->
+        <div class="dealer-region-block" id="region-southeast">
+          <div class="dealer-region-label">Southeast</div>
+          <div class="dealer-item" id="dealer-mountainmoto">
+            <div class="dealer-item-name">Mountain Motorsports</div>
+            <div class="dealer-item-fp">Multi-location group · GA / AL / TN</div>
+            <div class="dealer-inventory-slot" id="inventory-mountainmoto"></div>
+          </div>
+        </div>
+
+      </div><!-- /dealer-region-grid -->
+    </div><!-- /dealer-section -->
+
     <!-- NEWS SECTION -->
     <div class="section-header" style="margin-top:16px;">
       <div class="section-title">News Intelligence Feed</div>
@@ -401,7 +512,7 @@
       <div class="news-tab" onclick="setTab('strategy', this)">Strategy</div>
       <div class="news-tab" onclick="setTab('sentiment', this)">Sentiment</div>
       <div class="news-tab" onclick="setTab('regulatory', this)">Regulatory</div>
-      <div class="news-tab" onclick="setTab('dealer', this)">Dealer/Retail</div>
+      <div class="news-tab" onclick="setTab('dealer', this)">Dealer/Channel</div>
     </div>
 
     <div id="news-feed" class="news-feed-all">

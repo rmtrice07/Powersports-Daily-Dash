@@ -30,10 +30,11 @@ except ImportError:
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 
-ROOT         = Path(__file__).parent
-DASHBOARD    = ROOT / "index.html"
-MA_DATA      = ROOT / "ma_data.json"
-HISTORY_FILE = ROOT / "news_history.json"
+ROOT              = Path(__file__).parent
+DASHBOARD         = ROOT / "index.html"
+MA_DATA           = ROOT / "ma_data.json"
+HISTORY_FILE      = ROOT / "news_history.json"
+DEALER_GROUPS_FILE= ROOT / "dealer_groups.json"
 
 # ── Stock Tickers ─────────────────────────────────────────────────────────────
 # (yfinance_symbol, display_symbol, name, exchange, hex_color, css_tag_class)
@@ -46,6 +47,14 @@ TICKERS = [
     ("YMHAY", "YMHAY","Yamaha Motor",  "OTC",    "#93c5fd", "tag-yamaha",   "yamaha"),
     ("KUBTY", "KUBTY","Kubota",        "OTC",    "#fca5a5", "tag-kubota",   "kubota"),
     ("KWHIF", "KWHIF","Kawasaki HI",   "OTC",    "#86efac", "tag-kawasaki", "kawasaki"),
+]
+
+# ── Dealer Tickers ────────────────────────────────────────────────────────────
+# Public dealer groups tracked separately from OEM tickers.
+
+DEALER_TICKERS = [
+    ("RDNW", "RDNW", "RideNow Group",    "Nasdaq", "#06b6d4", "tag-ridenow", "ridenow"),
+    ("SAH",  "SAH",  "Sonic Automotive",  "NYSE",   "#a855f7", "tag-sonic",   "sonic"),
 ]
 
 # ── RSS Feeds ─────────────────────────────────────────────────────────────────
@@ -75,8 +84,11 @@ GNEWS_QUERIES = [
     ('Kubota RTV utility vehicle',                            "kubota",   "Kubota",    "tag-kubota"),
     ('"Massimo Motor" OR "Massimo UTV"',                      "massimo",  "Massimo",   "tag-massimo"),
     ('Honda Pioneer OR "Honda Talon" side-by-side',           "honda",    "Honda",     "tag-honda"),
-    ('UTV acquisition OR powersports merger OR "powersports" investment', "market", "M&A",        "tag-market"),
-    ('UTV NHTSA OR powersports tariff OR "off-road vehicle" regulation',  "market", "Regulatory", "tag-reg"),
+    ('UTV acquisition OR powersports merger OR "powersports" investment', "market",  "M&A",        "tag-market"),
+    ('UTV NHTSA OR powersports tariff OR "off-road vehicle" regulation',  "market",  "Regulatory", "tag-reg"),
+    ('"RideNow" powersports OR "RideNow Group" OR "RumbleOn powersports"',"ridenow", "RideNow",    "tag-ridenow"),
+    ('"Team Mancuso Powersports" OR "Sonic Powersports"',                 "sonic",   "Sonic Auto", "tag-sonic"),
+    ('powersports dealer consolidation OR "powersports retail" OR "UTV dealer"', "dealer", "Dealer", "tag-dealer"),
 ]
 
 # ── Classification Maps ───────────────────────────────────────────────────────
@@ -92,7 +104,12 @@ OEM_KEYWORDS = {
     "kubota":   ["kubota", "kubota rtv"],
     "massimo":  ["massimo"],
     "honda":    ["honda pioneer", "honda talon", "honda"],
+    "ridenow":  ["ridenow group", "ridenow powersports", "rumbleon powersports"],
+    "sonic":    ["team mancuso powersports", "sonic powersports"],
 }
+
+# oem_keys that map to the Dealer/Channel news tab instead of an OEM tab.
+DEALER_OEM_KEYS = {"ridenow", "sonic", "dealer"}
 
 CAT_KEYWORDS = {
     "financial":  ["earnings", "revenue", "profit", "stock", "guidance", "quarterly",
@@ -121,6 +138,9 @@ OEM_TAG_MAP = {
     "massimo":  ("Massimo",   "tag-massimo"),
     "honda":    ("Honda",     "tag-honda"),
     "market":   ("Market",    "tag-market"),
+    "ridenow":  ("RideNow",   "tag-ridenow"),
+    "sonic":    ("Sonic Auto","tag-sonic"),
+    "dealer":   ("Dealer",    "tag-dealer"),
 }
 
 BADGE_STYLES = {
@@ -145,7 +165,18 @@ SEC_FILERS = [
     ("0000931015", "Polaris Inc.",    "polaris"),
     ("0000315189", "Deere & Company", "deere"),
     ("0000715153", "Honda Motor Co.", "honda"),
+    ("0001596961", "RideNow Group",   "ridenow"),
+    ("0001043509", "Sonic Automotive","sonic"),
 ]
+
+# Caveats for entities whose SEC filings span multiple business segments.
+# Displayed as a warning note on each matching filing row.
+SEC_FILING_CAVEATS = {
+    "sonic": (
+        "Corporate-level filing — Sonic Automotive files as a full automotive + powersports company. "
+        "Powersports is a reported segment, not the whole business."
+    ),
+}
 
 SEC_NO_EDGAR = [
     # (display_name, exchange_note, oem_key)
@@ -418,6 +449,144 @@ def fetch_stocks():
             print(f"  ✗ {sym}: {e}")
     return rows
 
+def load_dealer_groups():
+    if not DEALER_GROUPS_FILE.exists():
+        return {}
+    try:
+        return json.loads(DEALER_GROUPS_FILE.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+def fetch_dealer_stocks():
+    if not HAS_YF:
+        return []
+    rows = []
+    for sym, disp, name, exch, color, tag_cls, oem_key in DEALER_TICKERS:
+        try:
+            tkr   = yf.Ticker(sym)
+            fi    = tkr.fast_info
+            price = fi.last_price
+            prev  = fi.previous_close
+            if price is None or prev is None:
+                raise ValueError("missing price data")
+            change = price - prev
+            pct    = (change / prev) * 100
+            try:
+                mkt_cap = fi.market_cap
+            except Exception:
+                mkt_cap = None
+            try:
+                hist     = tkr.history(period="1mo")
+                perf_30d = ((price - hist["Close"].iloc[0]) / hist["Close"].iloc[0]) * 100 if len(hist) >= 2 else None
+            except Exception:
+                perf_30d = None
+            rows.append({
+                "sym":      disp,
+                "name":     name,
+                "exch":     exch,
+                "oem_key":  oem_key,
+                "price":    fmt_price(sym, price),
+                "chg":      fmt_price(sym, abs(change)),
+                "pct":      abs(pct),
+                "color":    color,
+                "dir":      "up" if change >= 0 else "down",
+                "arrow":    "▲" if change >= 0 else "▼",
+                "mkt_cap":  mkt_cap,
+                "perf_30d": perf_30d,
+            })
+            time.sleep(0.4)
+        except Exception as e:
+            print(f"  ✗ {sym}: {e}")
+    return rows
+
+def build_dealer_caps(dealer_stocks):
+    dg            = load_dealer_groups()
+    national_tier = dg.get("national_tier", [])
+    if not national_tier:
+        return '      <!-- dealer_groups.json national_tier is empty -->'
+
+    stock_by_key = {s["oem_key"]: s for s in dealer_stocks}
+    cards = []
+    for dealer in national_tier:
+        key      = dealer.get("key", "")
+        name     = dealer.get("name", "")
+        ticker   = dealer.get("ticker", "")
+        exchange = dealer.get("exchange", "")
+        footprint= dealer.get("footprint", "")
+        brands   = dealer.get("brands_note", "")
+        caveat   = dealer.get("filing_caveat", "")
+        _, tag_cls = OEM_TAG_MAP.get(key, ("", "tag-dealer"))
+
+        stock = stock_by_key.get(key)
+        if stock:
+            cap_str  = fmt_market_cap(stock.get("mkt_cap"))
+            perf     = stock.get("perf_30d")
+            if perf is not None:
+                perf_color = "var(--green)" if perf >= 0 else "var(--red)"
+                perf_str   = f'{"▲" if perf >= 0 else "▼"}{abs(perf):.1f}%'
+            else:
+                perf_color, perf_str = "var(--text-muted)", "—"
+            dir_color   = "var(--green)" if stock.get("dir") == "up" else "var(--red)"
+            equity_html = (
+                f'          <div style="display:flex;gap:14px;align-items:baseline;margin-top:7px;">\n'
+                f'            <div>\n'
+                f'              <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.1;">{cap_str}</div>\n'
+                f'              <div style="font-size:10px;color:var(--text-muted);margin-top:1px;">Market Cap</div>\n'
+                f'            </div>\n'
+                f'            <div>\n'
+                f'              <div style="font-size:13px;font-weight:600;color:var(--text);">'
+                f'{stock["price"]} <span style="color:{dir_color};font-size:11px;">'
+                f'{stock["arrow"]}{stock["pct"]:.1f}%</span></div>\n'
+                f'              <div style="font-size:10px;color:{perf_color};font-weight:600;">'
+                f'{perf_str} <span style="color:var(--text-muted);font-weight:400;">30d</span></div>\n'
+                f'            </div>\n'
+                f'          </div>\n'
+            )
+        else:
+            equity_html = (
+                '          <div style="font-size:11px;color:var(--text-muted);margin-top:7px;">'
+                'Market data unavailable</div>\n'
+            )
+
+        ticker_line = (
+            f'<span style="font-size:10px;color:var(--text-muted);">'
+            f'{html_lib.escape(exchange)}: {html_lib.escape(ticker)}</span>'
+            if ticker else ""
+        )
+        brands_html = (
+            f'          <div style="font-size:10px;color:var(--text-muted);margin-top:3px;font-style:italic;">'
+            f'{html_lib.escape(brands)}</div>\n'
+            if brands else ""
+        )
+        caveat_html = (
+            f'          <div style="font-size:10px;color:var(--yellow);font-style:italic;'
+            f'margin-top:6px;padding:3px 6px;background:rgba(234,179,8,0.08);'
+            f'border-left:2px solid var(--yellow);border-radius:0 3px 3px 0;">'
+            f'⚠ {html_lib.escape(caveat)}</div>\n'
+            if caveat else ""
+        )
+        cards.append(
+            f'        <div class="dealer-card" id="dealer-{html_lib.escape(key)}">\n'
+            f'          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">\n'
+            f'            <span class="news-oem-tag {tag_cls}" style="font-size:10px;">'
+            f'{html_lib.escape(name)}</span>\n'
+            f'            {ticker_line}\n'
+            f'          </div>\n'
+            f'{equity_html}'
+            f'          <div style="font-size:11px;color:var(--text-muted);margin-top:5px;">'
+            f'{html_lib.escape(footprint)}</div>\n'
+            f'{brands_html}'
+            f'{caveat_html}'
+            f'          <div class="dealer-inventory-slot" id="inventory-{html_lib.escape(key)}"></div>\n'
+            f'        </div>'
+        )
+
+    return (
+        '      <div style="display:flex;flex-wrap:wrap;gap:10px;">\n'
+        + "\n".join(cards) + "\n"
+        + "      </div>"
+    )
+
 def fetch_direct_feeds(max_per=12):
     if not HAS_FP:
         return []
@@ -432,13 +601,14 @@ def fetch_direct_feeds(max_per=12):
                 link    = e.get("link", "#")
                 dt      = struct_to_dt(e.get("published_parsed"))
                 body    = f"{title} {summary}"
+                oem_key = detect_oem(body)
                 articles.append({
                     "title":   title,
                     "snippet": truncate(summary),
                     "link":    link,
                     "dt":      dt,
-                    "oem":     detect_oem(body),
-                    "cat":     detect_cat(body),
+                    "oem":     oem_key,
+                    "cat":     "dealer" if oem_key in DEALER_OEM_KEYS else detect_cat(body),
                     "label":   cfg["label"],
                     "badge":   cfg["badge"],
                 })
@@ -489,7 +659,7 @@ def fetch_gnews(max_per=5):
                     "link":    link,
                     "dt":      struct_to_dt(e.get("published_parsed")),
                     "oem":     oem_key,
-                    "cat":     detect_cat(body),
+                    "cat":     "dealer" if oem_key in DEALER_OEM_KEYS else detect_cat(body),
                     "label":   "Google News",
                     "badge":   "news",
                 })
@@ -648,6 +818,38 @@ def build_ma_section():
             f'      </div>'
         )
 
+    consolidation = data.get("channel_consolidation", [])
+    parts.append(
+        '      <div style="font-size:10px;font-weight:700;text-transform:uppercase;'
+        'letter-spacing:.06em;color:var(--text-muted);padding:10px 0 7px;'
+        'border-top:1px solid var(--border);margin-top:4px;">'
+        'Channel Consolidation</div>'
+    )
+    if consolidation:
+        for deal in consolidation:
+            acq_key  = deal.get("acquirer_key", "")
+            _, tag   = OEM_TAG_MAP.get(acq_key, ("", "tag-dealer"))
+            bg, fg   = MA_TYPE_STYLES.get(deal.get("type", ""), ("rgba(139,148,158,0.15)", "var(--text-muted)"))
+            val_str  = (f'&nbsp;·&nbsp;{html_lib.escape(deal["value"])}'
+                        if deal.get("value") and deal["value"] != "Undisclosed" else "")
+            parts.append(
+                f'      <div class="ma-item">\n'
+                f'        <div class="ma-header">\n'
+                f'          <span class="news-oem-tag {tag}">{html_lib.escape(deal["acquirer"])}</span>\n'
+                f'          <span style="background:{bg};color:{fg};font-size:10px;font-weight:700;'
+                f'padding:1px 6px;border-radius:3px;">{html_lib.escape(deal["type"])}</span>\n'
+                f'          <span class="ma-date">{html_lib.escape(deal["date"])}{val_str}</span>\n'
+                f'        </div>\n'
+                f'        <div class="ma-target">→ {html_lib.escape(deal["target"])}</div>\n'
+                f'        <div class="ma-intent">{html_lib.escape(deal["intent"])}</div>\n'
+                f'      </div>'
+            )
+    else:
+        parts.append(
+            '      <div style="font-size:11px;color:var(--text-muted);font-style:italic;'
+            'padding:6px 0 4px;">No entries yet — add verified deals to ma_data.json.</div>'
+        )
+
     for p in data.get("partnerships", []):
         keys    = p.get("party_keys", [])
         names   = p.get("parties", [])
@@ -741,6 +943,7 @@ def fetch_sec_filings(days_back=90, max_per_cik=10, top_n=15):
                     "form":      form,
                     "items_str": items_str,
                     "event_tag": tag_filing_event(form, items_str),
+                    "caveat":    SEC_FILING_CAVEATS.get(oem_key),
                     "date":      filing_dt,
                     "date_str":  filing_dt.strftime("%b %-d, %Y"),
                     "url":       filing_url,
@@ -776,6 +979,14 @@ def build_sec_section(filings):
                 f'· {html_lib.escape(event_tag)}</span> '
                 if event_tag else ""
             )
+            caveat      = f.get("caveat")
+            caveat_part = (
+                f'        <div style="font-size:10px;color:var(--yellow);font-style:italic;'
+                f'margin-top:4px;padding:3px 6px;background:rgba(234,179,8,0.08);'
+                f'border-left:2px solid var(--yellow);border-radius:0 3px 3px 0;">'
+                f'⚠ {html_lib.escape(caveat)}</div>\n'
+                if caveat else ""
+            )
             parts.append(
                 f'      <div class="sec-item">\n'
                 f'        <div class="sec-header">\n'
@@ -787,6 +998,7 @@ def build_sec_section(filings):
                 f'          <a href="{html_lib.escape(f["url"])}" target="_blank" rel="noopener" '
                 f'class="sec-link">View →</a>\n'
                 f'        </div>\n'
+                f'{caveat_part}'
                 f'      </div>'
             )
     if SEC_NO_EDGAR:
@@ -921,7 +1133,11 @@ def main():
 
     print("\n[1/6] Fetching stock prices...")
     stocks = fetch_stocks()
-    print(f"      {len(stocks)}/{len(TICKERS)} tickers OK")
+    print(f"      {len(stocks)}/{len(TICKERS)} OEM tickers OK")
+
+    print("\n      Fetching dealer stock prices...")
+    dealer_stocks = fetch_dealer_stocks()
+    print(f"      {len(dealer_stocks)}/{len(DEALER_TICKERS)} dealer tickers OK")
 
     print("\n[2/6] Fetching direct RSS feeds...")
     direct = fetch_direct_feeds()
@@ -958,6 +1174,7 @@ def main():
     out = inject(out, "MA_DEALS",        build_ma_section())
     out = inject(out, "SEC_FILINGS",     build_sec_section(filings))
     out = inject(out, "NEWS_VOLUME",     build_news_volume_chart(history))
+    out = inject(out, "DEALER_CAPS",    build_dealer_caps(dealer_stocks))
     DASHBOARD.write_text(out, encoding="utf-8")
 
     print(f"      Written → {DASHBOARD.name}")
