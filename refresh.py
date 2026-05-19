@@ -566,7 +566,9 @@ def build_dealer_caps(dealer_stocks):
             if caveat else ""
         )
         cards.append(
-            f'        <div class="dealer-card" id="dealer-{html_lib.escape(key)}">\n'
+            f'        <div class="dealer-card" id="dealer-{html_lib.escape(key)}"'
+            f' data-dealer-key="{html_lib.escape(key)}"'
+            f' onclick="selectDealer(\'{html_lib.escape(key)}\')">\n'
             f'          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">\n'
             f'            <span class="news-oem-tag {tag_cls}" style="font-size:10px;">'
             f'{html_lib.escape(name)}</span>\n'
@@ -586,6 +588,10 @@ def build_dealer_caps(dealer_stocks):
         + "\n".join(cards) + "\n"
         + "      </div>"
     )
+
+def build_dealer_config_js():
+    dg = load_dealer_groups()
+    return f'<script>window.DEALER_GROUPS={json.dumps(dg, ensure_ascii=False, separators=(",", ":"))};</script>'
 
 def fetch_direct_feeds(max_per=12):
     if not HAS_FP:
@@ -1175,6 +1181,7 @@ def main():
     out = inject(out, "SEC_FILINGS",     build_sec_section(filings))
     out = inject(out, "NEWS_VOLUME",     build_news_volume_chart(history))
     out = inject(out, "DEALER_CAPS",    build_dealer_caps(dealer_stocks))
+    out = inject(out, "DEALER_CONFIG",  build_dealer_config_js())
     DASHBOARD.write_text(out, encoding="utf-8")
 
     print(f"      Written → {DASHBOARD.name}")

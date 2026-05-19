@@ -226,10 +226,15 @@
   .dealer-region-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(175px,1fr)); gap:9px; }
   .dealer-region-block { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:9px 11px; }
   .dealer-region-label { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); margin-bottom:7px; }
-  .dealer-item { padding:5px 0; border-bottom:1px solid rgba(48,54,61,0.5); }
+  .dealer-item { padding:5px 0; border-bottom:1px solid rgba(48,54,61,0.5); cursor:pointer; border-radius:3px; transition:background 0.12s; }
   .dealer-item:last-child { border-bottom:none; }
+  .dealer-item:hover { background:rgba(255,255,255,0.03); }
   .dealer-item-name { font-size:12px; font-weight:600; }
   .dealer-item-fp { font-size:10px; color:var(--text-muted); }
+  .dealer-item.dealer-active .dealer-item-name { color:var(--cyan); }
+  .dealer-item.dealer-active { background:rgba(6,182,212,0.05); }
+  .dealer-card { cursor:pointer; }
+  .dealer-card.dealer-active { border-color:var(--cyan) !important; background:rgba(6,182,212,0.05) !important; }
   .dealer-inventory-slot { display:none; } /* extensibility hook — future inventory panel attaches here */
   .tag-ridenow { background:rgba(6,182,212,0.2); color:var(--cyan); }
   .tag-sonic   { background:rgba(168,85,247,0.2); color:var(--purple); }
@@ -407,142 +412,10 @@
       <div class="alert-body">Next scheduled Polaris Industries (NYSE: PII) earnings release. Monitor investor.polaris.com for confirmed call time, webcast link, and prepared remarks as the date approaches.</div>
     </div>
 
-    <!-- DEALER GROUP TRACKER -->
-    <div class="section-header" style="margin-top:16px;">
-      <div class="section-title">Dealer Group Tracker</div>
-      <div style="font-size:10px;color:var(--text-muted);">Channel Intelligence &nbsp;·&nbsp; Downstream Retail Monitoring</div>
-    </div>
-    <div class="dealer-section">
-
-      <!-- National Tier — equity data injected by refresh.py -->
-      <div class="dealer-tier-label">
-        National Tier
-        <span style="background:rgba(59,130,246,0.15);color:var(--accent2);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Publicly Traded</span>
-      </div>
-      <!-- REFRESH:DEALER_CAPS:START -->
-      <div style="display:flex;flex-wrap:wrap;gap:10px;">
-        <div class="dealer-card" id="dealer-ridenow">
-          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-            <span class="news-oem-tag tag-ridenow" style="font-size:10px;">RideNow Group, Inc.</span>
-            <span style="font-size:10px;color:var(--text-muted);">Nasdaq: RDNW</span>
-          </div>
-          <div style="display:flex;gap:14px;align-items:baseline;margin-top:7px;">
-            <div>
-              <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.1;">$289M</div>
-              <div style="font-size:10px;color:var(--text-muted);margin-top:1px;">Market Cap</div>
-            </div>
-            <div>
-              <div style="font-size:13px;font-weight:600;color:var(--text);">$7.50 <span style="color:var(--red);font-size:11px;">▼0.1%</span></div>
-              <div style="font-size:10px;color:var(--green);font-weight:600;">▲8.0% <span style="color:var(--text-muted);font-weight:400;">30d</span></div>
-            </div>
-          </div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:5px;">Nationwide multi-brand dealer group</div>
-          <div style="font-size:10px;color:var(--text-muted);margin-top:3px;font-style:italic;">Multi-brand (verify current brand authorizations at ridenow.com)</div>
-          <div class="dealer-inventory-slot" id="inventory-ridenow"></div>
-        </div>
-        <div class="dealer-card" id="dealer-sonic">
-          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-            <span class="news-oem-tag tag-sonic" style="font-size:10px;">Sonic Powersports</span>
-            <span style="font-size:10px;color:var(--text-muted);">NYSE: SAH</span>
-          </div>
-          <div style="display:flex;gap:14px;align-items:baseline;margin-top:7px;">
-            <div>
-              <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.1;">$2.3B</div>
-              <div style="font-size:10px;color:var(--text-muted);margin-top:1px;">Market Cap</div>
-            </div>
-            <div>
-              <div style="font-size:13px;font-weight:600;color:var(--text);">$73.75 <span style="color:var(--red);font-size:11px;">▼0.4%</span></div>
-              <div style="font-size:10px;color:var(--green);font-weight:600;">▲2.7% <span style="color:var(--text-muted);font-weight:400;">30d</span></div>
-            </div>
-          </div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:5px;">Multi-region powersports rooftops; UTV-relevant stores operate as Team Mancuso Powersports</div>
-          <div style="font-size:10px;color:var(--text-muted);margin-top:3px;font-style:italic;">Harley-Davidson / motorcycle-skewed; multi-brand at Team Mancuso locations (verify current authorizations)</div>
-          <div style="font-size:10px;color:var(--yellow);font-style:italic;margin-top:6px;padding:3px 6px;background:rgba(234,179,8,0.08);border-left:2px solid var(--yellow);border-radius:0 3px 3px 0;">⚠ Corporate-level filing — Sonic Automotive files as a full automotive + powersports company. Powersports is a reported segment, not the whole business.</div>
-          <div class="dealer-inventory-slot" id="inventory-sonic"></div>
-        </div>
-      </div>
-      <!-- REFRESH:DEALER_CAPS:END -->
-
-      <!-- Regional Tier — static roster; footprint is qualitative only for private groups -->
-      <div class="dealer-tier-label" style="margin-top:14px;">
-        Regional Tier
-        <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Private Groups</span>
-      </div>
-      <div class="dealer-region-grid">
-
-        <!-- Desert Southwest -->
-        <div class="dealer-region-block" id="region-desert-sw">
-          <div class="dealer-region-label">Desert Southwest</div>
-          <div class="dealer-item" id="dealer-berts">
-            <div class="dealer-item-name">Bert's Mega Mall</div>
-            <div class="dealer-item-fp">Single location · Covina, CA</div>
-            <!-- INVENTORY-SLOT: berts — future inventory panel attaches here -->
-            <div class="dealer-inventory-slot" id="inventory-berts"></div>
-          </div>
-          <div class="dealer-item" id="dealer-delamo">
-            <div class="dealer-item-name">Del Amo Motorsports</div>
-            <div class="dealer-item-fp">Multi-store · Southern California</div>
-            <div class="dealer-inventory-slot" id="inventory-delamo"></div>
-          </div>
-        </div>
-
-        <!-- Mountain West -->
-        <div class="dealer-region-block" id="region-mountain-west">
-          <div class="dealer-region-label">Mountain West</div>
-          <div class="dealer-item" id="dealer-westside">
-            <div class="dealer-item-name">Westside Motorsports</div>
-            <div class="dealer-item-fp">Single location · Spokane, WA</div>
-            <div class="dealer-inventory-slot" id="inventory-westside"></div>
-          </div>
-          <div class="dealer-item" id="dealer-procaliber">
-            <div class="dealer-item-name">Pro Caliber</div>
-            <div class="dealer-item-fp">Multi-store · Bend OR &amp; Vancouver WA</div>
-            <div class="dealer-inventory-slot" id="inventory-procaliber"></div>
-          </div>
-        </div>
-
-        <!-- Heartland / Ag Belt -->
-        <div class="dealer-region-block" id="region-heartland">
-          <div class="dealer-region-label">Heartland / Ag Belt</div>
-          <div class="dealer-item" id="dealer-cedarcreek">
-            <div class="dealer-item-name">Cedar Creek Motorsports</div>
-            <div class="dealer-item-fp">Single location · Cedarburg, WI</div>
-            <div class="dealer-inventory-slot" id="inventory-cedarcreek"></div>
-          </div>
-          <div class="dealer-item" id="dealer-i69">
-            <div class="dealer-item-name">Interstate 69 Motorsports</div>
-            <div class="dealer-item-fp">Single location · Union City, TN</div>
-            <div class="dealer-inventory-slot" id="inventory-i69"></div>
-          </div>
-        </div>
-
-        <!-- Eastern Trail Belt -->
-        <div class="dealer-region-block" id="region-eastern-trail">
-          <div class="dealer-region-label">Eastern Trail Belt</div>
-          <div class="dealer-item" id="dealer-unitedmoto">
-            <div class="dealer-item-name">United Motorsports</div>
-            <div class="dealer-item-fp">Multi-location group · KY / OH / WV</div>
-            <div class="dealer-item-fp" style="font-style:italic;margin-top:1px;">Hatfield-McCoy trail region</div>
-            <div class="dealer-inventory-slot" id="inventory-unitedmoto"></div>
-          </div>
-        </div>
-
-        <!-- Southeast -->
-        <div class="dealer-region-block" id="region-southeast">
-          <div class="dealer-region-label">Southeast</div>
-          <div class="dealer-item" id="dealer-mountainmoto">
-            <div class="dealer-item-name">Mountain Motorsports</div>
-            <div class="dealer-item-fp">Multi-location group · GA / AL / TN</div>
-            <div class="dealer-inventory-slot" id="inventory-mountainmoto"></div>
-          </div>
-        </div>
-
-      </div><!-- /dealer-region-grid -->
-    </div><!-- /dealer-section -->
-
     <!-- NEWS SECTION -->
     <div class="section-header" style="margin-top:16px;">
       <div class="section-title">News Intelligence Feed</div>
+      <div id="dealer-filter-clear" style="display:none;align-items:center;gap:4px;background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.35);color:var(--cyan);font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;cursor:pointer;white-space:nowrap;" onclick="clearDealerFilter()">× <span id="dcf-name"></span></div>
     </div>
 
     <div class="news-tabs">
@@ -908,7 +781,101 @@
         <div class="news-snippet">CFMOTO USA Announces ZFORCE Z10 and Z10-4 SxS Models &amp;nbsp;&amp;nbsp; utvguide.net</div>
       </div>
       <!-- REFRESH:NEWS:END -->
+      <div id="news-feed-empty" style="display:none;text-align:center;padding:28px 16px;color:var(--text-muted);font-size:12px;font-style:italic;border:1px dashed var(--border);border-radius:var(--radius);margin-top:4px;"></div>
     </div><!-- end news-feed -->
+
+    <!-- DEALER GROUP TRACKER -->
+    <div class="section-header" style="margin-top:16px;">
+      <div class="section-title">Dealer Group Tracker</div>
+      <div style="font-size:10px;color:var(--text-muted);">Channel Intelligence &nbsp;·&nbsp; Downstream Retail Monitoring</div>
+    </div>
+    <div class="dealer-section">
+
+      <!-- National Tier — equity data injected by refresh.py -->
+      <div class="dealer-tier-label">
+        National Tier
+        <span style="background:rgba(59,130,246,0.15);color:var(--accent2);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Publicly Traded</span>
+      </div>
+      <!-- REFRESH:DEALER_CAPS:START -->
+      <div style="color:var(--text-muted);font-size:11px;padding:6px 0;">Market data loading…</div>
+      <!-- REFRESH:DEALER_CAPS:END -->
+
+      <!-- Regional Tier — static roster; footprint is qualitative only for private groups -->
+      <div class="dealer-tier-label" style="margin-top:14px;">
+        Regional Tier
+        <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Private Groups</span>
+      </div>
+      <div class="dealer-region-grid">
+
+        <!-- Desert Southwest -->
+        <div class="dealer-region-block" id="region-desert-sw">
+          <div class="dealer-region-label">Desert Southwest</div>
+          <div class="dealer-item" id="dealer-berts" data-dealer-key="berts" onclick="selectDealer('berts')">
+            <div class="dealer-item-name">Bert's Mega Mall</div>
+            <div class="dealer-item-fp">Single location · Covina, CA</div>
+            <!-- INVENTORY-SLOT: berts — future inventory panel attaches here -->
+            <div class="dealer-inventory-slot" id="inventory-berts"></div>
+          </div>
+          <div class="dealer-item" id="dealer-delamo" data-dealer-key="delamo" onclick="selectDealer('delamo')">
+            <div class="dealer-item-name">Del Amo Motorsports</div>
+            <div class="dealer-item-fp">Multi-store · Southern California</div>
+            <div class="dealer-inventory-slot" id="inventory-delamo"></div>
+          </div>
+        </div>
+
+        <!-- Mountain West -->
+        <div class="dealer-region-block" id="region-mountain-west">
+          <div class="dealer-region-label">Mountain West</div>
+          <div class="dealer-item" id="dealer-westside" data-dealer-key="westside" onclick="selectDealer('westside')">
+            <div class="dealer-item-name">Westside Motorsports</div>
+            <div class="dealer-item-fp">Single location · Spokane, WA</div>
+            <div class="dealer-inventory-slot" id="inventory-westside"></div>
+          </div>
+          <div class="dealer-item" id="dealer-procaliber" data-dealer-key="procaliber" onclick="selectDealer('procaliber')">
+            <div class="dealer-item-name">Pro Caliber</div>
+            <div class="dealer-item-fp">Multi-store · Bend OR &amp; Vancouver WA</div>
+            <div class="dealer-inventory-slot" id="inventory-procaliber"></div>
+          </div>
+        </div>
+
+        <!-- Heartland / Ag Belt -->
+        <div class="dealer-region-block" id="region-heartland">
+          <div class="dealer-region-label">Heartland / Ag Belt</div>
+          <div class="dealer-item" id="dealer-cedarcreek" data-dealer-key="cedarcreek" onclick="selectDealer('cedarcreek')">
+            <div class="dealer-item-name">Cedar Creek Motorsports</div>
+            <div class="dealer-item-fp">Single location · Cedarburg, WI</div>
+            <div class="dealer-inventory-slot" id="inventory-cedarcreek"></div>
+          </div>
+          <div class="dealer-item" id="dealer-i69" data-dealer-key="i69" onclick="selectDealer('i69')">
+            <div class="dealer-item-name">Interstate 69 Motorsports</div>
+            <div class="dealer-item-fp">Single location · Union City, TN</div>
+            <div class="dealer-inventory-slot" id="inventory-i69"></div>
+          </div>
+        </div>
+
+        <!-- Eastern Trail Belt -->
+        <div class="dealer-region-block" id="region-eastern-trail">
+          <div class="dealer-region-label">Eastern Trail Belt</div>
+          <div class="dealer-item" id="dealer-unitedmoto" data-dealer-key="unitedmoto" onclick="selectDealer('unitedmoto')">
+            <div class="dealer-item-name">United Motorsports</div>
+            <div class="dealer-item-fp">Multi-location group · KY / OH / WV</div>
+            <div class="dealer-item-fp" style="font-style:italic;margin-top:1px;">Hatfield-McCoy trail region</div>
+            <div class="dealer-inventory-slot" id="inventory-unitedmoto"></div>
+          </div>
+        </div>
+
+        <!-- Southeast -->
+        <div class="dealer-region-block" id="region-southeast">
+          <div class="dealer-region-label">Southeast</div>
+          <div class="dealer-item" id="dealer-mountainmoto" data-dealer-key="mountainmoto" onclick="selectDealer('mountainmoto')">
+            <div class="dealer-item-name">Mountain Motorsports</div>
+            <div class="dealer-item-fp">Multi-location group · GA / AL / TN</div>
+            <div class="dealer-inventory-slot" id="inventory-mountainmoto"></div>
+          </div>
+        </div>
+
+      </div><!-- /dealer-region-grid -->
+    </div><!-- /dealer-section -->
 
     <div class="sep"></div>
 
@@ -1561,11 +1528,96 @@
 </script>
       <!-- REFRESH:SIDEBAR_TICKERS:END -->
 
+<!-- REFRESH:DEALER_CONFIG:START -->
+<!-- dealer_groups roster embedded by refresh.py — provides news_terms for client-side dealer filter -->
+<!-- REFRESH:DEALER_CONFIG:END -->
+
 <script>
   // ---- NEWS FILTERING ----
   let currentTab = 'all';
+  let activeDealer = null; // { key, name, news_terms[] } when a dealer filter is active
+
+  // ---- DEALER FILTER ----
+
+  function _findDealer(key) {
+    const dg = window.DEALER_GROUPS || {};
+    for (const d of (dg.national_tier || [])) {
+      if (d.key === key) return d;
+    }
+    for (const region of (dg.regional_tier || [])) {
+      for (const d of (region.dealers || [])) {
+        if (d.key === key) return d;
+      }
+    }
+    return null;
+  }
+
+  function _clearDealerState() {
+    activeDealer = null;
+    document.querySelectorAll('[data-dealer-key]').forEach(el => el.classList.remove('dealer-active'));
+    const clearEl = document.getElementById('dealer-filter-clear');
+    if (clearEl) clearEl.style.display = 'none';
+    const emptyEl = document.getElementById('news-feed-empty');
+    if (emptyEl) emptyEl.style.display = 'none';
+  }
+
+  function clearDealerFilter() {
+    _clearDealerState();
+    filterFeed();
+  }
+
+  function selectDealer(key) {
+    // Toggle off if clicking the already-active dealer
+    if (activeDealer && activeDealer.key === key) {
+      clearDealerFilter();
+      return;
+    }
+    const dealer = _findDealer(key);
+    if (!dealer) return;
+    activeDealer = dealer;
+
+    // Visual: mark this item active, clear others
+    document.querySelectorAll('[data-dealer-key]').forEach(el => el.classList.remove('dealer-active'));
+    document.querySelectorAll('[data-dealer-key="' + key + '"]').forEach(el => el.classList.add('dealer-active'));
+
+    // Show clear badge
+    const clearEl = document.getElementById('dealer-filter-clear');
+    const nameEl  = document.getElementById('dcf-name');
+    if (clearEl && nameEl) {
+      nameEl.textContent = dealer.name;
+      clearEl.style.display = 'inline-flex';
+    }
+
+    // Apply dealer filter (text-match against news_terms from dealer_groups.json)
+    _applyDealerFilter();
+  }
+
+  function _applyDealerFilter() {
+    if (!activeDealer) return;
+    const terms = (activeDealer.news_terms || []).map(t => t.toLowerCase());
+    const cards  = document.querySelectorAll('.news-card');
+    let shown = 0;
+    cards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      const ok   = terms.length > 0 && terms.some(t => text.includes(t));
+      card.style.display = ok ? 'block' : 'none';
+      if (ok) shown++;
+    });
+    const emptyEl = document.getElementById('news-feed-empty');
+    if (emptyEl) {
+      if (shown === 0) {
+        emptyEl.textContent = 'No recent headlines for ' + activeDealer.name + '.';
+        emptyEl.style.display = 'block';
+      } else {
+        emptyEl.style.display = 'none';
+      }
+    }
+  }
+
+  // ---- TAB + SEARCH FILTER ----
 
   function setTab(cat, el) {
+    _clearDealerState(); // clearing dealer filter; will call filterFeed below
     currentTab = cat;
     document.querySelectorAll('.news-tab').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
@@ -1573,6 +1625,7 @@
   }
 
   function filterNews(query) {
+    _clearDealerState();
     filterFeed(query);
   }
 
@@ -1582,26 +1635,25 @@
     const cards = document.querySelectorAll('.news-card');
     cards.forEach(card => {
       const cat = card.getAttribute('data-cat') || '';
-      const oem = card.getAttribute('data-oem') || '';
       const text = card.textContent.toLowerCase();
       const tabMatch = currentTab === 'all' || cat === currentTab;
-      const qMatch = !q || text.includes(q);
+      const qMatch   = !q || text.includes(q);
       card.style.display = (tabMatch && qMatch) ? 'block' : 'none';
     });
   }
 
   // ---- OEM SELECTION ----
   function selectOEM(oem) {
+    _clearDealerState(); // clear dealer filter when switching OEM
     document.querySelectorAll('.oem-item').forEach(el => el.classList.remove('active'));
     if (oem !== 'all') {
       const el = document.getElementById('oem-' + oem);
       if (el) el.classList.add('active');
     }
-    // filter news by OEM
     const cards = document.querySelectorAll('.news-card');
     cards.forEach(card => {
       const cardOem = card.getAttribute('data-oem') || '';
-      const cat = card.getAttribute('data-cat') || '';
+      const cat     = card.getAttribute('data-cat') || '';
       const tabMatch = currentTab === 'all' || cat === currentTab;
       if (oem === 'all') {
         card.style.display = tabMatch ? 'block' : 'none';
@@ -1619,7 +1671,6 @@
     setTimeout(() => {
       btn.textContent = '↻ Refresh';
       btn.style.opacity = '1';
-      // Update timestamp
       const now = new Date();
       document.querySelector('.date-chip').textContent =
         '📅 Last updated: ' + now.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
