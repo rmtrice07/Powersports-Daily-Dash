@@ -255,7 +255,7 @@
   <div class="topbar-right">
     <input class="search-bar" type="text" placeholder="Search news, OEMs, products..." oninput="filterNews(this.value)">
     <div class="date-chip"><!-- REFRESH:TIMESTAMP:START -->
-📅 Tue, May 19, 2026 &nbsp;·&nbsp; Refreshed 10:37 AM ET
+📅 Tue, May 19, 2026 &nbsp;·&nbsp; Refreshed 11:40 AM ET
       <!-- REFRESH:TIMESTAMP:END --></div>
     <button class="refresh-btn" onclick="refreshData()">↻ Refresh</button>
   </div>
@@ -363,26 +363,26 @@
         <div style="flex:1;min-width:110px;background:var(--bg);border-radius:6px;padding:9px 11px;border:1px solid var(--border);">
           <div style="margin-bottom:5px;"><span class="news-oem-tag tag-polaris" style="font-size:9px;padding:1px 5px;">Polaris</span></div>
           <div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">NYSE: PII</div>
-          <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$3.4B</div>
-          <div style="font-size:11px;color:var(--red);font-weight:600;margin-top:3px;">▼0.3% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
+          <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$3.5B</div>
+          <div style="font-size:11px;color:var(--green);font-weight:600;margin-top:3px;">▲1.4% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
         </div>
         <div style="flex:1;min-width:110px;background:var(--bg);border-radius:6px;padding:9px 11px;border:1px solid var(--border);">
           <div style="margin-bottom:5px;"><span class="news-oem-tag tag-canam" style="font-size:9px;padding:1px 5px;">BRP/Can-Am</span></div>
           <div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">Nasdaq: DOO</div>
           <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$4.0B</div>
-          <div style="font-size:11px;color:var(--red);font-weight:600;margin-top:3px;">▼9.1% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
+          <div style="font-size:11px;color:var(--red);font-weight:600;margin-top:3px;">▼8.4% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
         </div>
         <div style="flex:1;min-width:110px;background:var(--bg);border-radius:6px;padding:9px 11px;border:1px solid var(--border);">
           <div style="margin-bottom:5px;"><span class="news-oem-tag tag-deere" style="font-size:9px;padding:1px 5px;">John Deere</span></div>
           <div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">NYSE: DE</div>
-          <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$150.5B</div>
-          <div style="font-size:11px;color:var(--red);font-weight:600;margin-top:3px;">▼6.3% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
+          <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$150.9B</div>
+          <div style="font-size:11px;color:var(--red);font-weight:600;margin-top:3px;">▼6.0% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
         </div>
         <div style="flex:1;min-width:110px;background:var(--bg);border-radius:6px;padding:9px 11px;border:1px solid var(--border);">
           <div style="margin-bottom:5px;"><span class="news-oem-tag tag-honda" style="font-size:9px;padding:1px 5px;">Honda</span></div>
           <div style="font-size:10px;color:var(--text-muted);margin-bottom:3px;">NYSE: HMC</div>
           <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.2;">$32.7B</div>
-          <div style="font-size:11px;color:var(--red);font-weight:600;margin-top:3px;">▼0.6% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
+          <div style="font-size:11px;color:var(--red);font-weight:600;margin-top:3px;">▼0.5% <span style="color:var(--text-muted);font-weight:400;font-size:10px;">30d</span></div>
         </div>
         <div style="flex:1;min-width:110px;background:var(--bg);border-radius:6px;padding:9px 11px;border:1px solid var(--border);">
           <div style="margin-bottom:5px;"><span class="news-oem-tag tag-yamaha" style="font-size:9px;padding:1px 5px;">Yamaha Motor</span></div>
@@ -430,12 +430,32 @@
 
     <div id="news-feed" class="news-feed-all">
     <!-- REFRESH:NEWS:START -->
+      <div class="news-card" data-cat="financial" data-oem="yamaha">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-yamaha">Yamaha</span>
+          <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
+          <span class="news-cat">Financial</span>
+          <span class="news-time">35m ago</span>
+        </div>
+        <div class="news-headline"><a href="https://powersportsbusiness.com/news/yamaha/2026/05/19/yamaha-posts-strong-q1-growth-as-u-s-motorcycle-demand-rises/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Yamaha posts strong Q1 growth as U.S. motorcycle demand rises</a></div>
+        <div class="news-snippet">Yamaha Motor reported strong first-quarter financial results for fiscal 2026, driven largely by higher motorcycle sales in developed markets, including the United States. The post…</div>
+      </div>
       <div class="news-card" data-cat="strategy" data-oem="market">
         <div class="news-meta">
           <span class="news-oem-tag tag-market">Market</span>
           <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
           <span class="news-cat">Strategy</span>
-          <span class="news-time">14m ago</span>
+          <span class="news-time">1h ago</span>
+        </div>
+        <div class="news-headline"><a href="https://powersportsbusiness.com/news/distributors-aftermarket/2026/05/19/sure-seal-connects-with-wirecare-strengthens-powersports-support/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Sure-Seal connects with WireCare, strengthens powersports support</a></div>
+        <div class="news-snippet">The partnership allows WireCare to expand access to Sure-Seal’s connector technology for customers in powersports and automotive applications. The post Sure-Seal connects with…</div>
+      </div>
+      <div class="news-card" data-cat="strategy" data-oem="market">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-market">Market</span>
+          <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
+          <span class="news-cat">Strategy</span>
+          <span class="news-time">1h ago</span>
         </div>
         <div class="news-headline"><a href="https://powersportsbusiness.com/news/dealers/2026/05/19/indian-joins-lineup-at-expanded-pony-powersports-superstore/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Indian joins lineup at expanded Pony Powersports superstore</a></div>
         <div class="news-snippet">The dealership announced the addition as part of its ongoing expansion at its new superstore in Mansfield, Ohio. The post Indian joins lineup at expanded Pony Powersports…</div>
@@ -445,7 +465,7 @@
           <span class="news-oem-tag tag-market">Market</span>
           <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">48m ago</span>
+          <span class="news-time">1h ago</span>
         </div>
         <div class="news-headline"><a href="https://powersportsbusiness.com/news/hisun/2026/05/19/hisun-promotes-jamie-cheek-to-senior-vice-president/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">HISUN promotes Jamie Cheek to senior vice president</a></div>
         <div class="news-snippet">In his new role, Cheek will focus on supporting strategic partner relationships, commercial initiatives, and business development efforts for key accounts The post HISUN promotes…</div>
@@ -455,7 +475,7 @@
           <span class="news-oem-tag tag-polaris">Polaris</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">2h ago</span>
+          <span class="news-time">3h ago</span>
         </div>
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPNzZjRHFjRnAwY2pJQ0sxbXhHTTY2cVVpcXl6X3FQVTRrOU4zMnZjMV9lWmZZV0pWUkZjRF83UUtFQW9qR1c5eVhzWXVkZ2NxU2NYNDJvN2pjckk0cEotX2lhT1JlNWx5LVo3dzVJTHU3NU4xaWRTSHhjRzhsNDh4YWNfeTE2RUNNOFhmQUN5MzRSdzMtcXNFZXAtc0xUelp0cGxCMER6Z1M2OUJWaXlaeDlB?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Polaris RZR side-by-side UTVs for off-road recreation</a></div>
         <div class="news-snippet">Polaris RZR side-by-side UTVs for off-road recreation &amp;nbsp;&amp;nbsp; AD HOC NEWS</div>
@@ -465,7 +485,7 @@
           <span class="news-oem-tag tag-ridenow">RideNow</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Dealer</span>
-          <span class="news-time">4h ago</span>
+          <span class="news-time">5h ago</span>
         </div>
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNQjRzMFVaemY4TXUwTXRQcUFCRTR4c3prZ2NtakV1emtFSE5MZTBKZWNtSS01NjV6RGF1YXUzNV9jaGtEcVNvcndIdGNVcTN2R1lnUUlnZHBnZ21sODduRWpnMGo5X1lVSXIyUGs3NnRNTWdYNUpNYjduQUhfVUNDZjFaNl81V2FOcWRCYzdFT2FlSEM0bTFpOEV1dmlCOF9LTllfLVpiNFl4RDFHSDk2MmZ2T0Z0Yjd0YUo00gG7AUFVX3lxTE1CNHMwVVp6ZjhNdTBNdFBxQUJFNHhzemtnY21qRXV6a0VITkxlMEplY21JLTU2NXpEYXVhdTM1X2Noa0RxU29yd0h0Y1VxM3ZHWWdRSWdkcGdnbWw4N25FamcwajlfWVVJcjJQazc2dE1NZ1g1Sk1iN25BSF9VQ0NmMVo2XzVXYU5xZEJjN0VPYWVIQzRtMWk4RXV2aUI4X0tOWV8tWmI0WXhEMUdIOTYyZnZPRnRiN3RhSjQ?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">RideNow Group: $35 Million In Additional Floorplan Capacity Secured To Expand Inventory Financing</a></div>
         <div class="news-snippet">RideNow Group: $35 Million In Additional Floorplan Capacity Secured To Expand Inventory Financing &amp;nbsp;&amp;nbsp; Pulse 2.0</div>
@@ -475,7 +495,7 @@
           <span class="news-oem-tag tag-polaris">Polaris</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">17h ago</span>
+          <span class="news-time">18h ago</span>
         </div>
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPSjkyOFVTTWtleTNsMzhFeFB6czZSNXJhZkpWQkVIMmd1WU5JV2JyUmxEOEprby1QY2RqWDJwYlhQbGpfd1VVMlRFS0pESVBSZzg0Tm9yUlphVmRLUVdyT1pvZFJ1TlZWa1dfUWliT1dCYU5yNFZsUUUxemViS3MwYjlrdTNnd2c0Rm90TEFVd1k3S0NWNEZsWlZSR1NWUVkxSEHSAacBQVVfeXFMTk1oTG1OcWdRdHNCZ0RiNXRLRXhqVUE0Vnp0ZTZmQ25Gc1hVei1iSUdaNjg4Z1FvbVhZZ0FPbFM0cVJwSFg4cjhobWRyZ2JGSGZYVTZnYWc3eG55RWwwVlZfd3A2NXcwVm9VdDM1NEZ2OWx1RW5hOTdBNG9rN2x1NENxUWlzeWxiQ2FvYlRGTG9wNHJSaU5FV19HRGtrczVFYmsyUGhabUk?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">This Wild Polaris Ranger Build Uses A Chevy Spark Engine: Video</a></div>
         <div class="news-snippet">This Wild Polaris Ranger Build Uses A Chevy Spark Engine: Video &amp;nbsp;&amp;nbsp; GM Authority</div>
@@ -485,7 +505,7 @@
           <span class="news-oem-tag tag-ridenow">RideNow</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Dealer</span>
-          <span class="news-time">21h ago</span>
+          <span class="news-time">22h ago</span>
         </div>
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNZzNJU3ducVVEaVItSUFqeElFb1JGVURzc2RiaF81akJJcWI1Uk1ZNzdUS011RXJ0Zll5NjFKY0RkdkVvYVUtd21iRl9aZi1lZE9vc0pvajJpRnB3ck12cTU5Z2hBa3dUZFZhd0Q3Y25FVTlFUzE1a1lVbXFHMTVwSFZZRWdQRFhIOWlJSkdrVGRoZm1vOVNtRGpNbw?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">RideNow Group Q1 earnings call highlights</a></div>
         <div class="news-snippet">RideNow Group Q1 earnings call highlights &amp;nbsp;&amp;nbsp; MSN</div>
@@ -545,7 +565,7 @@
           <span class="news-oem-tag tag-market">Market</span>
           <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">4d ago</span>
+          <span class="news-time">5d ago</span>
         </div>
         <div class="news-headline"><a href="https://powersportsbusiness.com/news/distributors-aftermarket/2026/05/14/parts-drag-named-sponsors-of-two-ama-flat-track-events/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Parts, Drag, both named sponsors of two AMA Flat Track events</a></div>
         <div class="news-snippet">Parts Unlimited is now the entitlement sponsor of ThrottleFest, while Drag Specialities was named the official entitlement sponsor of the DuQuoin Mile. The post Parts, Drag, both…</div>
@@ -555,7 +575,7 @@
           <span class="news-oem-tag tag-market">Market</span>
           <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
           <span class="news-cat">Product</span>
-          <span class="news-time">4d ago</span>
+          <span class="news-time">5d ago</span>
         </div>
         <div class="news-headline"><a href="https://powersportsbusiness.com/news/electric/2026/05/14/colorado-town-launches-reporting-tool-targeting-unsafe-e-motorcycle-use/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Colorado town launches reporting tool targeting unsafe e-motorcycle use</a></div>
         <div class="news-snippet">The Parker Police Department has launched a new online reporting tool aimed at addressing unsafe and unlawful use of electric motorcycles and dirt bikes in the southeast Denver…</div>
@@ -565,7 +585,7 @@
           <span class="news-oem-tag tag-market">Market</span>
           <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
           <span class="news-cat">Strategy</span>
-          <span class="news-time">4d ago</span>
+          <span class="news-time">5d ago</span>
         </div>
         <div class="news-headline"><a href="https://powersportsbusiness.com/features/2026/05/14/plessner-this-is-where-memories-are-made/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Plessner: This is where memories are made</a></div>
         <div class="news-snippet">Powersports industry recruiter Jan Plessner explains that dealers aren&#x27;t just selling machines, but rather experiences that create life-long memories. The post Plessner: This is…</div>
@@ -590,22 +610,12 @@
         <div class="news-headline"><a href="https://powersportsbusiness.com/news/snowmobile/2026/05/14/michigan-dnr-raises-snowmobile-trail-permit-fees-to-65/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Michigan DNR raises snowmobile trail permit fees to $65</a></div>
         <div class="news-snippet">According to the DNR, the fee adjustment is mandated by state statute and is based on inflation data from the federal Bureau of Labor Statistics. The post Michigan DNR raises…</div>
       </div>
-      <div class="news-card" data-cat="product" data-oem="market">
-        <div class="news-meta">
-          <span class="news-oem-tag tag-market">Market</span>
-          <span style="background:rgba(6,182,212,0.15);color:var(--cyan);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">PSB</span>
-          <span class="news-cat">Product</span>
-          <span class="news-time">5d ago</span>
-        </div>
-        <div class="news-headline"><a href="https://powersportsbusiness.com/news/motorcycle/2026/05/13/husqvarna-announces-refreshed-motocross-lineup-for-2027/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Husqvarna announces refreshed motocross lineup for 2027</a></div>
-        <div class="news-snippet">The nine-bike lineup features machines from 50cc to 450cc, capable of tackling a variety of environments and suitable for a wide range of riding abilities. The post Husqvarna…</div>
-      </div>
       <div class="news-card" data-cat="dealer" data-oem="dealer">
         <div class="news-meta">
           <span class="news-oem-tag tag-dealer">Dealer</span>
           <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
           <span class="news-cat">Dealer</span>
-          <span class="news-time">5d ago</span>
+          <span class="news-time">6d ago</span>
         </div>
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxQSHVXNG5PUGxtT3g4bWpHZHdwS0M4MTQ3RllEY2luRHNfRVV5S1F0V2MyRm50eU01aFhKNUZyWDhiSHljRDFJMzNJbWlzZnkxRk41aTdIVkdKQnBadVRPZ2hiRzVPMkRPSHlzVlFrblhqbEViVGZNQ2NDNVJMenh1eFo5Vlo0OVhlZ1lkcG92Q2xjQjNyYmFqSVVLdEw4RFY1RjFyMlJ2bnBjek4zVEtvQ2NB?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Two Pennsylvania Harley stores merge under new ownership</a></div>
         <div class="news-snippet">Two Pennsylvania Harley stores merge under new ownership &amp;nbsp;&amp;nbsp; Powersports Business</div>
@@ -639,6 +649,16 @@
         </div>
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxPNzBnLXhHVXdFekVMOTJRTGpvOFRQNVJRZ3o1cGo4RUI3MTIwOW5CQmQySnBFUTg0N2t3djRWQXBCQjNQWkRmOWhkLUp1UFJ0aElyazJNYTE3NXpRZnBTeXJvNUlkQ1p6OTFTU01BUFJZZnRFSW9IT2pQdXhuQnV6UjhreDNmOXp2LUZWTVV3T0xFYkxOVTJVT3paclN4Z1Q3dEdKSHB3SmV0bkJkQlQyYndtNDlhWWVxOWZ5MzRERDFLNzZYbHdqOGNiNy1mTXotX1l0MFNRdmxwTnZKVVRuVXhOUQ?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">The Dealer Lab: Podcast on dealer disruption, automotive influence, and the future of fixed ops</a></div>
         <div class="news-snippet">The Dealer Lab: Podcast on dealer disruption, automotive influence, and the future of fixed ops &amp;nbsp;&amp;nbsp; Powersports Business</div>
+      </div>
+      <div class="news-card" data-cat="product" data-oem="kawasaki">
+        <div class="news-meta">
+          <span class="news-oem-tag tag-kawasaki">Kawasaki</span>
+          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
+          <span class="news-cat">Product</span>
+          <span class="news-time">May 6</span>
+        </div>
+        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE5VZjVjMm1WcWVvUkpyNlR2c2ZfeFE0TFVYNHFzY0JuaUNILUw3WmkxTmg3aE0xNUVHNkFHVUE3SnR6alBOT2QzdUdXbmViMlVJUE00Z3dfNGR5REhhNXpIQTB2bmFLcnlCeW9pT3U5akhteDVrQkVYemNHUQ?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">2027 Kawasaki MULE SX Side-by-Side Lineup</a></div>
+        <div class="news-snippet">2027 Kawasaki MULE SX Side-by-Side Lineup &amp;nbsp;&amp;nbsp; Motorcycle &amp; Powersports News</div>
       </div>
       <div class="news-card" data-cat="regulatory" data-oem="kawasaki">
         <div class="news-meta">
@@ -760,26 +780,6 @@
         <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE5OSkpwMG9xd3JORTRMckxQZkNTQVduOFhBMmRSMmhYM1NKWWFCTVVDaUdxd0c5UE8yWDRyb0dCcDFvT2VhZFBwRTZDMkZ6VW1qTUxKLXNjYnJSSUt4Y3dBeUk1MXBTZEFxSjhsY0tEbFU2M3l4X3JySWtqQQ?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">CFMOTO Launches ZFORCE Z10-4</a></div>
         <div class="news-snippet">CFMOTO Launches ZFORCE Z10-4 &amp;nbsp;&amp;nbsp; Motorcycle &amp; Powersports News</div>
       </div>
-      <div class="news-card" data-cat="product" data-oem="cfmoto">
-        <div class="news-meta">
-          <span class="news-oem-tag tag-cfmoto">CFMOTO</span>
-          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
-          <span class="news-cat">Product</span>
-          <span class="news-time">Apr 8</span>
-        </div>
-        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNc2p2UVJaaTVzUXFFOFc2b3R1c1lFSkh3MG5jSHVQY0o5YTl0eVplOHBfSEp3ajlubHp4dWZoTHJWYTMyTnYxNVh6eXU2WUdqSDZMR3R2ZURPSWhHekU2QU5FQ1psTnJ4VW51UUYtM0ctOXJLOVJuWW1jQjh2RzVHMndhT2d2VFlPdkpBTE1IR0RtckJFeGxHMHhnM2ZCb0U?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">CFMoto Enters Premium Side-By-Side Territory With New 2026 ZForce Z10 And Z10-4</a></div>
-        <div class="news-snippet">CFMoto Enters Premium Side-By-Side Territory With New 2026 ZForce Z10 And Z10-4 &amp;nbsp;&amp;nbsp; RideApart.com</div>
-      </div>
-      <div class="news-card" data-cat="product" data-oem="cfmoto">
-        <div class="news-meta">
-          <span class="news-oem-tag tag-cfmoto">CFMOTO</span>
-          <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">News</span>
-          <span class="news-cat">Product</span>
-          <span class="news-time">Apr 6</span>
-        </div>
-        <div class="news-headline"><a href="https://news.google.com/rss/articles/CBMiUEFVX3lxTE9EQk1VSDd1YklPemN5OGoxMC1qSXVWNFRfdi0xanc4cWlGNXMxRFV5YlpSZVdMOVI2dk5jMmlEVnlLYVZBRmt4WXlOWlBPVWFx?oc=5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">CFMOTO USA Announces ZFORCE Z10 and Z10-4 SxS Models</a></div>
-        <div class="news-snippet">CFMOTO USA Announces ZFORCE Z10 and Z10-4 SxS Models &amp;nbsp;&amp;nbsp; utvguide.net</div>
-      </div>
       <!-- REFRESH:NEWS:END -->
       <div id="news-feed-empty" style="display:none;text-align:center;padding:28px 16px;color:var(--text-muted);font-size:12px;font-style:italic;border:1px dashed var(--border);border-radius:var(--radius);margin-top:4px;"></div>
     </div><!-- end news-feed -->
@@ -797,7 +797,47 @@
         <span style="background:rgba(59,130,246,0.15);color:var(--accent2);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Publicly Traded</span>
       </div>
       <!-- REFRESH:DEALER_CAPS:START -->
-      <div style="color:var(--text-muted);font-size:11px;padding:6px 0;">Market data loading…</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <div class="dealer-card" id="dealer-ridenow" data-dealer-key="ridenow" onclick="selectDealer('ridenow')">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+            <span class="news-oem-tag tag-ridenow" style="font-size:10px;">RideNow Group, Inc.</span>
+            <span style="font-size:10px;color:var(--text-muted);">Nasdaq: RDNW</span>
+          </div>
+          <div style="display:flex;gap:14px;align-items:baseline;margin-top:7px;">
+            <div>
+              <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.1;">$292M</div>
+              <div style="font-size:10px;color:var(--text-muted);margin-top:1px;">Market Cap</div>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:600;color:var(--text);">$7.58 <span style="color:var(--green);font-size:11px;">▲0.9%</span></div>
+              <div style="font-size:10px;color:var(--green);font-weight:600;">▲9.1% <span style="color:var(--text-muted);font-weight:400;">30d</span></div>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:5px;">Nationwide multi-brand dealer group</div>
+          <div style="font-size:10px;color:var(--text-muted);margin-top:3px;font-style:italic;">Multi-brand (verify current brand authorizations at ridenow.com)</div>
+          <div class="dealer-inventory-slot" id="inventory-ridenow"></div>
+        </div>
+        <div class="dealer-card" id="dealer-sonic" data-dealer-key="sonic" onclick="selectDealer('sonic')">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+            <span class="news-oem-tag tag-sonic" style="font-size:10px;">Sonic Powersports</span>
+            <span style="font-size:10px;color:var(--text-muted);">NYSE: SAH</span>
+          </div>
+          <div style="display:flex;gap:14px;align-items:baseline;margin-top:7px;">
+            <div>
+              <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.1;">$2.3B</div>
+              <div style="font-size:10px;color:var(--text-muted);margin-top:1px;">Market Cap</div>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:600;color:var(--text);">$74.29 <span style="color:var(--green);font-size:11px;">▲0.3%</span></div>
+              <div style="font-size:10px;color:var(--green);font-weight:600;">▲3.5% <span style="color:var(--text-muted);font-weight:400;">30d</span></div>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:5px;">Multi-region powersports rooftops; UTV-relevant stores operate as Team Mancuso Powersports</div>
+          <div style="font-size:10px;color:var(--text-muted);margin-top:3px;font-style:italic;">Harley-Davidson / motorcycle-skewed; multi-brand at Team Mancuso locations (verify current authorizations)</div>
+          <div style="font-size:10px;color:var(--yellow);font-style:italic;margin-top:6px;padding:3px 6px;background:rgba(234,179,8,0.08);border-left:2px solid var(--yellow);border-radius:0 3px 3px 0;">⚠ Corporate-level filing — Sonic Automotive files as a full automotive + powersports company. Powersports is a reported segment, not the whole business.</div>
+          <div class="dealer-inventory-slot" id="inventory-sonic"></div>
+        </div>
+      </div>
       <!-- REFRESH:DEALER_CAPS:END -->
 
       <!-- Regional Tier — static roster; footprint is qualitative only for private groups -->
@@ -1045,26 +1085,26 @@
       <!-- REFRESH:STOCKS:START -->
       <tr>
         <td><span class="ticker-cell" style="color:#93c5fd;">PII</span><br><span style="font-size:10px;color:var(--text-muted);">Polaris</span></td>
-        <td class="price-cell">$60.50</td>
-        <td class="change-cell" style="color:var(--red);">▼$3.48<br><span style="font-size:10px;">▼5.4%</span></td>
+        <td class="price-cell">$61.50</td>
+        <td class="change-cell" style="color:var(--red);">▼$2.48<br><span style="font-size:10px;">▼3.9%</span></td>
         <td style="font-size:10px;color:var(--text-muted);">$36.73–$75.25</td>
       </tr>
       <tr>
         <td><span class="ticker-cell" style="color:#fca5a5;">DOO</span><br><span style="font-size:10px;color:var(--text-muted);">BRP/Can-Am</span></td>
-        <td class="price-cell">$54.17</td>
-        <td class="change-cell" style="color:var(--red);">▼$1.16<br><span style="font-size:10px;">▼2.1%</span></td>
+        <td class="price-cell">$54.56</td>
+        <td class="change-cell" style="color:var(--red);">▼$0.77<br><span style="font-size:10px;">▼1.4%</span></td>
         <td style="font-size:10px;color:var(--text-muted);">$35.02–$81.89</td>
       </tr>
       <tr>
         <td><span class="ticker-cell" style="color:#86efac;">DE</span><br><span style="font-size:10px;color:var(--text-muted);">John Deere</span></td>
-        <td class="price-cell">$557.13</td>
-        <td class="change-cell" style="color:var(--red);">▼$7.15<br><span style="font-size:10px;">▼1.3%</span></td>
+        <td class="price-cell">$558.79</td>
+        <td class="change-cell" style="color:var(--red);">▼$5.49<br><span style="font-size:10px;">▼1.0%</span></td>
         <td style="font-size:10px;color:var(--text-muted);">$433.00–$674.19</td>
       </tr>
       <tr>
         <td><span class="ticker-cell" style="color:#fca5a5;">HMC</span><br><span style="font-size:10px;color:var(--text-muted);">Honda</span></td>
-        <td class="price-cell">$25.20</td>
-        <td class="change-cell" style="color:var(--red);">▼$0.18<br><span style="font-size:10px;">▼0.7%</span></td>
+        <td class="price-cell">$25.24</td>
+        <td class="change-cell" style="color:var(--red);">▼$0.14<br><span style="font-size:10px;">▼0.6%</span></td>
         <td style="font-size:10px;color:var(--text-muted);">$23.25–$34.89</td>
       </tr>
       <tr>
@@ -1075,8 +1115,8 @@
       </tr>
       <tr>
         <td><span class="ticker-cell" style="color:#fca5a5;">KUBTY</span><br><span style="font-size:10px;color:var(--text-muted);">Kubota</span></td>
-        <td class="price-cell">$87.90</td>
-        <td class="change-cell" style="color:var(--red);">▼$2.09<br><span style="font-size:10px;">▼2.3%</span></td>
+        <td class="price-cell">$87.86</td>
+        <td class="change-cell" style="color:var(--red);">▼$2.13<br><span style="font-size:10px;">▼2.4%</span></td>
         <td style="font-size:10px;color:var(--text-muted);">$52.43–$107.97</td>
       </tr>
       <tr>
@@ -1113,6 +1153,13 @@
         <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#86efac;text-align:right;">2</div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
+        <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">Yamaha</div>
+        <div style="flex:1;background:var(--border);border-radius:3px;height:7px;overflow:hidden;">
+          <div style="width:25.0%;height:100%;background:#93c5fd;border-radius:3px;"></div>
+        </div>
+        <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#93c5fd;text-align:right;">1</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
         <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">John Deere</div>
         <div style="flex:1;background:var(--border);border-radius:3px;height:7px;overflow:hidden;">
           <div style="width:25.0%;height:100%;background:#86efac;border-radius:3px;"></div>
@@ -1132,13 +1179,6 @@
           <div style="width:0.0%;height:100%;background:#fca5a5;border-radius:3px;"></div>
         </div>
         <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#fca5a5;text-align:right;">0</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
-        <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">Yamaha</div>
-        <div style="flex:1;background:var(--border);border-radius:3px;height:7px;overflow:hidden;">
-          <div style="width:0.0%;height:100%;background:#93c5fd;border-radius:3px;"></div>
-        </div>
-        <div style="width:20px;flex-shrink:0;font-size:11px;font-weight:700;color:#93c5fd;text-align:right;">0</div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
         <div style="width:68px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">CFMOTO</div>
@@ -1511,17 +1551,17 @@
 <script>
 (function(){
   var el = document.getElementById("sidebar-ticker-polaris");
-  if (el) el.innerHTML = "NYSE: PII · $60.50 <span class='down'>▼5.4%</span>";
+  if (el) el.innerHTML = "NYSE: PII · $61.50 <span class='down'>▼3.9%</span>";
   var el = document.getElementById("sidebar-ticker-canam");
-  if (el) el.innerHTML = "Nasdaq: DOO · $54.17 <span class='down'>▼2.1%</span>";
+  if (el) el.innerHTML = "Nasdaq: DOO · $54.56 <span class='down'>▼1.4%</span>";
   var el = document.getElementById("sidebar-ticker-deere");
-  if (el) el.innerHTML = "NYSE: DE · $557.13 <span class='down'>▼1.3%</span>";
+  if (el) el.innerHTML = "NYSE: DE · $558.79 <span class='down'>▼1.0%</span>";
   var el = document.getElementById("sidebar-ticker-honda");
-  if (el) el.innerHTML = "NYSE: HMC · $25.20 <span class='down'>▼0.7%</span>";
+  if (el) el.innerHTML = "NYSE: HMC · $25.24 <span class='down'>▼0.6%</span>";
   var el = document.getElementById("sidebar-ticker-yamaha");
   if (el) el.innerHTML = "OTC: YMHAY · $16.11 <span class='down'>▼0.9%</span>";
   var el = document.getElementById("sidebar-ticker-kubota");
-  if (el) el.innerHTML = "OTC: KUBTY · $87.90 <span class='down'>▼2.3%</span>";
+  if (el) el.innerHTML = "OTC: KUBTY · $87.86 <span class='down'>▼2.4%</span>";
   var el = document.getElementById("sidebar-ticker-kawasaki");
   if (el) el.innerHTML = "OTC: KWHIF · $18.40 <span class='down'>▼8.0%</span>";
 })();
@@ -1529,8 +1569,8 @@
       <!-- REFRESH:SIDEBAR_TICKERS:END -->
 
 <!-- REFRESH:DEALER_CONFIG:START -->
-<!-- dealer_groups roster embedded by refresh.py — provides news_terms for client-side dealer filter -->
-<!-- REFRESH:DEALER_CONFIG:END -->
+<script>window.DEALER_GROUPS={"_purpose":"Dealer Group Tracker roster — single authoritative source for the dashboard's dealer section. Edit this file to add, remove, or update dealer entries. Do NOT add store-count numbers for private dealers — footprint is qualitative only.","_last_verified":"May 2026","_edit_notes":["brands_note fields describe what is publicly known; verify current brand authorizations at each dealer's website before updating.","news_terms drive the Google News RSS queries that populate the Dealer/Channel news feed tab.","filing_caveat text is displayed on SEC filings entries to prevent misreading corporate-level filings as powersports-only.","Do not add site-selection language or dealer-siting recommendations anywhere in this file."],"national_tier":[{"key":"ridenow","name":"RideNow Group, Inc.","formerly":"RumbleOn","public":true,"ticker":"RDNW","exchange":"Nasdaq","cik":"0001596961","footprint":"Nationwide multi-brand dealer group","brands_note":"Multi-brand (verify current brand authorizations at ridenow.com)","hq":"Scottsdale, AZ","news_terms":["RideNow Group","RideNow Powersports","RumbleOn Powersports","RDNW powersports"]},{"key":"sonic","name":"Sonic Powersports","parent":"Sonic Automotive, Inc.","public":true,"ticker":"SAH","exchange":"NYSE","cik":"0001043509","footprint":"Multi-region powersports rooftops; UTV-relevant stores operate as Team Mancuso Powersports","brands_note":"Harley-Davidson / motorcycle-skewed; multi-brand at Team Mancuso locations (verify current authorizations)","filing_caveat":"Corporate-level filing — Sonic Automotive files as a full automotive + powersports company. Powersports is a reported segment, not the whole business.","hq":"Charlotte, NC","news_terms":["Team Mancuso Powersports","Sonic Powersports","Sonic Automotive powersports"]}],"regional_tier":[{"region":"Desert Southwest","region_key":"desert-sw","dealers":[{"key":"berts","name":"Bert's Mega Mall","public":false,"footprint":"Single location · Covina, CA","hq":"Covina, CA","news_terms":["Bert's Mega Mall","Berts Mega Mall"]},{"key":"delamo","name":"Del Amo Motorsports","public":false,"footprint":"Multi-store · Southern California","hq":"Southern California","news_terms":["Del Amo Motorsports"]}]},{"region":"Mountain West","region_key":"mountain-west","dealers":[{"key":"westside","name":"Westside Motorsports","public":false,"footprint":"Single location · Spokane, WA","hq":"Spokane, WA","news_terms":["Westside Motorsports Spokane"]},{"key":"procaliber","name":"Pro Caliber","public":false,"footprint":"Multi-store · Bend OR &amp; Vancouver WA","hq":"Bend, OR","news_terms":["Pro Caliber Powersports","Pro Caliber Motorsports"]}]},{"region":"Heartland / Ag Belt","region_key":"heartland","dealers":[{"key":"cedarcreek","name":"Cedar Creek Motorsports","public":false,"footprint":"Single location · Cedarburg, WI","hq":"Cedarburg, WI","news_terms":["Cedar Creek Motorsports","Cedar Creek Mega Mall"]},{"key":"i69","name":"Interstate 69 Motorsports","public":false,"footprint":"Single location · Union City, TN","hq":"Union City, TN","news_terms":["Interstate 69 Motorsports","I-69 Motorsports"]}]},{"region":"Eastern Trail Belt","region_key":"eastern-trail","dealers":[{"key":"unitedmoto","name":"United Motorsports","public":false,"footprint":"Multi-location group · KY / OH / WV","hq":"KY / OH / WV","notes":"Anchored on the Hatfield-McCoy trail region","news_terms":["United Motorsports powersports","United Motorsports KY"]}]},{"region":"Southeast","region_key":"southeast","dealers":[{"key":"mountainmoto","name":"Mountain Motorsports","public":false,"footprint":"Multi-location group · GA / AL / TN","hq":"GA / AL / TN","news_terms":["Mountain Motorsports dealer"]}]}]};</script>
+      <!-- REFRESH:DEALER_CONFIG:END -->
 
 <script>
   // ---- NEWS FILTERING ----
