@@ -1,42 +1,6 @@
 {
-  "_window_start": "2026-05-05",
+  "_window_start": "2026-05-06",
   "articles": [
-    {
-      "title": "Kawasaki announces its 2027 MULE SX lineup",
-      "link": "https://powersportsbusiness.com/news/utv/2026/05/05/kawasaki-announces-its-2027-mule-sx-lineup/",
-      "date": "2026-05-05",
-      "oem_key": "kawasaki"
-    },
-    {
-      "title": "Dealer Council chair weighs in on Harley’s struggles, recent reset",
-      "link": "https://powersportsbusiness.com/news/dealers/2026/05/05/dealer-council-chair-weighs-in-on-harleys-struggles-recent-reset/",
-      "date": "2026-05-05",
-      "oem_key": "market"
-    },
-    {
-      "title": "Harley recalls more than 88,000 motorcycles over crankcase pressure issue",
-      "link": "https://powersportsbusiness.com/news/harley-davidson/2026/05/05/harley-recalls-more-than-88000-motorcycles-over-crankcase-pressure-issue/",
-      "date": "2026-05-05",
-      "oem_key": "market"
-    },
-    {
-      "title": "May is AMA ‘Take a Kid Dirt Biking’ month",
-      "link": "https://powersportsbusiness.com/news/motorcycle/2026/05/05/may-is-ama-take-a-kid-dirt-biking-month-2/",
-      "date": "2026-05-05",
-      "oem_key": "market"
-    },
-    {
-      "title": "ScorpionEXO switches U.S. distribution from WPS to O’Neal",
-      "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/05/05/scorpionexo-switches-u-s-distribution-from-wps-to-oneal/",
-      "date": "2026-05-05",
-      "oem_key": "market"
-    },
-    {
-      "title": "Supercross: Hunter Lawrence wins in Denver, sets up title showdown",
-      "link": "https://powersportsbusiness.com/news/motorcycle/2026/05/05/supercross-hunter-lawrence-wins-in-denver-sets-up-title-showdown/",
-      "date": "2026-05-05",
-      "oem_key": "market"
-    },
     {
       "title": "North Carolina dealership sells to Boston-based investor",
       "link": "https://powersportsbusiness.com/news/dealers/2026/05/06/north-carolina-dealership-sells-to-boston-based-investor/",
@@ -395,6 +359,66 @@
       "title": "RideNow Group Q1 Earnings Call Highlights",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPRHQwN05YOGIweHk0NU90V2h5MHBnUmI3OW9OMEljUExfWjF5UjFNZllZcWI1Z3dVVjgxRE8tVWpIcmhrMndEbUF2ODdsXzVVMzJsRklPOElNcng4QW1qSGVzQU9LelNrQmZGd1JodTFfR3Qwd0NXM3lCcTVNTGZCZWk0WlRtZmVoY3UxOFhraHFtTXl3TTdXVEZtUQ?oc=5",
       "date": "2026-05-15",
+      "oem_key": "ridenow"
+    },
+    {
+      "title": "LiveWire acquires Dust Moto to expand off-road EV presence",
+      "link": "https://powersportsbusiness.com/news/electric/2026/05/20/livewire-acquires-dust-moto-to-expand-off-road-ev-presence/",
+      "date": "2026-05-20",
+      "oem_key": "market"
+    },
+    {
+      "title": "Sherco reveals updated 2027 Enduro lineup",
+      "link": "https://powersportsbusiness.com/news/motorcycle/2026/05/20/sherco-reveals-updated-2027-enduro-lineup/",
+      "date": "2026-05-20",
+      "oem_key": "market"
+    },
+    {
+      "title": "Turn 14 hires Brenden Gill as Southwest territory sales manager",
+      "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/05/20/turn-14-hires-brenden-gill-as-southwest-territory-sales-manager/",
+      "date": "2026-05-20",
+      "oem_key": "market"
+    },
+    {
+      "title": "Staying competitive in the AI era: A retailer’s survival guide",
+      "link": "https://powersportsbusiness.com/features/2026/05/20/staying-competitive-in-the-ai-era-a-retailers-survival-guide/",
+      "date": "2026-05-20",
+      "oem_key": "market"
+    },
+    {
+      "title": "Segway pushes limits of off-road performance with new Super Villain",
+      "link": "https://powersportsbusiness.com/news/side-by-side/2026/05/20/segway-pushes-limits-of-off-road-performance-with-new-super-villain/",
+      "date": "2026-05-20",
+      "oem_key": "market"
+    },
+    {
+      "title": "RideNow Group secures additional $35M in floorplan capacity",
+      "link": "https://powersportsbusiness.com/news/dealers/2026/05/20/ridenow-group-secures-additional-35m-in-floorplan-capacity/",
+      "date": "2026-05-20",
+      "oem_key": "ridenow"
+    },
+    {
+      "title": "SSV Works Launches New Polaris XPEDITION ADV Phased Audio Kits",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE54SWtoemlIallQbFNUd1l0NzhSc0JWREVfcW40RGIzWFBkNkE2QlFWODg3QmhyWWt0MzVKa3hwRzFsdHVaRU1jU0lpZDJnZGlBLVNXWVg2ZVVOX2hySW40aVlRTEpfeS1KOUY1TkxhcjZMQ0p6S1E?oc=5",
+      "date": "2026-05-20",
+      "oem_key": "polaris"
+    },
+    {
+      "title": "SDi Announces Terrain Master 2.1 Shocks for the 2026 Can-Am Defender HD11",
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBlLWZIdjNsLTJxaFFoMktFOUZiNjZLakJGT2VodmY4WW11dDktNEdEOE9TZ2hhNEdxOENtYUZTb0I2TWpUT2JwSHVoSDgzc0NIc0RJQTF0MFFFcmxDUzNOUUtrMlY5ZGxCQ0tZZHlzaVJXcUNUeFFwN0dR?oc=5",
+      "date": "2026-05-20",
+      "oem_key": "canam"
+    },
+    {
+      "title": "2026 Honda Pioneer 1000 Texas ranch-tested review",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxObmFvbXJfSFRxREQ2SjNlQ0hWOTFJdlN4RHF1OVVRSXh2NHZJUFh5cFBPUXM2ekoxbnV1dnU2Q0NNcWF3QTJxLUZRUzl4bXRjaXNBZk5QNkRUQkxZak1vX2k3TE5FRTA1cUVycG9xN2ZxMmJEMGRCSTVOd2hCVjhkLVFaZmN0V0d1dU9JRHh3?oc=5",
+      "date": "2026-05-20",
+      "oem_key": "honda"
+    },
+    {
+      "title": "RideNow Group Q1 2026 Powersports Revenue Reaches $260.4 Million",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNNF9ELWZWVnZtNk1TUFBsREloSlNVcmZDekN2RlI1Xy1wS3NoMFJJZDJEMVE3LTlVeHhna1RBYjRuYkJhc196MlJqZDZDd0hJaGp3THlpN3ROR1NYQzl3Y1pKZTBsc0NFMEZ0V245eHN5VHZLVUs0NGxiMWtIdmZRUnY0eVlBMHR3YlVhazRn?oc=5",
+      "date": "2026-05-20",
       "oem_key": "ridenow"
     }
   ]
