@@ -235,6 +235,7 @@
   .dealer-item.dealer-active { background:rgba(6,182,212,0.05); }
   .dealer-card { cursor:pointer; }
   .dealer-card.dealer-active { border-color:var(--cyan) !important; background:rgba(6,182,212,0.05) !important; }
+  .oem-item.dealer-active { border-color:var(--cyan) !important; background:rgba(6,182,212,0.05) !important; }
   .dealer-inventory-slot { display:none; } /* extensibility hook — future inventory panel attaches here */
   .tag-ridenow { background:rgba(6,182,212,0.2); color:var(--cyan); }
   .tag-sonic   { background:rgba(168,85,247,0.2); color:var(--purple); }
@@ -351,146 +352,81 @@
       </div>
     </div>
 
-  </div>
+  
+    <!-- DEALER GROUP TRACKER -->
+    <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">
+      <div class="section-header" style="margin-bottom:2px;">
+        <div class="section-title">Dealer Tracker</div>
+        <div style="font-size:9px;color:var(--text-muted);">Channel</div>
+      </div>
+
+      <!-- REFRESH:DEALER_CAPS:START -->
+<!-- national tier injected by refresh.py -->
+      <!-- REFRESH:DEALER_CAPS:END -->
+
+      <div style="font-size:9px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;padding:5px 0 3px;margin-top:2px;border-top:1px solid var(--border);">Regional · Private</div>
+
+      <div class="oem-item" id="dealer-berts" data-dealer-key="berts" onclick="selectDealer('berts')">
+        <div class="oem-dot" style="background:rgba(100,116,139,0.12);color:var(--text-muted);font-size:8px;">DSW</div>
+        <div class="oem-info">
+          <div class="oem-name">Bert's Mega Mall</div>
+          <div class="oem-ticker">Private · Covina, CA</div>
+        </div>
+      </div>
+      <div class="oem-item" id="dealer-delamo" data-dealer-key="delamo" onclick="selectDealer('delamo')">
+        <div class="oem-dot" style="background:rgba(100,116,139,0.12);color:var(--text-muted);font-size:8px;">DSW</div>
+        <div class="oem-info">
+          <div class="oem-name">Del Amo Motorsports</div>
+          <div class="oem-ticker">Private · Southern CA</div>
+        </div>
+      </div>
+      <div class="oem-item" id="dealer-westside" data-dealer-key="westside" onclick="selectDealer('westside')">
+        <div class="oem-dot" style="background:rgba(100,116,139,0.12);color:var(--text-muted);font-size:8px;">MTW</div>
+        <div class="oem-info">
+          <div class="oem-name">Westside Motorsports</div>
+          <div class="oem-ticker">Private · Spokane, WA</div>
+        </div>
+      </div>
+      <div class="oem-item" id="dealer-procaliber" data-dealer-key="procaliber" onclick="selectDealer('procaliber')">
+        <div class="oem-dot" style="background:rgba(100,116,139,0.12);color:var(--text-muted);font-size:8px;">MTW</div>
+        <div class="oem-info">
+          <div class="oem-name">Pro Caliber</div>
+          <div class="oem-ticker">Private · Bend OR &amp; Vancouver WA</div>
+        </div>
+      </div>
+      <div class="oem-item" id="dealer-cedarcreek" data-dealer-key="cedarcreek" onclick="selectDealer('cedarcreek')">
+        <div class="oem-dot" style="background:rgba(100,116,139,0.12);color:var(--text-muted);font-size:8px;">HRT</div>
+        <div class="oem-info">
+          <div class="oem-name">Cedar Creek Motorsports</div>
+          <div class="oem-ticker">Private · Cedarburg, WI</div>
+        </div>
+      </div>
+      <div class="oem-item" id="dealer-i69" data-dealer-key="i69" onclick="selectDealer('i69')">
+        <div class="oem-dot" style="background:rgba(100,116,139,0.12);color:var(--text-muted);font-size:8px;">HRT</div>
+        <div class="oem-info">
+          <div class="oem-name">Interstate 69 Motorsports</div>
+          <div class="oem-ticker">Private · Union City, TN</div>
+        </div>
+      </div>
+      <div class="oem-item" id="dealer-unitedmoto" data-dealer-key="unitedmoto" onclick="selectDealer('unitedmoto')">
+        <div class="oem-dot" style="background:rgba(100,116,139,0.12);color:var(--text-muted);font-size:8px;">ETB</div>
+        <div class="oem-info">
+          <div class="oem-name">United Motorsports</div>
+          <div class="oem-ticker">Private · KY / OH / WV</div>
+        </div>
+      </div>
+      <div class="oem-item" id="dealer-mountainmoto" data-dealer-key="mountainmoto" onclick="selectDealer('mountainmoto')">
+        <div class="oem-dot" style="background:rgba(100,116,139,0.12);color:var(--text-muted);font-size:8px;">SEN</div>
+        <div class="oem-info">
+          <div class="oem-name">Mountain Motorsports</div>
+          <div class="oem-ticker">Private · GA / AL / TN</div>
+        </div>
+      </div>
+    </div>
+</div>
 
   <!-- MAIN CONTENT -->
   <div class="main">
-
-
-    <!-- DEALER GROUP TRACKER -->
-    <div class="section-header" style="margin-top:16px;">
-      <div class="section-title">Dealer Group Tracker</div>
-      <div style="font-size:10px;color:var(--text-muted);">Channel Intelligence &nbsp;·&nbsp; Downstream Retail Monitoring</div>
-    </div>
-    <div class="dealer-section">
-
-      <!-- National Tier — equity data injected by refresh.py -->
-      <div class="dealer-tier-label">
-        National Tier
-        <span style="background:rgba(59,130,246,0.15);color:var(--accent2);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Publicly Traded</span>
-      </div>
-      <!-- REFRESH:DEALER_CAPS:START -->
-      <div style="display:flex;flex-wrap:wrap;gap:10px;">
-        <div class="dealer-card" id="dealer-ridenow" data-dealer-key="ridenow" onclick="selectDealer('ridenow')">
-          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-            <span class="news-oem-tag tag-ridenow" style="font-size:10px;">RideNow Group, Inc.</span>
-            <span style="font-size:10px;color:var(--text-muted);">Nasdaq: RDNW</span>
-          </div>
-          <div style="display:flex;gap:14px;align-items:baseline;margin-top:7px;">
-            <div>
-              <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.1;">$309M</div>
-              <div style="font-size:10px;color:var(--text-muted);margin-top:1px;">Market Cap</div>
-            </div>
-            <div>
-              <div style="font-size:13px;font-weight:600;color:var(--text);">$8.01 <span style="color:var(--green);font-size:11px;">▲1.9%</span></div>
-              <div style="font-size:10px;color:var(--green);font-weight:600;">▲17.6% <span style="color:var(--text-muted);font-weight:400;">30d</span></div>
-            </div>
-          </div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:5px;">Nationwide multi-brand dealer group</div>
-          <div style="font-size:10px;color:var(--text-muted);margin-top:3px;font-style:italic;">Multi-brand (verify current brand authorizations at ridenow.com)</div>
-          <div class="dealer-inventory-slot" id="inventory-ridenow"></div>
-        </div>
-        <div class="dealer-card" id="dealer-sonic" data-dealer-key="sonic" onclick="selectDealer('sonic')">
-          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-            <span class="news-oem-tag tag-sonic" style="font-size:10px;">Sonic Powersports</span>
-            <span style="font-size:10px;color:var(--text-muted);">NYSE: SAH</span>
-          </div>
-          <div style="display:flex;gap:14px;align-items:baseline;margin-top:7px;">
-            <div>
-              <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.1;">$2.5B</div>
-              <div style="font-size:10px;color:var(--text-muted);margin-top:1px;">Market Cap</div>
-            </div>
-            <div>
-              <div style="font-size:13px;font-weight:600;color:var(--text);">$79.23 <span style="color:var(--green);font-size:11px;">▲1.4%</span></div>
-              <div style="font-size:10px;color:var(--green);font-weight:600;">▲10.7% <span style="color:var(--text-muted);font-weight:400;">30d</span></div>
-            </div>
-          </div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:5px;">Multi-region powersports rooftops; UTV-relevant stores operate as Team Mancuso Powersports</div>
-          <div style="font-size:10px;color:var(--text-muted);margin-top:3px;font-style:italic;">Harley-Davidson / motorcycle-skewed; multi-brand at Team Mancuso locations (verify current authorizations)</div>
-          <div style="font-size:10px;color:var(--yellow);font-style:italic;margin-top:6px;padding:3px 6px;background:rgba(234,179,8,0.08);border-left:2px solid var(--yellow);border-radius:0 3px 3px 0;">⚠ Corporate-level filing — Sonic Automotive files as a full automotive + powersports company. Powersports is a reported segment, not the whole business.</div>
-          <div class="dealer-inventory-slot" id="inventory-sonic"></div>
-        </div>
-      </div>
-      <!-- REFRESH:DEALER_CAPS:END -->
-
-      <!-- Regional Tier — static roster; footprint is qualitative only for private groups -->
-      <div class="dealer-tier-label" style="margin-top:14px;">
-        Regional Tier
-        <span style="background:rgba(139,148,158,0.15);color:var(--text-muted);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Private Groups</span>
-      </div>
-      <div class="dealer-region-grid">
-
-        <!-- Desert Southwest -->
-        <div class="dealer-region-block" id="region-desert-sw">
-          <div class="dealer-region-label">Desert Southwest</div>
-          <div class="dealer-item" id="dealer-berts" data-dealer-key="berts" onclick="selectDealer('berts')">
-            <div class="dealer-item-name">Bert's Mega Mall</div>
-            <div class="dealer-item-fp">Single location · Covina, CA</div>
-            <!-- INVENTORY-SLOT: berts — future inventory panel attaches here -->
-            <div class="dealer-inventory-slot" id="inventory-berts"></div>
-          </div>
-          <div class="dealer-item" id="dealer-delamo" data-dealer-key="delamo" onclick="selectDealer('delamo')">
-            <div class="dealer-item-name">Del Amo Motorsports</div>
-            <div class="dealer-item-fp">Multi-store · Southern California</div>
-            <div class="dealer-inventory-slot" id="inventory-delamo"></div>
-          </div>
-        </div>
-
-        <!-- Mountain West -->
-        <div class="dealer-region-block" id="region-mountain-west">
-          <div class="dealer-region-label">Mountain West</div>
-          <div class="dealer-item" id="dealer-westside" data-dealer-key="westside" onclick="selectDealer('westside')">
-            <div class="dealer-item-name">Westside Motorsports</div>
-            <div class="dealer-item-fp">Single location · Spokane, WA</div>
-            <div class="dealer-inventory-slot" id="inventory-westside"></div>
-          </div>
-          <div class="dealer-item" id="dealer-procaliber" data-dealer-key="procaliber" onclick="selectDealer('procaliber')">
-            <div class="dealer-item-name">Pro Caliber</div>
-            <div class="dealer-item-fp">Multi-store · Bend OR &amp; Vancouver WA</div>
-            <div class="dealer-inventory-slot" id="inventory-procaliber"></div>
-          </div>
-        </div>
-
-        <!-- Heartland / Ag Belt -->
-        <div class="dealer-region-block" id="region-heartland">
-          <div class="dealer-region-label">Heartland / Ag Belt</div>
-          <div class="dealer-item" id="dealer-cedarcreek" data-dealer-key="cedarcreek" onclick="selectDealer('cedarcreek')">
-            <div class="dealer-item-name">Cedar Creek Motorsports</div>
-            <div class="dealer-item-fp">Single location · Cedarburg, WI</div>
-            <div class="dealer-inventory-slot" id="inventory-cedarcreek"></div>
-          </div>
-          <div class="dealer-item" id="dealer-i69" data-dealer-key="i69" onclick="selectDealer('i69')">
-            <div class="dealer-item-name">Interstate 69 Motorsports</div>
-            <div class="dealer-item-fp">Single location · Union City, TN</div>
-            <div class="dealer-inventory-slot" id="inventory-i69"></div>
-          </div>
-        </div>
-
-        <!-- Eastern Trail Belt -->
-        <div class="dealer-region-block" id="region-eastern-trail">
-          <div class="dealer-region-label">Eastern Trail Belt</div>
-          <div class="dealer-item" id="dealer-unitedmoto" data-dealer-key="unitedmoto" onclick="selectDealer('unitedmoto')">
-            <div class="dealer-item-name">United Motorsports</div>
-            <div class="dealer-item-fp">Multi-location group · KY / OH / WV</div>
-            <div class="dealer-item-fp" style="font-style:italic;margin-top:1px;">Hatfield-McCoy trail region</div>
-            <div class="dealer-inventory-slot" id="inventory-unitedmoto"></div>
-          </div>
-        </div>
-
-        <!-- Southeast -->
-        <div class="dealer-region-block" id="region-southeast">
-          <div class="dealer-region-label">Southeast</div>
-          <div class="dealer-item" id="dealer-mountainmoto" data-dealer-key="mountainmoto" onclick="selectDealer('mountainmoto')">
-            <div class="dealer-item-name">Mountain Motorsports</div>
-            <div class="dealer-item-fp">Multi-location group · GA / AL / TN</div>
-            <div class="dealer-inventory-slot" id="inventory-mountainmoto"></div>
-          </div>
-        </div>
-
-      </div><!-- /dealer-region-grid -->
-    </div><!-- /dealer-section -->
-
-    <div class="sep"></div>
 
 
     <!-- REFRESH:MARKET_CAPS:START -->

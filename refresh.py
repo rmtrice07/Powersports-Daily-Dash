@@ -500,94 +500,50 @@ def fetch_dealer_stocks():
     return rows
 
 def build_dealer_caps(dealer_stocks):
+    """Render national-tier public dealers as compact sidebar .oem-item entries."""
     dg            = load_dealer_groups()
     national_tier = dg.get("national_tier", [])
     if not national_tier:
-        return '      <!-- dealer_groups.json national_tier is empty -->'
+        return "<!-- dealer_groups.json national_tier is empty -->"
 
     stock_by_key = {s["oem_key"]: s for s in dealer_stocks}
-    cards = []
-    for dealer in national_tier:
-        key      = dealer.get("key", "")
-        name     = dealer.get("name", "")
-        ticker   = dealer.get("ticker", "")
-        exchange = dealer.get("exchange", "")
-        footprint= dealer.get("footprint", "")
-        brands   = dealer.get("brands_note", "")
-        caveat   = dealer.get("filing_caveat", "")
-        _, tag_cls = OEM_TAG_MAP.get(key, ("", "tag-dealer"))
+    items = []
+    for sym, _disp, _dname, exch, hex_color, _tag_cls, oem_key in DEALER_TICKERS:
+        dealer = next((d for d in national_tier if d.get("key") == oem_key), None)
+        if not dealer:
+            continue
+        key    = dealer.get("key", "")
+        name   = dealer.get("name", "")
+        ticker = dealer.get("ticker", "")
+        dot    = ticker if len(ticker) <= 4 else ticker[:4]
+
+        r, g, b = int(hex_color[1:3], 16), int(hex_color[3:5], 16), int(hex_color[5:7], 16)
+        dot_style = f"background:rgba({r},{g},{b},0.15);color:{hex_color};font-size:8px;"
 
         stock = stock_by_key.get(key)
         if stock:
-            cap_str  = fmt_market_cap(stock.get("mkt_cap"))
-            perf     = stock.get("perf_30d")
-            if perf is not None:
-                perf_color = "var(--green)" if perf >= 0 else "var(--red)"
-                perf_str   = f'{"▲" if perf >= 0 else "▼"}{abs(perf):.1f}%'
-            else:
-                perf_color, perf_str = "var(--text-muted)", "—"
-            dir_color   = "var(--green)" if stock.get("dir") == "up" else "var(--red)"
-            equity_html = (
-                f'          <div style="display:flex;gap:14px;align-items:baseline;margin-top:7px;">\n'
-                f'            <div>\n'
-                f'              <div style="font-size:17px;font-weight:700;color:var(--text);line-height:1.1;">{cap_str}</div>\n'
-                f'              <div style="font-size:10px;color:var(--text-muted);margin-top:1px;">Market Cap</div>\n'
-                f'            </div>\n'
-                f'            <div>\n'
-                f'              <div style="font-size:13px;font-weight:600;color:var(--text);">'
-                f'{stock["price"]} <span style="color:{dir_color};font-size:11px;">'
-                f'{stock["arrow"]}{stock["pct"]:.1f}%</span></div>\n'
-                f'              <div style="font-size:10px;color:{perf_color};font-weight:600;">'
-                f'{perf_str} <span style="color:var(--text-muted);font-weight:400;">30d</span></div>\n'
-                f'            </div>\n'
-                f'          </div>\n'
+            dir_color  = "var(--green)" if stock.get("dir") == "up" else "var(--red)"
+            ticker_str = (
+                f'{html_lib.escape(exch)}: {html_lib.escape(ticker)} \u00b7 '
+                f'{stock["price"]} <span style="color:{dir_color};">'
+                f'{stock["arrow"]}{stock["pct"]:.1f}%</span>'
             )
         else:
-            equity_html = (
-                '          <div style="font-size:11px;color:var(--text-muted);margin-top:7px;">'
-                'Market data unavailable</div>\n'
-            )
+            ticker_str = f'{html_lib.escape(exch)}: {html_lib.escape(ticker)} \u00b7 \u2014'
 
-        ticker_line = (
-            f'<span style="font-size:10px;color:var(--text-muted);">'
-            f'{html_lib.escape(exchange)}: {html_lib.escape(ticker)}</span>'
-            if ticker else ""
-        )
-        brands_html = (
-            f'          <div style="font-size:10px;color:var(--text-muted);margin-top:3px;font-style:italic;">'
-            f'{html_lib.escape(brands)}</div>\n'
-            if brands else ""
-        )
-        caveat_html = (
-            f'          <div style="font-size:10px;color:var(--yellow);font-style:italic;'
-            f'margin-top:6px;padding:3px 6px;background:rgba(234,179,8,0.08);'
-            f'border-left:2px solid var(--yellow);border-radius:0 3px 3px 0;">'
-            f'⚠ {html_lib.escape(caveat)}</div>\n'
-            if caveat else ""
-        )
-        cards.append(
-            f'        <div class="dealer-card" id="dealer-{html_lib.escape(key)}"'
+        items.append(
+            f'      <div class="oem-item" id="dealer-{html_lib.escape(key)}"'
             f' data-dealer-key="{html_lib.escape(key)}"'
             f' onclick="selectDealer(\'{html_lib.escape(key)}\')">\n'
-            f'          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">\n'
-            f'            <span class="news-oem-tag {tag_cls}" style="font-size:10px;">'
-            f'{html_lib.escape(name)}</span>\n'
-            f'            {ticker_line}\n'
-            f'          </div>\n'
-            f'{equity_html}'
-            f'          <div style="font-size:11px;color:var(--text-muted);margin-top:5px;">'
-            f'{html_lib.escape(footprint)}</div>\n'
-            f'{brands_html}'
-            f'{caveat_html}'
-            f'          <div class="dealer-inventory-slot" id="inventory-{html_lib.escape(key)}"></div>\n'
-            f'        </div>'
+            f'        <div class="oem-dot" style="{dot_style}">{html_lib.escape(dot)}</div>\n'
+            f'        <div class="oem-info">\n'
+            f'          <div class="oem-name">{html_lib.escape(name)}</div>\n'
+            f'          <div class="oem-ticker">{ticker_str}</div>\n'
+            f'        </div>\n'
+            f'      </div>'
         )
 
-    return (
-        '      <div style="display:flex;flex-wrap:wrap;gap:10px;">\n'
-        + "\n".join(cards) + "\n"
-        + "      </div>"
-    )
+    return "\n".join(items)
 
 def build_dealer_config_js():
     dg = load_dealer_groups()
