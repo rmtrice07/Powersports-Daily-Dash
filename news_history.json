@@ -1,12 +1,6 @@
 {
-  "_window_start": "2026-05-11",
+  "_window_start": "2026-05-12",
   "articles": [
-    {
-      "title": "There's An Unofficial Update on Kawasaki's Teryx H2 Recall. Maybe an End In Sight?",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOYzNIbnoycU9OMi1kZmU1a0lEdUt5dVEtOEpxR0NaVVhYU3NjRFVRZ0VHT1RmT1hIcm9DOFBvQmh2SE85anlUeEtRdDB6QnRYMzNIcm1XOGYwckx3RXJDSlhfZGpBR1h6bzdGNXJUZWF1Mmh1TDAxMVJra2NGd0loWlFjQnN5UnNJakhaSmxEYkpueFVWWVFhY21GblBJVHdT?oc=5",
-      "date": "2026-05-11",
-      "oem_key": "kawasaki"
-    },
     {
       "title": "Fox Factory sees Q1 sales bump from increased demand in powersports segment",
       "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/05/12/fox-factory-sees-q1-sales-bump-from-increased-demand-in-powersports/",
@@ -366,6 +360,18 @@
       "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNTVJOUlB3VXJTV3BIeEQ3d3FoVExieTFDaXBGcnFGdHNXcmdZdlVTX3NrVER5MU1wd3BocG13OEFQT2syaDBSQjNVUXhzRTgtaXI4SlF0d2k4MzJPVldRbTJ5ZFEyUThQaXVKd1UyUDRac3c0NkF5V1FQeHZidVlGT1NzYVRVWkRZcERxclJlWEU3cVpTSDZ1N3V4czBiUHRhTFpMdmszTzQ3MDJxampEOURKWFdYTzAzdnc?oc=5",
       "date": "2026-05-14",
       "oem_key": "ridenow"
+    },
+    {
+      "title": "Zero partners with Sirris on X Line suspension upgrades",
+      "link": "https://powersportsbusiness.com/news/electric/2026/05/26/zero-partners-with-sirris-on-x-line-suspension-upgrades/",
+      "date": "2026-05-26",
+      "oem_key": "market"
+    },
+    {
+      "title": "NBC’s SMX coverage continues to hit viewership gains, milestones",
+      "link": "https://powersportsbusiness.com/news/motorcycle/2026/05/26/nbcs-smx-coverage-continues-to-hit-viewership-gains-milestones/",
+      "date": "2026-05-26",
+      "oem_key": "market"
     }
   ]
 }
