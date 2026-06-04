@@ -1,66 +1,6 @@
 {
-  "_window_start": "2026-05-20",
+  "_window_start": "2026-05-21",
   "articles": [
-    {
-      "title": "LiveWire acquires Dust Moto to expand off-road EV presence",
-      "link": "https://powersportsbusiness.com/news/electric/2026/05/20/livewire-acquires-dust-moto-to-expand-off-road-ev-presence/",
-      "date": "2026-05-20",
-      "oem_key": "market"
-    },
-    {
-      "title": "Sherco reveals updated 2027 Enduro lineup",
-      "link": "https://powersportsbusiness.com/news/motorcycle/2026/05/20/sherco-reveals-updated-2027-enduro-lineup/",
-      "date": "2026-05-20",
-      "oem_key": "market"
-    },
-    {
-      "title": "Turn 14 hires Brenden Gill as Southwest territory sales manager",
-      "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/05/20/turn-14-hires-brenden-gill-as-southwest-territory-sales-manager/",
-      "date": "2026-05-20",
-      "oem_key": "market"
-    },
-    {
-      "title": "Staying competitive in the AI era: A retailer’s survival guide",
-      "link": "https://powersportsbusiness.com/features/2026/05/20/staying-competitive-in-the-ai-era-a-retailers-survival-guide/",
-      "date": "2026-05-20",
-      "oem_key": "market"
-    },
-    {
-      "title": "Segway pushes limits of off-road performance with new Super Villain",
-      "link": "https://powersportsbusiness.com/news/side-by-side/2026/05/20/segway-pushes-limits-of-off-road-performance-with-new-super-villain/",
-      "date": "2026-05-20",
-      "oem_key": "market"
-    },
-    {
-      "title": "RideNow Group secures additional $35M in floorplan capacity",
-      "link": "https://powersportsbusiness.com/news/dealers/2026/05/20/ridenow-group-secures-additional-35m-in-floorplan-capacity/",
-      "date": "2026-05-20",
-      "oem_key": "ridenow"
-    },
-    {
-      "title": "SSV Works Launches New Polaris XPEDITION ADV Phased Audio Kits",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE54SWtoemlIallQbFNUd1l0NzhSc0JWREVfcW40RGIzWFBkNkE2QlFWODg3QmhyWWt0MzVKa3hwRzFsdHVaRU1jU0lpZDJnZGlBLVNXWVg2ZVVOX2hySW40aVlRTEpfeS1KOUY1TkxhcjZMQ0p6S1E?oc=5",
-      "date": "2026-05-20",
-      "oem_key": "polaris"
-    },
-    {
-      "title": "SDi Announces Terrain Master 2.1 Shocks for the 2026 Can-Am Defender HD11",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBlLWZIdjNsLTJxaFFoMktFOUZiNjZLakJGT2VodmY4WW11dDktNEdEOE9TZ2hhNEdxOENtYUZTb0I2TWpUT2JwSHVoSDgzc0NIc0RJQTF0MFFFcmxDUzNOUUtrMlY5ZGxCQ0tZZHlzaVJXcUNUeFFwN0dR?oc=5",
-      "date": "2026-05-20",
-      "oem_key": "canam"
-    },
-    {
-      "title": "2026 Honda Pioneer 1000 Texas ranch-tested review",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxObmFvbXJfSFRxREQ2SjNlQ0hWOTFJdlN4RHF1OVVRSXh2NHZJUFh5cFBPUXM2ekoxbnV1dnU2Q0NNcWF3QTJxLUZRUzl4bXRjaXNBZk5QNkRUQkxZak1vX2k3TE5FRTA1cUVycG9xN2ZxMmJEMGRCSTVOd2hCVjhkLVFaZmN0V0d1dU9JRHh3?oc=5",
-      "date": "2026-05-20",
-      "oem_key": "honda"
-    },
-    {
-      "title": "RideNow Group Q1 2026 Powersports Revenue Reaches $260.4 Million",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNNF9ELWZWVnZtNk1TUFBsREloSlNVcmZDekN2RlI1Xy1wS3NoMFJJZDJEMVE3LTlVeHhna1RBYjRuYkJhc196MlJqZDZDd0hJaGp3THlpN3ROR1NYQzl3Y1pKZTBsc0NFMEZ0V245eHN5VHZLVUs0NGxiMWtIdmZRUnY0eVlBMHR3YlVhazRn?oc=5",
-      "date": "2026-05-20",
-      "oem_key": "ridenow"
-    },
     {
       "title": "Former Wisconsin dealership looks to reopen following tragedies",
       "link": "https://powersportsbusiness.com/news/dealers/2026/05/21/former-wisconsin-dealership-looks-to-reopen-following-tragedies/",
@@ -413,6 +353,30 @@
       "title": "RideNow Group, Inc. Announces Expansion of Powersports Dealership, New Superstore in Gainesville, Florida",
       "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNUjFvMEcyblEzRlFacm51SjJKTFFNelNoUmVZRG84X2lzczdCOWRmSUlZR2QtenVfcjZZWG00X0ZpTWlvcmdlZzl6WlFxQl9HZUFUcEU1eS1qQmkwWEsyZWxZRndxWUJJdUo5ZVNJdTJRbmtNZ2hoOFhydFNXRkVsbVRNYnlWaFk0dHFPcG1BS1NnOEdkc3lBMEEwWjhzVnpxdGdPUlpyUUQ2NVBDSktxUnBOeWFSVk9fZUJHQnlkMEVWWkJ4QlJ3YkRmNWIwRDg1NVg0MkFraUdkLWt2RkwtUHVYT1cwUHZxOGRvd0hR?oc=5",
       "date": "2026-06-02",
+      "oem_key": "ridenow"
+    },
+    {
+      "title": "Wisconsin Harley store celebrates 50 years by moving to bigger facility",
+      "link": "https://powersportsbusiness.com/news/dealers/2026/06/04/wisconsin-harley-store-celebrates-50-years-by-moving-to-bigger-facility/",
+      "date": "2026-06-04",
+      "oem_key": "market"
+    },
+    {
+      "title": "Ducati unveils 10 exclusive bikes to celebrate 100-year history",
+      "link": "https://powersportsbusiness.com/news/ducati/2026/06/03/ducati-unveils-10-exclusive-bikes-to-clecbrate-100-year-history/",
+      "date": "2026-06-03",
+      "oem_key": "market"
+    },
+    {
+      "title": "2025 CFMOTO UFORCE 1000 XL | $ 24,999 ATV - off road for sale by Olympic Super Center | Regina, SK",
+      "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNVFNCZnRlLV9DMTFBRDlFQUdsSXZuVy1mbGhZMzBJMm15NHJXZVRXQ3ZkZUx5eHVSQjdodHdRRE5wdnZVUVF4cTBJQ1ZVRjdYSHZtZnBqWDZWMjJJX2x2clhTcXh4YnBMdGEtNl9mLWY1RHdzV0psRzVxRDljTWQyQ05sWFVoTFlsT19QdDEyUDRXTnFOTEtGNVE3UXI0QUhuak90bnNwdzlwZFh6bzdnRDRselZhQmFZRzctMVVmeFdOc19uMWNSdmZQcmp6Tm5JVnZ1RXotN3M2Rk1JRWRySGdyZDY4V3I2OVdOd0lMNA?oc=5",
+      "date": "2026-06-04",
+      "oem_key": "cfmoto"
+    },
+    {
+      "title": "RideNow Group Opens New Powersports Superstore in Gainesville, Florida",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQNm0zR3dBaUQ5cWlwang5YVF5T3pZNDVRSW5MZTREZWt2YXdGcEpKV1VuUXBJS1pjUExaMGV4eWtBb20tMFRTbFpyODg0MHg4RjZkdFhlVjltSm1EMS1OOVdGZ3phbm5QQ2g1SWtyZDR6cmN0MXVmOHZKNFdxSDQxMUoyODJXTFBOQXE5NTAzOUo5Z1BLR2tKeU5uZlNnUQ?oc=5",
+      "date": "2026-06-03",
       "oem_key": "ridenow"
     }
   ]
