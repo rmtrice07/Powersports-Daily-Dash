@@ -1,24 +1,6 @@
 {
-  "_window_start": "2026-05-27",
+  "_window_start": "2026-05-28",
   "articles": [
-    {
-      "title": "DX1 launches Smart Receiving feature for powersports dealerships",
-      "link": "https://powersportsbusiness.com/news/service-providers/2026/05/27/dx1-smart-receiving-powersports-dealerships/",
-      "date": "2026-05-27",
-      "oem_key": "market"
-    },
-    {
-      "title": "Octane secures $350 million forward-flow agreement with Nuveen",
-      "link": "https://powersportsbusiness.com/news/finance-insurance/2026/05/27/octane-secures-350-million-forward-flow-agreement-with-nuveen/",
-      "date": "2026-05-27",
-      "oem_key": "market"
-    },
-    {
-      "title": "All Balls Racing returns as sponsor for Vintage Motorcycle Days",
-      "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/05/27/all-balls-racing-returns-as-sponsor-for-vintage-motorcycle-days/",
-      "date": "2026-05-27",
-      "oem_key": "market"
-    },
     {
       "title": "Lightfighter announces California track day demo tour",
       "link": "https://powersportsbusiness.com/news/electric/2026/05/28/lightfighter-announces-california-track-day-demo-tour/",
@@ -42,42 +24,6 @@
       "link": "https://powersportsbusiness.com/news/yamaha/2026/05/28/yamaha-outdoor-access-initiative-q1-grant-recipients-announced/",
       "date": "2026-05-28",
       "oem_key": "yamaha"
-    },
-    {
-      "title": "Denago eyes breakout 2026 with value strategy, rapid dealer growth",
-      "link": "https://powersportsbusiness.com/news/atv/2026/05/27/denago-eyes-breakout-2026-with-value-strategy-rapid-dealer-growth/",
-      "date": "2026-05-27",
-      "oem_key": "market"
-    },
-    {
-      "title": "AMA Motorcycle Hall of Fame announces 2026 nominees",
-      "link": "https://powersportsbusiness.com/news/motorcycle/2026/05/27/ama-motorcycle-hall-of-fame-announces-2026-nominees/",
-      "date": "2026-05-27",
-      "oem_key": "market"
-    },
-    {
-      "title": "20/20 Custom Molded Plastics earns Yamaha Supplier Award",
-      "link": "https://powersportsbusiness.com/news/yamaha/2026/05/27/20-20-custom-molded-plastics-earns-yamaha-supplier-award/",
-      "date": "2026-05-27",
-      "oem_key": "yamaha"
-    },
-    {
-      "title": "Can-Am Defender HD11 Mid-Travel Suspension from HCR Racing",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPZjQtTWRFdFExTlR3bG9SWHF5WUo1S2JoR194c25IQTh3RVh6N08ycnEyUDk1TkI3U2g5V1lUM2ZNNlJlYjg3QUFYd1RSUGdlVVh4QmFwemZNaWZNaGNvM3M3LVFWX2tXZkpnZmFjRmlmOXdRajA4YTRvMWRwcG9CVA?oc=5",
-      "date": "2026-05-27",
-      "oem_key": "canam"
-    },
-    {
-      "title": "Can-Am Expands Lineup with New Maverick, Defender, Side-by-Side Enhancements and Spyder Touring Options",
-      "link": "https://news.google.com/rss/articles/CBMigAJBVV95cUxPQzRqd3V6X05EVGJVNHB5b3BXNExsTDNpWWNEcXVnSFFLUm5FaHY2VFJlaGhkdXNobnJueURTOG5aLXh0eUlodmVFNy1ta0NxY0kxRDhVOFZkc1lCWGxCc05vbFVyZG90TG9xMk5MMktrYlNxaWp5N0ZFcHVnRmZNYy1ZVHZyV3pvQnhUYWowRGdEb05UZmt3TlBxZmlJYVNPQkF3cTE1NGQ4OFdXRE5reHB6bWRMNEhCek9BWWlnQVNsQTRtTnFKQXhxYV82RDlHRndyLUg4dVJJRmxobHdVb3l2Sk1rbUc5WlhjS3FhYUd1YWVPWkh2bVNDU2NBY0Jt?oc=5",
-      "date": "2026-05-27",
-      "oem_key": "canam"
-    },
-    {
-      "title": "The Redesigned Honda Pioneer 1000 is Next-Gen",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPQ0xSWDM1Sjc2TEF3VkJWeE5QdGNuNlhNT0pqeUQ0RnNuSDZrTmxOMUp2N1VydHRzUlRJZk1oTGFZUFp1SEZqS0x2d2ljbTE3LXZEckp5bVlybHBrYW1OVG9keGxmRENicVY4dGk0VFVqWGNxeVZkYUVpbEJndzBzUFlPdVNUaW1lOFZr?oc=5",
-      "date": "2026-05-27",
-      "oem_key": "honda"
     },
     {
       "title": "U.S. Triumph dealers battle for global spotlight in ‘Triumph Originals’ contest",
@@ -450,6 +396,60 @@
       "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNbmdlY2dYM0VqWHVJYzhKV1RYVXo3LTBCREFuc2Q2dE1qWkxacjVsTjFzTmszMlAyRWNvcHFCbktGcE1yRFdVYUNTd1JKZ1FpZTA3eFp3OU95Q1U2RkxBLXl2TlJKZlVWQ19hRHhsaUNYdVRncHkwM29HdnZQVVJHVzFQVXhCZGFVSFBJUlJiLWFMbi1BVFlpQUZjMGV6UHJ5enAwSw?oc=5",
       "date": "2026-06-09",
       "oem_key": "ridenow"
+    },
+    {
+      "title": "NPA expands dealer-only auction model into Europe with Germany launch",
+      "link": "https://powersportsbusiness.com/news/service-providers/2026/06/11/npa-expands-dealer-only-auction-model-into-europe-with-germany-launch/",
+      "date": "2026-06-11",
+      "oem_key": "market"
+    },
+    {
+      "title": "Turn 14 expands UTV accessories lineup with Elektric Offroad Designs partnership",
+      "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/06/11/turn-14-expands-utv-accessories-lineup-with-elektric-offroad-designs-partnership/",
+      "date": "2026-06-11",
+      "oem_key": "market"
+    },
+    {
+      "title": "Stark’s e-motorcycles have strong showing at Red Bull Erzbergrodeo",
+      "link": "https://powersportsbusiness.com/news/electric/2026/06/11/starks-e-motorcycles-have-strong-showing-at-red-bull-erzbergrodeo/",
+      "date": "2026-06-11",
+      "oem_key": "market"
+    },
+    {
+      "title": "Two Virginia Harley-Davidson dealerships consolidate",
+      "link": "https://powersportsbusiness.com/news/dealers/2026/06/10/two-virginia-harley-davidson-dealerships-consolidate/",
+      "date": "2026-06-10",
+      "oem_key": "market"
+    },
+    {
+      "title": "LiveWire bets on entry-level EV growth with S4 Honcho launch",
+      "link": "https://powersportsbusiness.com/news/electric/2026/06/10/livewire-bets-on-entry-level-ev-growth-with-s4-honcho-launch/",
+      "date": "2026-06-10",
+      "oem_key": "market"
+    },
+    {
+      "title": "Moto Morini launches 2027 X-Cape 1200 adventure motorcycle, priced at $12,999",
+      "link": "https://powersportsbusiness.com/news/moto-morini/2026/06/10/moto-morini-launches-2027-x-cape-1200-adventure-motorcycle-priced-at-12999/",
+      "date": "2026-06-10",
+      "oem_key": "market"
+    },
+    {
+      "title": "Cardo Systems, Tread Lightly! team up to support off-road recreation",
+      "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/06/10/cardo-systems-tread-lightly-team-up-to-support-off-road-recreation/",
+      "date": "2026-06-10",
+      "oem_key": "market"
+    },
+    {
+      "title": "Polaris Doesn’t Just Win The 2026 Baja 500—It Owns It",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQS2tSSWY3dDdSc1I0d0VQMDNBSE5uOW1pQy1nZ2E4ajlTUTByT3lzTzRWZFhKcm5ENkdHVWhEQ2VQLTlhcnNVNk1aMXE5VWNyY3FRdzFZdEgyVzhVc3ZIV3N1TUdjQWpBQW9sd21RS2tKbFIyYkpFdzVWOTN0YWdhMnUwZFBkQmxCOHB6a0JTbXNOZw?oc=5",
+      "date": "2026-06-10",
+      "oem_key": "polaris"
+    },
+    {
+      "title": "Polaris RZR side-by-sides: what US off-road riders should know",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOQmNDcXlla1A2b0FWX2dXRjVSQ3Yta2hOenNfQnZoZmJIWmlnVjluTFpFUERJeG5JTlk2YXk2M0JhcFU5LVMwNGd0WC15TVc3bEF2Z2cyTDlWbHJ2RXJIUlBVRG9lRkNudUQ5RG94Rm93SHFMN3o4M1E5M0htOHdpRjMxVGotbFlneGNDb0FKZmpNX2dHQzhaMEJWMHdQQ19sVUUtWVBKeGZTdnc1ZDBXT3dUSWxhazlEVjFocg?oc=5",
+      "date": "2026-06-10",
+      "oem_key": "polaris"
     }
   ]
 }
