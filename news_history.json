@@ -1,23 +1,11 @@
 {
-  "_window_start": "2026-07-10",
+  "_window_start": "2026-07-13",
   "articles": [
-    {
-      "title": "Two hurt after Polaris Ranger overturns near Tarkio",
-      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5Sck1xR3VldUM1Q0VMVUtJcFBBa1RzZDEyWjNBZFhrUFM2dk1wZldUQW1qcktMRDMzVkRCRGxrVXFuZ29OeUZBMi1wLU13eDI4SmNWdXpZTDJiVkMxbm5uMGNKaTB1YTRlN0RadmRpaFplVGJIa0wwNE5fNU95UQ?oc=5",
-      "date": "2026-07-10",
-      "oem_key": "polaris"
-    },
     {
       "title": "Can-Am Defender HD11 Engine Deep Dive: Why the Rotax Triple Feels Different",
       "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5VZnp4ekNaQ0hiNmtWdmxwb19HNGpBY01IWVFGUUJvWnY2elJLUjZ5QmlHaFlVMEVDZ3VPdEE4d0hvZHlzbW80Q1hFaWZ1M0dJaElIbzlkYllOUV9LMy12LWtvZnhzN2FiWms4?oc=5",
       "date": "2026-07-13",
       "oem_key": "canam"
-    },
-    {
-      "title": "Honda Just Made An Insanely Great, Everyday Side-By-Side, And We Drove It",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPQ2NCVFc0Y0E3NVdHU3dfaFlyVVg2dFRURnhYNEZ5YnFIMHpUUWRvc3pEcmgtejA3VzlXb3ViU1RmcHdLM0VQQ3JqMENaTjRzSG8zSTBPMGxOWmh6ZFdUNU4zcjVGTnlacmdTdEo2TjAyc1hqaDk3SWtoVW1jLU1BM3pHNGE1eUQ3bHNJVVNfTE94VklPQ3hjVjJMVFdDRWlFNHUxdVgwMDNwTGhTOTEycmJnVk5oclJf?oc=5",
-      "date": "2026-07-12",
-      "oem_key": "honda"
     },
     {
       "title": "There's An AI-Powered, Autonomous Polaris Ranger On the Front Lines In Ukraine",
@@ -396,6 +384,48 @@
       "link": "https://powersportsbusiness.com/news/service-providers/2026/07/23/dealer-spikes-new-dealer-commitment-promises-more-leads-faster-support/",
       "date": "2026-07-23",
       "oem_key": "market"
+    },
+    {
+      "title": "History of the Polaris RZR: From the 2008 RZR 800 to Today",
+      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5WV1pjZ2tzOVI5V2FjWEdJQWpzWjJkaWNsRHpsQ2F0bWdWMlZheWtjVy1nN0RYN05uM0gzdXNGTzFYVWMwWm4yUWxCRl84QzdRUG0w?oc=5",
+      "date": "2026-07-27",
+      "oem_key": "polaris"
+    },
+    {
+      "title": "Polaris Will Give $50K To Anyone Who Can Beat RZR Factory Racing",
+      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQSWU4b1dQTHJuR2RLenBEUS1tci1WNHdkYTF4WG80TzNkemZtaVFkcU1ybGpTcGgxR3hGV2Rtc1VlVVMtVGZ6Qi05aGxNNzIzVXRibU9DVkxzSVVMWFBwVEFudXZzVXRWUWV3WDM0by1odXYtSS0wdFVYODlqLVJxQnZR?oc=5",
+      "date": "2026-07-25",
+      "oem_key": "polaris"
+    },
+    {
+      "title": "Build Spotlight: Transforming a Can-Am Defender HD9 Into a Year-Round Farm Workhorse",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBWN09Bb1UzU2NNcnhSRWx5N0FTbWdNMEFSbUNncG4yMnk5eWQ5WHpESlJZdlNsTzlvMnVlNkJCS19LMTk1Z0dDRFZpdktfM1N6VFBrSHc3a3lYLXd4RExXR1R3?oc=5",
+      "date": "2026-07-24",
+      "oem_key": "canam"
+    },
+    {
+      "title": "Yamaha Rhino 700 vs. Wolverine X2 1000: Specs, Size and Performance Compared",
+      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1UWHJGUndGZWVjTUR4dTV2b1pUOHpwTjNScFBSMEhFajhtSjlMMGZfN0JLOGxoT2hiN3laYkotMC1uX2NuMGJ4RnFtbGRQeUVMUFNFM0dKNmVvc2lZM2FjR0R3TFRmTmZsSkY4?oc=5",
+      "date": "2026-07-24",
+      "oem_key": "yamaha"
+    },
+    {
+      "title": "RDNW|RideNow Group Ord Shs Class B|Price:6.400|Chg%:+0.010",
+      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1VTTRabzJJa1hiaUdxeTRHOUpKMVpVQnJ5Zk5zTjFXWDBYUkpzOFoxYmE3SC1ZMXpDTnV2RTYwWWxhZ3M4WmRXQTlTMDV0eDcxMVR6VFAwaWQzWDA5ekgyNTVERi0?oc=5",
+      "date": "2026-07-27",
+      "oem_key": "ridenow"
+    },
+    {
+      "title": "RideNow Group, Inc. Revenue Breakdown – NASDAQ:RDNW",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE0tRlAzT3R5WUdsLUJWVEd2VC1BVUYzZWtxZ3dxeGRVN280Y2RMQnV4cHhxWTJqTGd2bWRGMTh1R0hJb2Noc0xDcGVKUExiUDZMamRhQ1FKckJEemhJbTBmQ05qVmVObDROSkMyNG1YbVJlRDh6MFpn?oc=5",
+      "date": "2026-07-24",
+      "oem_key": "ridenow"
+    },
+    {
+      "title": "RideNow Group Ord Shs Class B (RDNW) Cash Flow",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAxZkJ3aXJpYmRzekxFQUNkWnhiMEFUWFdvdXAzZGdBNXlwQlJJbDlrbThzT0tOY242VFFIS1dQLTVxcFNBLTdxdmtMVEpJVWtnOVd1aWMxamZPbUVxdl95S1A2YkZxQm8?oc=5",
+      "date": "2026-07-27",
+      "oem_key": "ridenow"
     }
   ]
 }
