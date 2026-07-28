@@ -1,12 +1,6 @@
 {
-  "_window_start": "2026-07-13",
+  "_window_start": "2026-07-14",
   "articles": [
-    {
-      "title": "Can-Am Defender HD11 Engine Deep Dive: Why the Rotax Triple Feels Different",
-      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5VZnp4ekNaQ0hiNmtWdmxwb19HNGpBY01IWVFGUUJvWnY2elJLUjZ5QmlHaFlVMEVDZ3VPdEE4d0hvZHlzbW80Q1hFaWZ1M0dJaElIbzlkYllOUV9LMy12LWtvZnhzN2FiWms4?oc=5",
-      "date": "2026-07-13",
-      "oem_key": "canam"
-    },
     {
       "title": "There's An AI-Powered, Autonomous Polaris Ranger On the Front Lines In Ukraine",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQYlZ6TFItcHM0QVR3Sk5aQm04eDlOaTB5UTNEb3hnRWVrbExWLUZELVFmMlg5ckFhMkhrVmV2ekJIM0hGbWlJVThtWW9GaXpGYjQ1NUpCRDhuSHV4R1NZRlVWTkpNUk1FWXlRM19rdlFfNGh4ME0tNkk4VElCUElxRzRwc0tKVjFKeXd2dHNwQm1vQjY4aGU4?oc=5",
@@ -24,18 +18,6 @@
       "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5UeHloRWZIZllpNVdYb3VWZnZJNS1rVFZwWFlWb1g2RHFlUkcxQnFERW1ZaG92Qlp6ZXlUUlZzWkl1NVFFU3ZFX0FfQjZmbG54WWxaU1Q3UE5rQm9KdHp1M3pYR1k3WXhkbEI1ejFRNmMyZV9nY24ybVJhWmxtQQ?oc=5",
       "date": "2026-07-14",
       "oem_key": "canam"
-    },
-    {
-      "title": "2026 Can-Am Maverick Sport MAX Buyer’s Guide",
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE90MWthYU9RRVM1UkIyX0dzLTNPVHkxbXZIWW4tdHIxQlVwOUwxbklLOWdKaFNaSEpsQS1Wa3hLS1NweUN1UGZ1N3pGWUJtZms4bldoUHNMQTl1dEF6X1cxRWZ0Z0JPMTBtMkxTWkVmY1Vra0k?oc=5",
-      "date": "2026-07-13",
-      "oem_key": "canam"
-    },
-    {
-      "title": "2026 Yamaha Wolverine RMAX4 Buyer’s Guide",
-      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFB1RW0xRG9lRU42YUxISjhCeUw2Mk9KQzNvRXJWOXhNWHcyeVJSaG1VZEYxbVVKb3Nfa0c4M3BJTHQ4a05pbmYxZFZjXy1ldjI1Rm1Xb0lIWHNkZERZSTBlbXpqZVU5RFFGWjRmVUhpWQ?oc=5",
-      "date": "2026-07-13",
-      "oem_key": "yamaha"
     },
     {
       "title": "How to start using AI in your dealership",
@@ -425,6 +407,12 @@
       "title": "RideNow Group Ord Shs Class B (RDNW) Cash Flow",
       "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAxZkJ3aXJpYmRzekxFQUNkWnhiMEFUWFdvdXAzZGdBNXlwQlJJbDlrbThzT0tOY242VFFIS1dQLTVxcFNBLTdxdmtMVEpJVWtnOVd1aWMxamZPbUVxdl95S1A2YkZxQm8?oc=5",
       "date": "2026-07-27",
+      "oem_key": "ridenow"
+    },
+    {
+      "title": "RideNow Group Ord Shs Class B (RDNW) Dividends & Stock Splits: Historical Payouts and Event Timeline",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBualIxb3hUSkxVdWF5ZGN2am84a1h1WWxqTG92TXJZVmQ1MnpSc2JkWUp0SENNeWxlNmlpY2w0aDhzTVlJdGZJYmhEVDBOSlVwRGpSVWFiNlJXT0xvY3VFNXduMnBQcnhsSVM2QThvWQ?oc=5",
+      "date": "2026-07-28",
       "oem_key": "ridenow"
     }
   ]
