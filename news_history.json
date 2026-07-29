@@ -1,77 +1,11 @@
 {
-  "_window_start": "2026-07-14",
+  "_window_start": "2026-07-15",
   "articles": [
-    {
-      "title": "There's An AI-Powered, Autonomous Polaris Ranger On the Front Lines In Ukraine",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQYlZ6TFItcHM0QVR3Sk5aQm04eDlOaTB5UTNEb3hnRWVrbExWLUZELVFmMlg5ckFhMkhrVmV2ekJIM0hGbWlJVThtWW9GaXpGYjQ1NUpCRDhuSHV4R1NZRlVWTkpNUk1FWXlRM19rdlFfNGh4ME0tNkk4VElCUElxRzRwc0tKVjFKeXd2dHNwQm1vQjY4aGU4?oc=5",
-      "date": "2026-07-14",
-      "oem_key": "polaris"
-    },
-    {
-      "title": "First Drive: Polaris Ranger 500 offers farmers a compact ATV alternative",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNY2swSk5tWDgtbFhoQlMwWFNNb3NtUEdieXBucnh6RTcwcGpkc25JZmY5Q3F3aVhwUjlTdV8xYW90Ri10YThKa09US0VLUHpZRVFQWF9yYUFuREQ2T0FCN3hISjZGRVJ3aUs5eHNNM3Q4dGZZcWRydEJRMXNueVJrb0VZZ3lobGhra05SVE9SVFpHNm9MeVBXZzhLYWNOaV9tRXV4YlVfUmRrcUtVUkxibA?oc=5",
-      "date": "2026-07-14",
-      "oem_key": "polaris"
-    },
-    {
-      "title": "Yamaha Wolverine RMAX4 vs. Can-Am Maverick Sport MAX: Similar Mission, Very Different Approaches",
-      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5UeHloRWZIZllpNVdYb3VWZnZJNS1rVFZwWFlWb1g2RHFlUkcxQnFERW1ZaG92Qlp6ZXlUUlZzWkl1NVFFU3ZFX0FfQjZmbG54WWxaU1Q3UE5rQm9KdHp1M3pYR1k3WXhkbEI1ejFRNmMyZV9nY24ybVJhWmxtQQ?oc=5",
-      "date": "2026-07-14",
-      "oem_key": "canam"
-    },
-    {
-      "title": "How to start using AI in your dealership",
-      "link": "https://powersportsbusiness.com/news/dealers/2026/07/14/how-to-start-using-ai-in-your-dealership/",
-      "date": "2026-07-14",
-      "oem_key": "market"
-    },
-    {
-      "title": "Sonic doubles down on Sturgis with record Harley inventory after strong 2025 rally sales",
-      "link": "https://powersportsbusiness.com/news/dealers/2026/07/14/sonic-doubles-down-on-sturgis-with-record-harley-inventory-after-strong-2025-rally-sales/",
-      "date": "2026-07-14",
-      "oem_key": "market"
-    },
-    {
-      "title": "Norton drops details on new ADV range",
-      "link": "https://powersportsbusiness.com/news/motorcycle/2026/07/14/norton-drops-details-on-new-adv-range/",
-      "date": "2026-07-14",
-      "oem_key": "market"
-    },
-    {
-      "title": "Historic 1972 Ducati Imola racer to headline Mecum Monterey auction",
-      "link": "https://powersportsbusiness.com/news/ducati/2026/07/14/historic-1972-ducati-imola-racer-to-headline-mecum-monterey-auction/",
-      "date": "2026-07-14",
-      "oem_key": "market"
-    },
-    {
-      "title": "Hemmings launches giveaway for one-of-one Trail 70 minibike",
-      "link": "https://powersportsbusiness.com/news/motorcycle/2026/07/14/hemmings-launches-giveaway-for-one-of-one-trail-70-minibike/",
-      "date": "2026-07-14",
-      "oem_key": "honda"
-    },
-    {
-      "title": "CPSC launches mandatory eFiling program for imported consumer products",
-      "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/07/14/cpsc-launches-mandatory-efiling-program-for-imported-consumer-products/",
-      "date": "2026-07-14",
-      "oem_key": "market"
-    },
-    {
-      "title": "UTV LED Side Mirrors For Polaris RZR - Rear View With Lights, Fits 1.75-2\" Roll Cage, Black",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOUmJBRE5mVE05TWdjR1kwTF9HTHg4V21YZE5WMFBLUXZ4WFNDNWxGaHBSTThSbXMyWENxWG9Fdlg2WElpdGZmSXBTa05JdjIwXzBKM3dQaVQteWRiS1U0UTNaaFZ5QzMwQ0dJUGxFOE9oajN5YUF0Y21JRGFCS3ZLa1ZoMTVTNTV1VWxXcklyTWE5SHM?oc=5",
-      "date": "2026-07-14",
-      "oem_key": "polaris"
-    },
     {
       "title": "2026 Can-Am Defender HD11 Audio Upgrade Guide: Choosing the Right System",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1mWnRXOUNnT1ExRmF4b0g0b293NUs4S19GY3Z1bmZaelpOMjFOT193cERpNVpVUmxPR0ZicTlUam1NVU02LUIxUVJrUUQ1UU95MXh2dG5JQ3pFRVJpOWJQZHFEQ1JOdXNXX3Q2Rl94c2hoRkxMRlE?oc=5",
       "date": "2026-07-15",
       "oem_key": "canam"
-    },
-    {
-      "title": "Kawasaki just built a UTV for actual trails instead of Instagram fantasy land",
-      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxONnRYeUZpd2pBQV9VMl9PZHdhbG5TMEM1REJwRUZnUWdiREljeVZTZmkwR0FGSTBYTnFhOUIwZXdlOXlQOUNxYnVlMEdJUDAyV0twMlBtejloODBhR0RLdllPLTlDWks0b3gwSWFaYWZKTzNzMk1WS3V4eWZ1Xy1EWjQ3a3VnN1FpLTV0WGQ1SnNTdGNhb1hXMExxS3dZWllTb1lPdHZoZEtXU1RWRkFIaVVHVkhDeXBFVWg0VVdyNXppbVkxSkdEVWFQbWJVYnBOZGZyNA?oc=5",
-      "date": "2026-07-14",
-      "oem_key": "kawasaki"
     },
     {
       "title": "S&P downgrades Harley to ‘junk grade,’ cites profitability concerns over new strategy",
@@ -413,6 +347,48 @@
       "title": "RideNow Group Ord Shs Class B (RDNW) Dividends & Stock Splits: Historical Payouts and Event Timeline",
       "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBualIxb3hUSkxVdWF5ZGN2am84a1h1WWxqTG92TXJZVmQ1MnpSc2JkWUp0SENNeWxlNmlpY2w0aDhzTVlJdGZJYmhEVDBOSlVwRGpSVWFiNlJXT0xvY3VFNXduMnBQcnhsSVM2QThvWQ?oc=5",
       "date": "2026-07-28",
+      "oem_key": "ridenow"
+    },
+    {
+      "title": "Element Three expands dealer network analytics with Sextant acquisition",
+      "link": "https://powersportsbusiness.com/news/service-providers/2026/07/28/element-three-expands-dealer-network-analytics-with-sextant-acquisition/",
+      "date": "2026-07-28",
+      "oem_key": "market"
+    },
+    {
+      "title": "Harley signs global merchandise agency BDA as official licensee for apparel",
+      "link": "https://powersportsbusiness.com/news/harley-davidson/2026/07/28/harley-signs-global-merchandise-agency-bda-as-official-licensee-for-apparel/",
+      "date": "2026-07-28",
+      "oem_key": "market"
+    },
+    {
+      "title": "Lightspeed launches integrated RevPay payments platform for dealerships",
+      "link": "https://powersportsbusiness.com/news/service-providers/2026/07/28/lightspeed-launches-integrated-revpay-payments-platform-for-dealerships/",
+      "date": "2026-07-28",
+      "oem_key": "market"
+    },
+    {
+      "title": "GoPro lands AFT partnership as company looks to rebuild after financial struggles",
+      "link": "https://powersportsbusiness.com/news/motorcycle/2026/07/28/gopro-lands-aft-partnership-as-company-looks-to-rebuild-after-financial-struggles/",
+      "date": "2026-07-28",
+      "oem_key": "market"
+    },
+    {
+      "title": "Biketoberfest motorcycle rally returns to Daytona Beach for its 34th year",
+      "link": "https://powersportsbusiness.com/latest-news/2026/07/28/biketoberfest-motorcycle-rally-returns-to-daytona-beach-for-its-34th-year/",
+      "date": "2026-07-28",
+      "oem_key": "market"
+    },
+    {
+      "title": "Sheffield: The transparency problem powersports can’t ignore",
+      "link": "https://powersportsbusiness.com/news/dealers/2026/07/28/sheffield-the-transparency-problem-powersports-cant-ignore/",
+      "date": "2026-07-28",
+      "oem_key": "market"
+    },
+    {
+      "title": "RDNW|RideNow Group Ord Shs Class B|Price:6.520|Chg%:+0.020",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9EcmhKOVJLZ3Vua3ZCWkFVay0xcUhlejByeHcyVlAtOUd0bnlzSnNPNWJDa0h3dG9BczhxdG00eENDZVVyN2I5VXBseTFaNHdQRkZrSUpZVUZuQQ?oc=5",
+      "date": "2026-07-29",
       "oem_key": "ridenow"
     }
   ]
