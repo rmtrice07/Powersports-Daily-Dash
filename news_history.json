@@ -1,24 +1,6 @@
 {
-  "_window_start": "2026-07-27",
+  "_window_start": "2026-07-28",
   "articles": [
-    {
-      "title": "History of the Polaris RZR: From the 2008 RZR 800 to Today",
-      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5WV1pjZ2tzOVI5V2FjWEdJQWpzWjJkaWNsRHpsQ2F0bWdWMlZheWtjVy1nN0RYN05uM0gzdXNGTzFYVWMwWm4yUWxCRl84QzdRUG0w?oc=5",
-      "date": "2026-07-27",
-      "oem_key": "polaris"
-    },
-    {
-      "title": "RDNW|RideNow Group Ord Shs Class B|Price:6.400|Chg%:+0.010",
-      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1VTTRabzJJa1hiaUdxeTRHOUpKMVpVQnJ5Zk5zTjFXWDBYUkpzOFoxYmE3SC1ZMXpDTnV2RTYwWWxhZ3M4WmRXQTlTMDV0eDcxMVR6VFAwaWQzWDA5ekgyNTVERi0?oc=5",
-      "date": "2026-07-27",
-      "oem_key": "ridenow"
-    },
-    {
-      "title": "RideNow Group Ord Shs Class B (RDNW) Cash Flow",
-      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAxZkJ3aXJpYmRzekxFQUNkWnhiMEFUWFdvdXAzZGdBNXlwQlJJbDlrbThzT0tOY242VFFIS1dQLTVxcFNBLTdxdmtMVEpJVWtnOVd1aWMxamZPbUVxdl95S1A2YkZxQm8?oc=5",
-      "date": "2026-07-27",
-      "oem_key": "ridenow"
-    },
     {
       "title": "RideNow Group Ord Shs Class B (RDNW) Dividends & Stock Splits: Historical Payouts and Event Timeline",
       "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBualIxb3hUSkxVdWF5ZGN2am84a1h1WWxqTG92TXJZVmQ1MnpSc2JkWUp0SENNeWxlNmlpY2w0aDhzTVlJdGZJYmhEVDBOSlVwRGpSVWFiNlJXT0xvY3VFNXduMnBQcnhsSVM2QThvWQ?oc=5",
@@ -126,18 +108,6 @@
       "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQOUdJdjBkSjhhaW9uM21QMmZOV3NvQU1uQlBFY3hvaWU3NUFDVWZlTFdHak5CS0xQYkNjWUZROWUzNEJXVHBPYmZHQ0pHR0VQUXltai13ZVRvRzFpWWxBcUZWY0xjVWJsOGkyRXBQa1FFRUQ0QjJ2bE5Mc0dtbVFSMDRESjRaeEIwdU1uekFCbER0Vkh4UEpEZ2xiR2Z3d0FfSGtSSGJsakR0VWZWZzRNcWV6NmIzdzRNTkRoQnVOUjA1dS1DcWwzbmNGMDZablhMOUNoUW81S3BOdw?oc=5",
       "date": "2026-07-29",
       "oem_key": "kawasaki"
-    },
-    {
-      "title": "RideNow Group Inc. (RDNW) Edges Higher as Price Approaches Resistance - OBV Trend Line - po-news",
-      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNa3FwOHFhUjl3V01Zb2twUVBXbmFYLW1yMkZQNDRyRDdFSkR5ZkhoX3Q1MEsxTEM4My1uNTd0X0Q5UXliaUtDU2dhbFdDeU44QUNseVBraDg2QUZoRUprekR5RVo2eVZ2ZE1tMmhvYUg5OFFYM01qTzFCakQxM0RLT2VsYjJVY3BURnBueGlHTXhqOFFLTVFyZHBZNUUwM3NjZ2ZNMHlGRjkwX3d3cDMw?oc=5",
-      "date": "2026-07-27",
-      "oem_key": "ridenow"
-    },
-    {
-      "title": "RDNW|RideNow Group Ord Shs Class B|Price:6.640|Chg%:+0.140",
-      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1VTTRabzJJa1hiaUdxeTRHOUpKMVpVQnJ5Zk5zTjFXWDBYUkpzOFoxYmE3SC1ZMXpDTnV2RTYwWWxhZ3M4WmRXQTlTMDV0eDcxMVR6VFAwaWQzWDA5ekgyNTVERi0?oc=5",
-      "date": "2026-07-27",
-      "oem_key": "ridenow"
     },
     {
       "title": "A week of special events highlight AMA Amateur National Motocross Championship",
@@ -426,6 +396,36 @@
       "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPcHI3UlB4S0hlSWJYNW1rRHBDd1d6MjduZGUyTnJIZV81bEpsQ09vNlIxTjFFN3ptenNqdUhycU56NzhSVTlEcGtvVktDbDdJZlBlWG5tZFc1Z19hYmcyTkZRU1B0emlEeEg0VDFEWXh5WnBsUEM3bTRUU0twbDJRVmQ4THI1eGtOSE1SajI4YUxnMU1iNUJjUjFtWGswR19uSVJ0SmlrSHVxYkIzWFZ0N1VaNHdicldmdUVxaVNibWU1QTlIaTh6cWNpX2V4WlBoMFVTTE9oOHU1UlNLZ3NpQ1JYVnE?oc=5",
       "date": "2026-08-07",
       "oem_key": "ridenow"
+    },
+    {
+      "title": "Best Suspension Upgrades for the 2026 Polaris RZR XP S",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9JOUg5WGV4cGg0OG12Yms3WUpHekx2MkZ1X29WT3p4Smdzb0dTRzhDb1dUWFVtT2NjdW5uUEY2RDRvU2YwS3lTbWNCaDZ1aGpGcG9MQVVhcldKSEhubTlPLThYUzBYczVGczdPQi1ZTWc?oc=5",
+      "date": "2026-08-10",
+      "oem_key": "polaris"
+    },
+    {
+      "title": "Mick Schumacher's Can-Am Maverick X3 Tracy Mcgrady (CXxQJEGOgc)",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9ZVUVNb3BnWHN2dEZBWnd4QXNUUDFUdkdUSlRtdXNHd3lDdnZlTm92VFNLRTJlWDlka2JKSmJrUE83ZFZxYUJWU0FoYWk0bC1TZ3RYN0FlWkVLbVk?oc=5",
+      "date": "2026-08-10",
+      "oem_key": "canam"
+    },
+    {
+      "title": "2027 Kawasaki RIDGE, RIDGE CREW Lineup",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5vN25pQUFDUVZwdHhhWERKeDNSMWFmbVRhSHpaWHFCLUM5a2hqaTBFM1hCR0hCaHcwUGRmNDRIdnFpRGo3SE1feTNwVWxaWC1pN01VY3ZWOTFLTlRkMndFWjVKWGhEUDFHai1JdTN6T3ZSUXY1dm9rLQ?oc=5",
+      "date": "2026-08-10",
+      "oem_key": "kawasaki"
+    },
+    {
+      "title": "2027 CFMOTO ZFORCE 800 Trail EPS: 50-Inch Sport UTV Starts at $13,999",
+      "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE5FMkpRTlZyenVuSFVvVDdiUjA0ZkthQ093YW9Bb0hYM3F3ZDdQQlJkMklfNlVTRTV4aXBOQjY3ZGhmbVU?oc=5",
+      "date": "2026-08-10",
+      "oem_key": "cfmoto"
+    },
+    {
+      "title": "2027 CFMOTO UFORCE U10 XL EPS: Six Seats for $16,499",
+      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5kaERhZ3JhSlFkY2hpMjdKaUdodVEzUGQ2bng3VF9GRENHOEl3Qm5tSkUtVV8waThEUkZKd1ZGQWhQN2VPMkxXZU0wZTl6c3hqNnF5T1lUVXJ0RzZXLXN3?oc=5",
+      "date": "2026-08-10",
+      "oem_key": "cfmoto"
     }
   ]
 }
