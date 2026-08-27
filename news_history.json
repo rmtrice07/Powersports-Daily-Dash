@@ -1,66 +1,6 @@
 {
-  "_window_start": "2026-08-12",
+  "_window_start": "2026-08-13",
   "articles": [
-    {
-      "title": "Honda Brings Back Pioneer 700 and 520 Side-by-Sides for 2027",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQckNYdHRxUENlSWlOMXY2aDJtLWhGbEF3OHlibWs5eHdVRVBkeUgzRnlqR3UyRUxuYVZHVlltX0xIcDF5ZXZ0OF83LTBYUDZkelB5X181bzdsSVFkWkQ2THcyenBzZ1ZSRkZ0MkxVNVgtSHlpVDNOczZKSXZNYzJMYWo0VGE4cjdLTzA0dlBhX29KRnB5NHhtNldGQnM5Zw?oc=5",
-      "date": "2026-08-12",
-      "oem_key": "honda"
-    },
-    {
-      "title": "RideNow Group Inc (RDNW) (Q2 2026) Earnings Call Highlights: EBITDA Surges 19% Amid Strategic ...",
-      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPWHgwSm9MQXhkVHd1dF9RbnJhZ3BsR1JxNFVaR05UTmQ3emRSa3AtZkMteXI2dE5DNmxnTko0MUp0ZHlaU2tUZVdkUFRMTHhjaW5OQjltNG9BdTFja1BNZXptZm9Wb2JCdHJMczFUVm9KMHUzSTRwTGZjWVpzelMzaDBSeFFud2hIaDhjQnNuUm52Yk5K?oc=5",
-      "date": "2026-08-12",
-      "oem_key": "ridenow"
-    },
-    {
-      "title": "DA Davidson cuts RideNow Group stock price target on weaker outlook",
-      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPTERHOUxRMGJtc2UyRmdVQVE4eTNqM0JVR0lQMnhEd0hfTEpVX1BYRE9oU2g2NVZoUzVzTGJHc01TcVVXaWp4ZVBKRmNBV1Nlazd1eXRYNElFRy1VTm00Nnpoc2dsa2dXcEUxRUlMMVVaQnJwalpNaXY3YzBscG5XSVJHTmphOFZlTnc3UTMzeFJ4S3FUVXcyb1ItMEdSaXV4T2MtdGJxaElwN0tLRi16a0REQWh1NElmT2JZNk5iNVpXZnRuVUdsZ0VpR1dGWlQ1?oc=5",
-      "date": "2026-08-12",
-      "oem_key": "ridenow"
-    },
-    {
-      "title": "RideNow Group Q2 Earnings Call Highlights",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQRGVzUXBWWHo5eUNrMmZoZXdkQTloYW56SDZCcm0xa1pscVpKS0RhdFI4M2VDaHBIbWFFTU5tUkM4bHQ2MDcwUmdvM01hcHV5WE5Kb04zdUtGVmVIVml5TVl1LUdKTGJjZTFPSUhMcE5vTkFMSkpzSFlEbFdSdERSeXJ3N2g5MHVkZDBaQ0UzRUNVS0gwN1Z5X2lvaw?oc=5",
-      "date": "2026-08-12",
-      "oem_key": "ridenow"
-    },
-    {
-      "title": "RideNow Group reports higher same-store sales, adjusted EBITDA in Q2",
-      "link": "https://powersportsbusiness.com/news/dealers/2026/08/12/ridenow-group-reports-higher-same-store-sales-adjusted-ebitda-in-q2/",
-      "date": "2026-08-12",
-      "oem_key": "ridenow"
-    },
-    {
-      "title": "Bimota returns to U.S. with five limited-production motorcycles",
-      "link": "https://powersportsbusiness.com/news/motorcycle/2026/08/12/bimota-returns-to-u-s-with-five-limited-production-motorcycles/",
-      "date": "2026-08-12",
-      "oem_key": "kawasaki"
-    },
-    {
-      "title": "Royal Enfield, Vintage Rides bring guided motorcycle tours to Sturgis, North America",
-      "link": "https://powersportsbusiness.com/news/motorcycle/2026/08/12/royal-enfield-vintage-rides-bring-guided-motorcycle-tours-to-sturgis-north-america/",
-      "date": "2026-08-12",
-      "oem_key": "market"
-    },
-    {
-      "title": "Segway expands aftermarket offerings with DRT Motorsports partnership",
-      "link": "https://powersportsbusiness.com/news/segway/2026/08/12/segway-expands-aftermarket-offerings-with-drt-motorsports-partnership/",
-      "date": "2026-08-12",
-      "oem_key": "market"
-    },
-    {
-      "title": "Indian Chief Vintage Sturgis SD Edition unveiled at 86th annual rally",
-      "link": "https://powersportsbusiness.com/news/indian-motorcycles/2026/08/12/indian-chief-vintage-sturgis-sd-edition-unveiled-at-86th-annual-rally/",
-      "date": "2026-08-12",
-      "oem_key": "market"
-    },
-    {
-      "title": "Honda opens online qualification for 3rd annual National Technician Contest",
-      "link": "https://powersportsbusiness.com/latest-news/2026/08/12/honda-opens-online-qualification-for-3rd-annual-national-technician-contest/",
-      "date": "2026-08-12",
-      "oem_key": "honda"
-    },
     {
       "title": "Transforming the Can-Am Defender HD11 With CSC’s 72-Inch Mid-Travel Kit",
       "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5zbW90V0FkclR1Tm1WNWRGeXVieWMzOFp6NXN4WGhFdXRZN2Jhd0hhd2xuY3AxWDdOMjlJWUlWdzZGU3RLc25ad0MtbUJfRENXY29KbzkwZVZxRWx0WFFwVV9VX2NXb28xb1ZjM05R?oc=5",
@@ -74,22 +14,10 @@
       "oem_key": "cfmoto"
     },
     {
-      "title": "CFMOTO ZFORCE Z10 Enters Pro SxS Racing With VanEperen Racing",
-      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1vUlY2b3lVR1AzelNiVmZEQld6TXRTdnA3NkRCTnVlSlFock9XUGE2UHdtYmVFVW0ySzBnYkNhSUQwRWZfVV9wRUMzalNTRTM1Ry14SmRuaW43SzBQNEVVLUJsMjc?oc=5",
-      "date": "2026-08-12",
-      "oem_key": "cfmoto"
-    },
-    {
       "title": "ATV and UTV Tires Market to Reach USD 2.31 Billion by 2035 as U.S. Powersports, Premium Side-by-Sides and Farm Utility Demand Accelerate, Reports Radial Insights",
       "link": "https://news.google.com/rss/articles/CBMiuAJBVV95cUxOaW9GX05lUjdkMTJaTGdXMGpiWldFY1RtWWxXTGh5THdSSEk0Q1pVSm9zbWU3RkdXcVVXRFZ0a21jRDZqOWhUWUYtQzlIUnNWNUtfbFpjNE9lSWZGcFdrcm5odzBBUDNSY2p4SVpjM3JXa3A0SUlScFl0NXBhcjdKeDhlLS1oZE01WEYxTTZEcmRTXzlQQUNCZW5BTDVKZTBzdWZJd2RCeVh0dWxQbEx4d0RwQlZQV1pvWi1MX2J3dER5MjBYVHVYUm8zcnhZR0NuQ29WQnNOYlFzUUh0SmRxQWUycUFVZm9jSERweUJhVk1mazFTUkhoNHhmalF1NmdQaVFXZWRzTEZfNWhmT1lmdHYyYlYzUWt6elBmTTJyQXE1bmpGcGEyUFR0dzRaYmk4cG1BbEFmbDA?oc=5",
       "date": "2026-08-13",
       "oem_key": "market"
-    },
-    {
-      "title": "RideNow Group (NASDAQ:RDNW) Price Target Lowered to $8.00 at DA Davidson",
-      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPMjhxN2x5bnloRmY4VnFQWDhFYWJBdjNYbDhkSm5xY2h6WnFqczFOLXpiaUU0Z0lGZ0pSMm83SVhkN0I2R1BramdJekpNSEFSQ0xrZ1ZWVnV4ZzVyR3RSbjRRNGpaU0htdTBSMXNXODRncDBfcm0zQWJCa0V6NVFzZU8tTWpZTUtyTzFSV2ZIMXNRVWw2M2FBNlZoRHNPYXZ5RTYxNzlQNThJWDNHYUVvWlIyRDJjcmdDUWd5b3F3?oc=5",
-      "date": "2026-08-12",
-      "oem_key": "ridenow"
     },
     {
       "title": "MIC acquires MotorcycleIndustryJobs.com to expand powersports workforce reach",
@@ -509,6 +437,66 @@
       "title": "Powersports mechanic moves business into new building, expands services",
       "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/08/25/powersports-mechanic-moves-business-into-new-building-expands-services/",
       "date": "2026-08-25",
+      "oem_key": "market"
+    },
+    {
+      "title": "New Cardo update expands group connectivity for PackTalk users",
+      "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/08/27/new-cardo-update-expands-group-connectivity-for-packtalk-users/",
+      "date": "2026-08-27",
+      "oem_key": "market"
+    },
+    {
+      "title": "BSA Gold Star 650 finally arrives in U.S. after lengthy homologation, shipping delays",
+      "link": "https://powersportsbusiness.com/news/motorcycle/2026/08/27/bsa-gold-star-650-finally-arrives-in-u-s-after-lengthy-homologation-shipping-delays/",
+      "date": "2026-08-27",
+      "oem_key": "market"
+    },
+    {
+      "title": "Meyer adds Lokithor LPS Series LiFePO4 starting batteries",
+      "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/08/27/meyer-adds-lokithor-lps-series-lifepo4-starting-batteries/",
+      "date": "2026-08-27",
+      "oem_key": "market"
+    },
+    {
+      "title": "Harley-Davidson, AFT legend Mees offer fans unique race-day experience",
+      "link": "https://powersportsbusiness.com/news/motorcycle/2026/08/27/harley-davidson-aft-legend-mees-offer-fans-unique-race-day-experience/",
+      "date": "2026-08-27",
+      "oem_key": "market"
+    },
+    {
+      "title": "Axtion Factory launches youth apparel brand with Plessinger, Tomac and Hodges",
+      "link": "https://powersportsbusiness.com/hot-products/2026/08/27/axtion-factory-launches-youth-apparel-brand-with-plessinger-tomac-and-hodges/",
+      "date": "2026-08-27",
+      "oem_key": "market"
+    },
+    {
+      "title": "Bobcat taps NFL running back Raheem Mostert for new landscaping campaign",
+      "link": "https://powersportsbusiness.com/latest-news/2026/08/27/bobcat-tabs-nfl-running-back-raheem-mostert-for-new-landscaping-campaign/",
+      "date": "2026-08-27",
+      "oem_key": "market"
+    },
+    {
+      "title": "Social trends: How dealers are using social, and what experts are saying",
+      "link": "https://powersportsbusiness.com/features/2026/08/26/social-trends-how-dealers-are-using-social-and-what-experts-are-saying/",
+      "date": "2026-08-26",
+      "oem_key": "market"
+    },
+    {
+      "title": "Yamaha, Ducati step up support for 2026 Motorcycle Hall of Fame Ceremony",
+      "link": "https://powersportsbusiness.com/news/motorcycle/2026/08/26/yamaha-ducati-step-up-support-for-2026-motorcycle-hall-of-fame-ceremony/",
+      "date": "2026-08-26",
+      "oem_key": "yamaha"
+    },
+    {
+      "title": "OPEI opposes California small-engine waiver as Congress eyes September vote",
+      "link": "https://powersportsbusiness.com/news/dealers/2026/08/26/opei-opposes-california-small-engine-waiver-as-congress-eyes-september-vote/",
+      "date": "2026-08-26",
+      "oem_key": "market"
+    },
+    {
+      "title": "Octane makes two key appointments to sales leadership team",
+      "link": "https://powersportsbusiness.com/news/finance-insurance/2026/08/26/octane-makes-two-key-appointments-to-sales-leadership-team/",
+      "date": "2026-08-26",
       "oem_key": "market"
     }
   ]
