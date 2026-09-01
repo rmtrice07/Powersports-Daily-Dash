@@ -1,30 +1,6 @@
 {
-  "_window_start": "2026-08-17",
+  "_window_start": "2026-08-18",
   "articles": [
-    {
-      "title": "Kubota RTV-X Family: Diesel Models, Specs and Differences",
-      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9IT0xtM2JNaXBvZUk3eGVOYWlWdGMzQldCclZQWE9WQ1EzZF92bVNtdDVFa19xWElEektWYi1KWEdBbXF3anJBN0hlR1hqaW9aWWJj?oc=5",
-      "date": "2026-08-17",
-      "oem_key": "kubota"
-    },
-    {
-      "title": "Kubota RTV520: Compact Gas Utility Vehicle Specs and Features",
-      "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5BSDh1TldHeGxZaHM2YmtjLU9tcWUyZWs0Q3BvM3hoQ2EyS0JTMC1qcmVRQWNRcDlOZldwLUJ1TnJiMzc3Tm5XaUpVWQ?oc=5",
-      "date": "2026-08-17",
-      "oem_key": "kubota"
-    },
-    {
-      "title": "Kubota RTV-XG850 SIDEKICK: Faster Gas-Powered Utility UTV",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE03emJ4VnFBcWd3VHREZzRra2FyT0NlSC0tdWtDYlpzbnpiWmM1VmZXM1g0M2FaUjZ5Z2pOa1VwNlVjOTE1VjdhV3JPUVF5cjRrd21GaERENUVIMUE?oc=5",
-      "date": "2026-08-17",
-      "oem_key": "kubota"
-    },
-    {
-      "title": "Polaris injects pneumatic shifting into expedition-grade side-by-side",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9YbmJzSF9FOEU2WEtXaFpYc0ZFN1V4Z2JnWm5BY3A5dTFSZ1EwVkQwOW5hX2NidWhFejVYb2NlSGNnemY5VGk5WlBCZnFVTi1sQTlaRlluNDJyZGtlSTRfYXhBSE55U2RnTjJxT3VTcjdOM3M0RGc?oc=5",
-      "date": "2026-08-17",
-      "oem_key": "polaris"
-    },
     {
       "title": "2027 Can-Am UTV Lineup: What’s New",
       "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9iTGIxYTczd3hZWV9zSFc0S2pfN2pfa1AweDNNVEpibDV6ZW5vQVk1a2dHeXNtZVloTWNRRFlwSmZPbC02VUhCbGR4cnZqY09JZC12V2l1MG1zSGdReEhjZUhTR1Q?oc=5",
@@ -48,12 +24,6 @@
       "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5TR2FWTXJMSjRiQzhBSlFyTXZkVWpnU0NoRVEwSE1pTTlHX2RKMkpBaEdwNm9NMUc4dHFRRDlqemoxTFpTTWYzVTVOek5aeXZpNFh1czVaZTd5N1RvblZR?oc=5",
       "date": "2026-08-18",
       "oem_key": "canam"
-    },
-    {
-      "title": "2027 Honda Pioneer Lineup",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1lU1pIMGFqUWJ1VGQtdzIyMUhrVks2N0M5ZHdlbElhWUw5UTRJN1FwcDlxUTh6eVZJd1BFZ1RkaVNNa2pQX002ZWwwNmh3UHFKNnF3MEtNczdNUXM5S1I1MVpLYVRfWGV1Q3Zjc01obEVVMUxTWVd3?oc=5",
-      "date": "2026-08-17",
-      "oem_key": "honda"
     },
     {
       "title": "Motul, MotoAmerica expands its ADV Experience with a second round",
@@ -426,6 +396,36 @@
       "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBnaUJzNnVsYkxBWjE3R3Jhc3BSYkNJVGtwWTY0QW9EWFB4VjI1aGdnRFNFQlJmRFNSeTllZzhnRk0wX21XVVRUOVd3UFZEOFNvTHZOekNENA?oc=5",
       "date": "2026-08-18",
       "oem_key": "yamaha"
+    },
+    {
+      "title": "Accelerate Conference joins AIMExpo agenda with dealer education, industry awards",
+      "link": "https://powersportsbusiness.com/accelerate-conference/2026/09/01/accelerate-conference-joins-aimexpo-agenda-with-dealer-education-industry-awards/",
+      "date": "2026-09-01",
+      "oem_key": "market"
+    },
+    {
+      "title": "CFMOTO named official SxS, ATV partner of the Minnesota Vikings",
+      "link": "https://powersportsbusiness.com/news/cfmoto/2026/09/01/cfmoto-named-official-sxs-atv-partner-of-the-minnesota-vikings/",
+      "date": "2026-09-01",
+      "oem_key": "cfmoto"
+    },
+    {
+      "title": "Can-Am, Farm Rescue Announce Three-Year Partnership",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNWVpKRzlXQ09TMDlIV3pDLWhYdm1qc1hWSkIyX04wM3VOS1lXblJLM09nSmVFN1IxWUEyT3JxTE9kQzVScWxOU2JMZG15c3VJYzVYYVNrUnR3TFZnT0dpQloyeERxLTBfNFp6bE0tTzgycGRjcHdHb1FqSXNaZFhZM3dkTjd3NGptOWxXWml4d2FlY1VMWXJNRlNDSG9Cdk9vSmJlWFgyMmxsOE5ia0FQZg?oc=5",
+      "date": "2026-09-01",
+      "oem_key": "canam"
+    },
+    {
+      "title": "6 Newly-Announced and Updated Kawasaki Ridge Side-by-Side Models",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQd05tUkRwMEV2SUFlaUtCWHJXRWtJT3hGNVk3STM2eXFZN3pxT3FhVGJwYlRkUkxsLU0weWNCRzFIM0tRY0RCNWtuLUFVVTYzWU9La0xXMlJZY0FBMGl2cU8tTkJGOU84Zjl2NkZQOHlKN3VoYmxWOU81NHROX1FjU2hjWjZsWXNfd1prMjhRUGZaNHVGS3RkajZfYVUwZzFiTkJ0cE9Hc01WQzA?oc=5",
+      "date": "2026-08-31",
+      "oem_key": "kawasaki"
+    },
+    {
+      "title": "Powersports Market Size, Share & Growth Report 2035 | MRFR",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE13QUV0bDhTWlZTZEltOWhYUkxBRTFzQk81aXl3NzdEZ0gwQjVMNm1LT0llNWZoa3VLemQ1WXRsWXlFYjhUVVF4eGJyakM5Tmt0b0FTQWhpRjBNMjF0X202UFdYX2NOdU1Ed05FTER0T1FJT2Q2aFE?oc=5",
+      "date": "2026-08-24",
+      "oem_key": "market"
     }
   ]
 }
