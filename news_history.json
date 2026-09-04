@@ -1,48 +1,6 @@
 {
-  "_window_start": "2026-08-20",
+  "_window_start": "2026-08-21",
   "articles": [
-    {
-      "title": "Can-Am Defender Prerunner & Maverick R XRay: ORVs of the Future",
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQa3BGcGVBMFQ4LUpaUnhhd2tiNXpsSENPcmNpd2hzeUx2b1lIYjVYR2ZLZ3hxd0dFeVBuTG9wQ005WUxVWHJBSTJIbFYwR2JHOUNhQUtaR3NFWGZISUpFakdEX2QxeVhQWE54ZGVFN3otX1RyWW1KZVEzLTBKUlVwNTdhMFNDdXlMT043aG9adExycktGQXlsMW9Wc2NzcUtWaXBDSm1TQzc?oc=5",
-      "date": "2026-08-20",
-      "oem_key": "canam"
-    },
-    {
-      "title": "MarineMax agrees to $1.5B all-cash sale",
-      "link": "https://powersportsbusiness.com/news/personal-watercraft/2026/08/20/marinemax-agrees-to-1-5b-all-cash-sale/",
-      "date": "2026-08-20",
-      "oem_key": "market"
-    },
-    {
-      "title": "The new digital dealership",
-      "link": "https://powersportsbusiness.com/features/2026/08/20/the-new-digital-dealership/",
-      "date": "2026-08-20",
-      "oem_key": "market"
-    },
-    {
-      "title": "Can-Am’s three-wheel lineup receives upgrades for 2027 model year",
-      "link": "https://powersportsbusiness.com/latest-news/2026/08/20/can-ams-three-wheel-lineup-receives-upgrades-for-2027-model-year/",
-      "date": "2026-08-20",
-      "oem_key": "canam"
-    },
-    {
-      "title": "Dunlop introduces all-new Geomax EN92 enduro tire",
-      "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/08/20/dunlop-introduces-all-new-geomax-en92-enduro-tire/",
-      "date": "2026-08-20",
-      "oem_key": "market"
-    },
-    {
-      "title": "Sea-Doo revamps PWC lineup with higher hp, refreshed styles",
-      "link": "https://powersportsbusiness.com/news/personal-watercraft/2026/08/20/sea-doo-revamps-pwc-lineup-with-higher-hp-refreshed-styles/",
-      "date": "2026-08-20",
-      "oem_key": "market"
-    },
-    {
-      "title": "MSF’s Ochs set to retire after more than 50 years in rider education",
-      "link": "https://powersportsbusiness.com/news/motorcycle/2026/08/20/msfs-ochs-set-to-retire-after-more-than-50-years-in-rider-education/",
-      "date": "2026-08-20",
-      "oem_key": "market"
-    },
     {
       "title": "Can-Am's Defender UTV Just Got Even More Utilitarian, And For Good Reason",
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPQ3JZSDl5dldLSHFYNkF5bDM5ZzVJa3ZQNTJzXy13MWI2c2t0aGFUWkxCVXdDeDNXRWhxbUwzY1RGUlFxVXN2OTN4T0NoNFNyd0d2WnBhYlhwODFtLWNNMjI0LTF5YVhjTTVqTndZZFVOczNmRUxhbTB0Zm85aHNfX0NoVUxCU29scEUyZlFyOWd3ZmxaWlBQNXJzRHMzX0U?oc=5",
@@ -336,6 +294,48 @@
       "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE40N2NVLUNjY0pfWmk1LVZVY2dDazB1WGlmQThNVU12Q3dWQ2lmYlhfUVJ4MHRiaHo5eWV6RFdxUmhoVU5WSDE4NkdUeGNYS09MU29VeldPRWVKQWJPZFVSUXAzWk4zcTlJ?oc=5",
       "date": "2026-09-03",
       "oem_key": "kawasaki"
+    },
+    {
+      "title": "UTV market 2026: Category shifts toward comfort, capability and value",
+      "link": "https://powersportsbusiness.com/news/side-by-side/2026/09/03/utv-market-2026-category-shifts-toward-comfort-capability-and-value/",
+      "date": "2026-09-03",
+      "oem_key": "market"
+    },
+    {
+      "title": "Moto Guzzi opens new manufacturing facility, museum as the OEM celebrates 105 years.",
+      "link": "https://powersportsbusiness.com/moto-guzzi/2026/09/03/moto-guzzi-opens-new-manufacturing-facility-museum-as-the-oem-celebrates-105-years/",
+      "date": "2026-09-03",
+      "oem_key": "market"
+    },
+    {
+      "title": "SMX League goes down under to tap top talent in Australia, New Zealand",
+      "link": "https://powersportsbusiness.com/news/motorcycle/2026/09/03/smx-league-goes-down-under-to-tap-top-talent-in-australia-new-zealand/",
+      "date": "2026-09-03",
+      "oem_key": "market"
+    },
+    {
+      "title": "2027 Polaris RANGER XP 1000 Mud Edition Arrives With Factory Snorkels and Winch - Off",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQem5zSFMtM0NmcTNUN093ZWcxZlB6T0gwMXUtQkNsN3F5Rkg1SFZPYlBaSVpGOG0yWklXRC1Sai1DSTEyMW1EdHAyeVE3S3ZLbkJzejg2Q2t6dFFVT1ByUGY2TTc3LVJ2M3VoTEtXM0J1LTVIdVRLdXFSREZVVG5LTERXZF9zZm0yT25Cd0d1amFfQjZVejJiRGlwMzNfdDVVdHUwZjNYbEd6QXpZX3cw?oc=5",
+      "date": "2026-09-04",
+      "oem_key": "polaris"
+    },
+    {
+      "title": "Can-Am, Farm Rescue partner to support farm families in crisis",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNVXl1QTNFNXVKNmpDZWNXYWVaWTZsWGJBckpMb2lCc0FEOG0zY2c5RXdZcXpYcmFBVmpzT3FnR0NmUGxfOFludzBuR2RCZEZKLVBSWXFnVlJsSjRJMGIzOS04UlVnWHdhSTNqeDFuZzFiZHpNbFJVck5lU2tBRGVrQlNxc1ByUW8xbU43OTNYSGRwLVZNNWZZZmZqMmx1aEdpSVE?oc=5",
+      "date": "2026-09-02",
+      "oem_key": "canam"
+    },
+    {
+      "title": "Kawasaki Announces their NEW Teryx KRX 1000 TR and Teryx KRX4 1000 TR",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNZW4zTUh4Sk5vRFZNVF94czNsNDBwT2IyeVpLbS1oMk85X0REUnJ4OXdhbkhIdUZlQ0FKVklscVA2TzlnS0pkTjdicTNWNnlHRDRxTkl4OExlN0Itek9rSWppUnUyQkoxdFU4V1hiZjU1UTJMOXlFc3ZXQVc5anZ0RkxQUExTVm1RQk5kVVM5VkNXd2ZpYmZnUmVqdUZtX0xPYXNFLU9KUmhRZw?oc=5",
+      "date": "2026-09-02",
+      "oem_key": "kawasaki"
+    },
+    {
+      "title": "RideNow Group: Accelerating Q2'26 Growth (NASDAQ:RDNW)",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPMEEtUWFpOF9FQlBMYXptYWRZSWhIcGJDZExiRk5XemZhV2dOTHBPclVpQXhEd2REY0t2UXlXZm5jVm9peW9aamdBYWdrZ3I2bnM5cE43aWF2bVA0MGlIMlpGXzJhbUVrWVYyNDNRczdzTTJLTE96UUpNclhkcUNlWTFib3h6QQ?oc=5",
+      "date": "2026-09-03",
+      "oem_key": "ridenow"
     }
   ]
 }
