@@ -1,24 +1,6 @@
 {
-  "_window_start": "2026-09-25",
+  "_window_start": "2026-09-28",
   "articles": [
-    {
-      "title": "PRP Can-Am Maverick R Upgrades: Seats, Harnesses, Steering Wheels and Tie-Downs",
-      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE41N0g1ZXMyYlU2LTRiQV9aWmRScFc1Z0luS1NFNHNsZGVvbnJZWm5ESGtCRmJ5X0lEcldEUFYzdmY4cUpMVVVXeG9JcGNvbzN6a0U0X0MybDVLOE84Y1h4NzNB?oc=5",
-      "date": "2026-09-25",
-      "oem_key": "canam"
-    },
-    {
-      "title": "Evolution Powersports CFMOTO ZFORCE Z10 Performance Upgrades",
-      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9QVkc5QkUwWlNUcDVuMmc3eFJfUzJlVl9lVzcyTExqdFRjbHJVbDd5S0lIV29zZy0wbEl1bWxSX2VWbUNNOHZla1lnVkh6a2lUTGwzSWoxbndRalphc182Y2RiNFNPbHNGc2lxdTR4QWdDS2h6STNEeV82SnFRZw?oc=5",
-      "date": "2026-09-25",
-      "oem_key": "cfmoto"
-    },
-    {
-      "title": "Kawasaki Unveils 2-Seater Teryx H2 UTV. It's Still Supercharged Insanity",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZUpKX0lDaWZxWmVRRHAyN0hiNG00cTJxdnNTaEtZeTZOcUlBeXNMaWEza1Rqdnd5ZG5yeFpNREJFUllVSXcwZGJUTFpxbmpVejdGS0I0Sm8wUUFfM2V5MU9TbGgxUS1fUWw1SFY1dDR5VjBCRkVUcWs0SllVZWRHakFqaWV4aUZUU3RsQWpGUlhpcXdaaXFNaGZfQmhvZ09hX2dWMzg4UEtJdkQ3SEpVazNmdGg?oc=5",
-      "date": "2026-09-27",
-      "oem_key": "kawasaki"
-    },
     {
       "title": "RideNow Group, Inc. Announces $220 Million Senior Secured Term Loan Refinancing; In Advanced Discussions for $50 Million Asset Backed Lending (ABL) Facility",
       "link": "https://news.google.com/rss/articles/CBMirgJBVV95cUxOd2MydFpEalp2VjA3RVhsSGgxYUt5LVljQVMwWWVBMWR0UGNGemJxanNQRy1uZ2tJSms4SnAwa2RSMzZHZXlvVm9yU0tsSkZYU2Q4blctRUJmWFpESlNjSjZqVnNNcEtjVE5rakVWbmg2VW41cTA1UF9RLWNVR1VmRnpYd3I3YVp6bjFzUlhYYVprMXI1NHZ3MHctdkw4cjE3akZER3k5Tmk3RWlkOFVpRkRJcTZwQV9XR3paeFFmMndfcGs2OXdoOG5HTmdCYVdjY3VVcnFLclVMMGZaS0thdVNiU19iM016NXdfT251Y1pfNkpTM3R3VUJudkpQeklVekVrclVQYXdiTXlnVW1YeEVPTXc0VjlaY0VjVDVuNkJXQzJZU2JkdzJuY3dYdw?oc=5",
@@ -402,6 +384,24 @@
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQOENNWFBrWWkwbXlsOFdHYVFSM19aS2FCM3V2M3ljOFI2RkxzOHFYdmdDaWNjYVZMMGdDai1WR3ZfRVFqYmRqaE0yN3ZrRnNXdjc1ZHN5WkZCNkVCVmR3aG5IcUl1X0l2enI3V3p6a3d0REUtNXJCVXdhaUJfNHlMWHZudmd1UXRmT3V3QUE5N3hoTlhNeGJF?oc=5",
       "date": "2026-10-07",
       "oem_key": "deere"
+    },
+    {
+      "title": "2027 Polaris RZR Pro Boost R First Drive Review: Faster Than You Are",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNc0wxMTFlMGxtYTRkSWhocTVOMWY2d2pISDVJYTlLU0JCdEF2T1JnWE1DVThrTmpLX2tGbW9QSUlQSXJzaTZZSE5ZT2I4X3podWJaM0wzSVY4UXUyTVpNS2stWThiUnRGNy1KY2ZfX0M4WjlZTTZMb2QtUTc1dnZPMUNCcw?oc=5",
+      "date": "2026-10-09",
+      "oem_key": "polaris"
+    },
+    {
+      "title": "I Drove The New Kawasaki Teryx H2. It's A Supercharged Weapon You Need To See",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQd3UxN1F4LVhHV0NEWUhNOS1KbzlxQzhDUTRzNm9qbFRLdjJrRWZYcWVYcFpNZmcyblJKeXlDeTdUMGgxd0cwdGJjT0taY0JRNkx0aV9lUldmS285TlV0ZUdMSW4wMU0zUXZCUFlNRXRBUHY4Z0hEeGFHOXdVNlhNakk2dy1tbGlrajJoYWZTS3pwa0FNVjhtWXFR?oc=5",
+      "date": "2026-10-10",
+      "oem_key": "kawasaki"
+    },
+    {
+      "title": "2021 Yamaha Wolverine X2 850",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPaV9uX3k3eXp5QWFiNzNvRDZlVmF2LXNxVklEUkdibk9hS09yU3RGZC1vc0dYb0VDdTlNYWlfemJ1TkJCZUVBNTh1dF95MTZuaVJOZUtJaWJfZjZzc2Q3aTZ1MU5fbG1QNmxwMFNiYUJFVmppV2g3RW9td0xQTERDMTZZaw?oc=5",
+      "date": "2026-10-01",
+      "oem_key": "yamaha"
     }
   ]
 }
