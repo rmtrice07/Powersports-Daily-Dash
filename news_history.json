@@ -1,54 +1,6 @@
 {
-  "_window_start": "2026-10-06",
+  "_window_start": "2026-10-07",
   "articles": [
-    {
-      "title": "Snow Goer announces its 2027 Snowmobile of the Year",
-      "link": "https://powersportsbusiness.com/news/snowmobile/2026/10/06/snow-goer-announces-its-2027-snowmobile-of-the-year/",
-      "date": "2026-10-06",
-      "oem_key": "market"
-    },
-    {
-      "title": "LiveWire bike OK’d by MSF, aims to usher in new generation of riders",
-      "link": "https://powersportsbusiness.com/latest-news/2026/10/06/livewire-bike-okd-by-msf-aims-to-usher-in-new-generation-of-riders/",
-      "date": "2026-10-06",
-      "oem_key": "market"
-    },
-    {
-      "title": "Royal Alloy Grand Prix 300S sidecar coming to U.S. market for 2027",
-      "link": "https://powersportsbusiness.com/news/scooter/2026/10/06/royal-alloy-grand-prix-300s-sidecar-coming-to-u-s-market-for-2027/",
-      "date": "2026-10-06",
-      "oem_key": "market"
-    },
-    {
-      "title": "6D Helmets appoints bicycle industry veteran as new director of sales",
-      "link": "https://powersportsbusiness.com/news/distributors-aftermarket/2026/10/06/6d-helmets-appoints-bicycle-industry-vetern-as-new-director-of-sales/",
-      "date": "2026-10-06",
-      "oem_key": "market"
-    },
-    {
-      "title": "Harley to exit King of the Baggers factory racing after 2026 season",
-      "link": "https://powersportsbusiness.com/news/harley-davidson/2026/10/06/harley-to-exit-king-of-the-baggers-factory-racing-after-2026-season/",
-      "date": "2026-10-06",
-      "oem_key": "market"
-    },
-    {
-      "title": "Disney buys former Yamaha Motor headquarters in California for $115 million",
-      "link": "https://powersportsbusiness.com/news/yamaha/2026/10/06/disney-buys-former-yamaha-motor-headquarters-in-california-for-115-million/",
-      "date": "2026-10-06",
-      "oem_key": "yamaha"
-    },
-    {
-      "title": "2026 Polaris RZR Pro R Ultra Review: Active Sway Bar Testing",
-      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5RN01ld2NqZ1Vyd2RlWHV0d2pvTURUVjZnWERPTFNGNlh0Ni0wOEwzSFVsaV81a0FJcjZ5dGJoZDJnNWV0Mlc1ZzVKVVpEVGFHeEZPWWVXXy1KSDJLc0dqZDhvS1RyV2xi?oc=5",
-      "date": "2026-10-06",
-      "oem_key": "polaris"
-    },
-    {
-      "title": "Yamaha and John Deere Announce Future Side-by-Side Collaboration",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5FenFvU1ZGNGxrckQwU1dUWktmcHhfUTBoSkxkalAzXzNXbnhlWGtFNVNid3dCRlEzb3FTXzNNSTJSSUlJaFhHcjhiMVZ1WGhtY19qUzlSRmlBbWRRSEZmTWlzdGdzYzVXNS1iYXVOVEtZa1ZF?oc=5",
-      "date": "2026-10-06",
-      "oem_key": "deere"
-    },
     {
       "title": "Coffey: Your fall playbook starts on Friday night",
       "link": "https://powersportsbusiness.com/news/dealers/2026/10/07/coffey-your-fall-playbook-starts-on-friday-night/",
@@ -89,12 +41,6 @@
       "title": "Polaris Just Built An RZR With 6 Wheels and Remotely Operated Grenade System",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQckpuRFI3V3VLR25MSm9NOHNhMkUzQldVTk82bXN4N2lQNUhwOWstcFBHVkhiUTJFTXFnV3N2ZWd0MWg5NTNHTVg3ZndaeHBPSGFZQWNONHZROUtlRFU4azF2LVFaWnJNZk1mWGZmZWNQSlJ6Y0VTMDhGUWhZUVhCTEV6R01mWGlsQlprYm5CdkV2N2FVRmtV?oc=5",
       "date": "2026-10-07",
-      "oem_key": "polaris"
-    },
-    {
-      "title": "2027 Polaris RZR Pro R Boost First Drive Review",
-      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5HTTRVVHhISzdPWnJvYlZmZ3lFZWlvUERIMmotdVR5YUs5ZTdVNVB3aXY5TS1hMkRaTEtOSGhXMV91RUJKdy1sX1FSd3M1SXhNOW9RajhJWlRvbkhOZVNjSjJocVo5ekpJ?oc=5",
-      "date": "2026-10-06",
       "oem_key": "polaris"
     },
     {
@@ -383,6 +329,60 @@
       "title": "RideNow Group stock fell 7.06 percent on Nasdaq on October 16 - ad-hoc",
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNLXhNQ0NZNnZJS250SEZ0Rm9FY2t1RkpHOHQtTERaVUdDejdlcGNzT0RVbVJIVktvelJvZW8waTg5SXFGWWp1bW5Kc2JkUTFoRXhNdzYzZ1BZSnpjejRUOHh0ak5fX3lLcXlKNlJyd3hGVk8tXzFLRm5XeDVGd1FnY0hFNTdVSWgzU3l3UDUySENhZ0pRVmdYVktSRlhZNXpKRWFoaUlZN0liSDVpTWoyRlRlakd0eEdSMkFMaA?oc=5",
       "date": "2026-10-17",
+      "oem_key": "ridenow"
+    },
+    {
+      "title": "Massmio to increase product availability at Ace Hardware stores",
+      "link": "https://powersportsbusiness.com/news/utv/2026/10/21/massmio-to-increase-product-availability-at-ace-hardware-stores/",
+      "date": "2026-10-21",
+      "oem_key": "massimo"
+    },
+    {
+      "title": "Monday relaunches with new ‘tough and reliable’ e-bike range",
+      "link": "https://powersportsbusiness.com/latest-news/2026/10/21/monday-relaunches-with-new-tough-and-reliable-e-bike-range/",
+      "date": "2026-10-21",
+      "oem_key": "market"
+    },
+    {
+      "title": "Norton, Manx R make U.S. debut at Barbara Vintage Festival",
+      "link": "https://powersportsbusiness.com/news/motorcycle/2026/10/21/norton-manx-r-make-u-s-debut-at-barbara-vintage-festival/",
+      "date": "2026-10-21",
+      "oem_key": "market"
+    },
+    {
+      "title": "Zero sets Guinness World Record for longest ride on a single charge",
+      "link": "https://powersportsbusiness.com/news/electric/2026/10/21/zero-sets-guinness-world-record-for-longest-ride-on-a-single-charge/",
+      "date": "2026-10-21",
+      "oem_key": "market"
+    },
+    {
+      "title": "NY dealer finds success by giving customers the Peake experience",
+      "link": "https://powersportsbusiness.com/latest-news/2026/10/20/ny-dealer-finds-success-by-giving-customers-the-peake-experience/",
+      "date": "2026-10-20",
+      "oem_key": "market"
+    },
+    {
+      "title": "Another Harley store shuts its doors, this time north of the border",
+      "link": "https://powersportsbusiness.com/news/dealers/2026/10/20/another-harley-store-shuts-its-doors-this-time-north-of-the-border/",
+      "date": "2026-10-20",
+      "oem_key": "market"
+    },
+    {
+      "title": "Arctic Cat strengthens powersports portfolio with addition of Argo XTV",
+      "link": "https://powersportsbusiness.com/news/arctic-cat/2026/10/20/arctic-cat-strengthens-powersports-portfolio-with-addition-of-argo-xtv/",
+      "date": "2026-10-20",
+      "oem_key": "market"
+    },
+    {
+      "title": "Robby Gordon's Speed UTV Opens Kentucky Assembly Hub",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOdzZfUEtJVVRoNVZtMXk1MHFhMXdLYk9BcFdvb1JKVzhqR25tQXdYSktaekpiOUx4a2pwbmV6aFlsYzg0YnBLRGdVeXhpUE5uY0g1REdITlR3UmltY3IzTV9MR1NIVlVqYmJ0c3huNHZrNGFLQ0V3ZnpJY1BHZGZWVGVzRC0wY1E?oc=5",
+      "date": "2026-10-19",
+      "oem_key": "speedutv"
+    },
+    {
+      "title": "DA Davidson lowers target to USD 8.00 for RideNow Group stock",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPd1dfSGdJVnZZcVJiaG83N1ZYMkVLOUtxZTFVclJvUzlYTFNPc3VudnNRMFZmOGFsQi1SRUh0dUp3QnZfcnE0Y01XUEJPVU9FRG9UdGlVZjh4NWtpd0FNbWxJU3AtSUd1Y3FTOVhxX1FzbmFRUlhFWXRzaFFiX09EWHJ1WVI5WjlzRmVXR2phSS1JWTRrc2ZtQzZQWGtMRGxaaHhobHVmdzJMdzdtYlB1VTVQdGZPYXpjaHEteg?oc=5",
+      "date": "2026-10-20",
       "oem_key": "ridenow"
     }
   ]
