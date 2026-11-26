@@ -1,48 +1,6 @@
 {
-  "_window_start": "2026-11-11",
+  "_window_start": "2026-11-12",
   "articles": [
-    {
-      "title": "AI in the dealership: Trust, but verify",
-      "link": "https://powersportsbusiness.com/news/dealers/2026/11/11/ai-in-the-dealership-trust-but-verify-2/",
-      "date": "2026-11-11",
-      "oem_key": "market"
-    },
-    {
-      "title": "Star Powersports partners with Motorcycle Inn for Aprilia X 250TH unveiling",
-      "link": "https://powersportsbusiness.com/news/dealers/2026/11/11/star-powersports-partners-with-motorcycle-inn-for-aprilia-x-250th-unveiling/",
-      "date": "2026-11-11",
-      "oem_key": "market"
-    },
-    {
-      "title": "Yamaha drops details on pricing, colorways for ’27 street lineup",
-      "link": "https://powersportsbusiness.com/news/yamaha/2026/11/11/yamaha-drops-details-on-pricing-colorways-for-27-street-lineup/",
-      "date": "2026-11-11",
-      "oem_key": "yamaha"
-    },
-    {
-      "title": "EICMA 2026 draws more than 600,000 visitors, sets attendance record",
-      "link": "https://powersportsbusiness.com/news/motorcycle/2026/11/11/eicma-2026-draws-more-than-600000-visitors-sets-attendance-record/",
-      "date": "2026-11-11",
-      "oem_key": "market"
-    },
-    {
-      "title": "Dealer Spike seeks dealer input for 2027 industry outlook",
-      "link": "https://powersportsbusiness.com/news/service-providers/2026/11/11/dealer-spike-seeks-dealer-input-for-2027-industry-outlook/",
-      "date": "2026-11-11",
-      "oem_key": "market"
-    },
-    {
-      "title": "Suzuki sportbike lineup offers approachable entry into 1000cc category",
-      "link": "https://powersportsbusiness.com/latest-news/2026/11/11/suzuki-sportbike-lineup-offers-approachable-entry-into-1000cc-category/",
-      "date": "2026-11-11",
-      "oem_key": "market"
-    },
-    {
-      "title": "RIDENOW GROUP INC (NASDAQ:RDNW) Q3 2026 Double Miss Drives After-Hours Selloff",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPcFhuNzZBUmlZaUlzUzNteWJ3RTNWeWl1dTVKbVk4cUJldXZMbG8xWFoxM3BWNl93S2RUSHZjQmNmSlVRMlN2akc0WkRiWVYxQndKLS1RSWxNa25JQ1hrSlY0Yzl4T2VqdzZOWXhaSTNaOHdsMm1vQmxYSEJLOUpOM2xNTG1YYUtlbzYzZF9WWTMzRDZzSXJsY0JEdHZ3V3ZCOVQxZjJDcTJHWmp2X3ItVGZvdjlQSzVpTnlHeWU2SFFhSlp2Qnc?oc=5",
-      "date": "2026-11-11",
-      "oem_key": "ridenow"
-    },
     {
       "title": "Honda’s healthy bike sales result in big net income increase",
       "link": "https://powersportsbusiness.com/news/honda/2026/11/12/hondas-healthy-bike-sales-result-in-big-net-income-increase/",
@@ -444,6 +402,24 @@
       "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1WeUNZMk02QmlyblJfZXBSZEJWOHY1VjdfSHNudlZVVklKanZKQlFmTFNYWk80X2VFa0ZTQ0ROZGo0QWk4bWFaUTB4dG5rZFRxTm1hTDNsX2lXMHVEZ2E3VVhyLTJDd0gyU3BwU3dBamcyMHAtRjFZTjB3?oc=5",
       "date": "2026-11-25",
       "oem_key": "massimo"
+    },
+    {
+      "title": "KTM's Audi-Powered Side-By-Side Outguns Polaris And Can-Am By Up To 90 HP",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNdFY0ZXc5SzFma3dLVDlVYUhFeWZ6ODBlZHZOajN4bTMwVXhhZGZnblBLSmJLRTRDMTEzcTBaeEYtZHBfdE5iVkdPRE1Ldl84S3RQU3E5QmFIS0Y4Umk1Vmo4SER5cThzMTNFaUxzNzdjc1kwdXNHcml3dl8waUQ4NE1yd3luRWNFb1E?oc=5",
+      "date": "2026-11-26",
+      "oem_key": "polaris"
+    },
+    {
+      "title": "John Deere and Yamaha Join Forces to Develop New Utility Vehicles",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQTm0yTS1qeEdpVUk1S2szYUJ2cE1vWTVuZG03Q2Jjb0V0Mzd6SkdYYS1aRllKdmNHOGJyZk9BcUd2LW00cGx5RG1fUERFT0lleUJjYnZLakJRaE5jdGkxLXJpZUN1THdiOHRXVGZhbzR0VjhYS2o0VDVCcFFBYVB3V3oxcE5CZ296RW03OVdTRjRLUkhEUzRQaGdldw?oc=5",
+      "date": "2026-11-19",
+      "oem_key": "deere"
+    },
+    {
+      "title": "RideNow Group, Inc. (RDNW) Options Chain - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPQ295QWtjMmhBUmxBQzdJTXQ3M2pIM2ZDZWFuM1ZEc1lrNUNIeVRoM216dzl3TVN1NGs1THhGM1A4cEtMWjQ0Q3dpQ25iS1k1VFJLN01CNnFsMk9UQ3B4bm9hSV9paVhVUFFCajBObWd1ejRGYVpYWHVOS21TaWFyNEtabnFJeUhnU2h1T3Y1dzJYZw?oc=5",
+      "date": "2026-11-24",
+      "oem_key": "ridenow"
     }
   ]
 }
